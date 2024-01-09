@@ -376,7 +376,13 @@ class ClusterVisualizer:
         self.plot_raw_data(concat_data, labels, optimal_k)
 
 # Usage of the class
-cluster_visualizer = ClusterVisualizer(directory="0.5gcc_1000K_3bR/",
+# cluster_visualizer = ClusterVisualizer(directory="0.5gcc_1000K_3bR/",
+#                                        clustering_method="dbscan",
+#                                        transformation='r',
+#                                        cluster_dimension='2d')
+# cluster_visualizer.run()
+cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bR/",
+                                       file_range=(75, 100),
                                        clustering_method="dbscan",
                                        transformation='r',
                                        cluster_dimension='2d')
