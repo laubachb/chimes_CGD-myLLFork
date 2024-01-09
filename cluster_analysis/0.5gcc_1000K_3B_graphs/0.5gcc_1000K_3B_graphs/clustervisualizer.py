@@ -144,7 +144,9 @@ class ClusterVisualizer:
         for cluster_num in range(start, num_clusters):
             # Filter data points belonging to the current cluster
             selected_data = concat_data[clusters == cluster_num]
-            
+            # print(np.shape(selected_data)[0])
+            if (self.clustering_method == 'dbscan') and (int(np.shape(selected_data)[0]) == int(0)):
+                continue
             # Create the figure and axes outside the loop
             fig, ax = plt.subplots()
 
@@ -375,7 +377,7 @@ class ClusterVisualizer:
 
 # Usage of the class
 cluster_visualizer = ClusterVisualizer(directory="0.5gcc_1000K_3bR/",
-                                       clustering_method="hc",
+                                       clustering_method="dbscan",
                                        transformation='r',
                                        cluster_dimension='2d')
 cluster_visualizer.run()
