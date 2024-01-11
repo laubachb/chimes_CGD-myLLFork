@@ -381,9 +381,9 @@ class ClusterVisualizer:
 #                                        transformation='r',
 #                                        cluster_dimension='2d')
 # cluster_visualizer.run()
-cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bR/",
+cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bS/",
                                        file_range=(75, 100),
-                                       clustering_method="dbscan",
-                                       transformation='r',
-                                       cluster_dimension='2d')
+                                       clustering_method="hc",
+                                       transformation='s',
+                                       cluster_dimension='3d')
 cluster_visualizer.run()
