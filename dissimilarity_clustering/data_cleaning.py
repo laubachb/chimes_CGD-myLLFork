@@ -87,3 +87,21 @@ pickle_filename = "3b_avg_pd_equilibrium"
 with open(pickle_filename, 'wb') as pickle_file:
     pickle.dump(all_avgs_equilibrium, pickle_file)
 
+# Create the array
+array_length = 156
+increment_interval = 13
+
+# Calculate the number of intervals
+num_intervals = array_length // increment_interval
+
+# Create the array using numpy's repeat and arange functions
+labels = np.repeat(np.arange(num_intervals), increment_interval)[:array_length]
+
+# Print the result
+print(labels)
+
+# Write the object to a pickle file
+pickle_filename = "labels_pd_equilibrium"
+with open(pickle_filename, 'wb') as pickle_file:
+    pickle.dump(labels, pickle_file)
+

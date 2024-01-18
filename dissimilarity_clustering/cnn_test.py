@@ -1,45 +1,46 @@
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.optimizers import Adam
-from keras.utils import to_categorical
-from sklearn.model_selection import train_test_split
 import numpy as np
+import pickle
 import pandas as pd
-import os
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
-from sklearn import preprocessing
 import tensorflow as tf
-from tensorflow.keras import layers
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 
-# Specify the directory containing your files
-directory_path = "../dissimilarity_clustering/all_pd_3b"
+with open("2b_all_pd_equilibrium", 'rb') as pickle_file:
+    all_pd = pickle.load(pickle_file)
 
-# Initialize the master list
-master_list = []
-labels_list = []  # List to store labels
+with open("labels_pd_equilibrium", 'rb') as pickle_file:
+    labels = pickle.load(pickle_file)
 
-# Iterate through each file in the directory
-for i, filename in enumerate(os.listdir(directory_path)):
-    if filename.endswith('.hist'):
-        # Construct the full file path
-        file_path = os.path.join(directory_path, filename)
+print(np.shape(all_pd))
 
-        # Load the data from the file
-        data = np.loadtxt(file_path)
+stacked_data = np.vstack(all_pd)
+print(np.shape(stacked_data))
 
-        # Extract the second column into a list and append to the master list
-        second_column = data[:60].tolist()
-        master_list.append(second_column)
+# Create a DataFrame
+all_df = pd.DataFrame(stacked_data)
 
-        # Assign labels based on the condition
-        label = (i // 25) % 13 + 1
-        labels_list.append(label)
+# Create a DataFrame
+all_df['label'] = labels
 
-# Convert the master list to a NumPy array
-master_array = np.array(master_list)
+# Split the data into features and labels
+X = all_df.drop('label', axis=1).values
+y = all_df['label'].values
 
-print(np.shape(master_array))
-print(np.shape(labels_list))
+# Define the neural network model
+model = Sequential()
+model.add(Dense(32, input_shape=(60,), activation='relu'))
+model.add(Dense(16, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+# Compile the model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train the model
+model.fit(X, y, epochs=10, batch_size=32, validation_split=0.2)
+
+# Evaluate the model
+loss, accuracy = model.evaluate(X, y)
+print(f"Accuracy: {accuracy * 100:.2f}%")
 
 
 
