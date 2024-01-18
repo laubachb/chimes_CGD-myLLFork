@@ -60,9 +60,12 @@ print(path)
 # specific_chunk_index = 0
 mode = "equilibrium"  # Change this to 'all' if needed
 all_avgs_equilibrium = []
+all_data = []
 
 for specific_chunk_index in range(12):
     data = process_files(path, specific_chunk_index, mode)
+    all_data.append(data)
+    print(np.shape(data))
     avg_data = np.mean(data, axis = 0)
 
     # Print the result
@@ -71,11 +74,16 @@ for specific_chunk_index in range(12):
     print(np.shape(avg_data))
     all_avgs_equilibrium.append(avg_data)
 
-print(np.shape(all_avgs_equilibrium))
-
-pickle_filename = "avg_pd_equilibrium"
+print("All data:" ,np.shape(all_data))
+print("Avg. data:", np.shape(all_avgs_equilibrium))
 
 # Write the object to a pickle file
+pickle_filename = "3b_all_pd_equilibrium"
+with open(pickle_filename, 'wb') as pickle_file:
+    pickle.dump(all_data, pickle_file)
+
+# Write the object to a pickle file
+pickle_filename = "3b_avg_pd_equilibrium"
 with open(pickle_filename, 'wb') as pickle_file:
     pickle.dump(all_avgs_equilibrium, pickle_file)
 
