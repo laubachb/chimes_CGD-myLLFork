@@ -1,7 +1,6 @@
 import pickle
 import os.path
 import numpy as np
-
 import os
 
 def process_files(path, specific_chunk_index, mode="all"):
@@ -58,16 +57,25 @@ path = current_directory + path_3b
 print(path)
 
 # Choose a specific chunk (e.g., Chunk_0) and mode ('equilibrium' or 'all')
-specific_chunk_index = 0
+# specific_chunk_index = 0
 mode = "equilibrium"  # Change this to 'all' if needed
+all_avgs_equilibrium = []
 
-data = process_files(path, specific_chunk_index, mode)
-avg_data = np.mean(data, axis = 0)
-# Print the result
-print("Average Array (shape 1x60):")
-print(avg_data)
-print(np.shape(avg_data))
-avg_data = avg_data.reshape(-1,1)
-# # Print the result
-# print("Average Array (shape 1x60):")
-# print(np.shape(avg_data))
+for specific_chunk_index in range(12):
+    data = process_files(path, specific_chunk_index, mode)
+    avg_data = np.mean(data, axis = 0)
+
+    # Print the result
+    print("Average Array (shape 1x60):")
+    avg_data = avg_data.reshape(-1,1)
+    print(np.shape(avg_data))
+    all_avgs_equilibrium.append(avg_data)
+
+print(np.shape(all_avgs_equilibrium))
+
+pickle_filename = "avg_pd_equilibrium"
+
+# Write the object to a pickle file
+with open(pickle_filename, 'wb') as pickle_file:
+    pickle.dump(all_avgs_equilibrium, pickle_file)
+
