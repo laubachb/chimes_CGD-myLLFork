@@ -4,6 +4,9 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
+import os
+
+os.chdir("..")
 
 with open("2b_all_pd_equilibrium", 'rb') as pickle_file:
     all_pd = pickle.load(pickle_file)
@@ -36,7 +39,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Train the model
-model.fit(X, y, epochs=10, batch_size=32, validation_split=0.2)
+model.fit(X, y, epochs=100, batch_size=32, validation_split=0.2)
 
 # Evaluate the model
 loss, accuracy = model.evaluate(X, y)
