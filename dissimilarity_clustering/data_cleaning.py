@@ -30,6 +30,8 @@ def process_files(path, specific_chunk_index, mode="all"):
     else:
         raise ValueError("Invalid mode. Use 'equilibrium' or 'all'.")
 
+    all_data = []
+
     # Process the chosen files
     for file_name in files_to_process:
         file_path = os.path.join(path, file_name)
@@ -42,25 +44,30 @@ def process_files(path, specific_chunk_index, mode="all"):
                 if len(columns) >= 2:
                     second_column_entry = float(columns[1])
                     second_column_entries.append(second_column_entry)
-
-            # Normalize the second column entries between 0 and 1
-            min_value = min(second_column_entries)
-            max_value = max(second_column_entries)
-
-            normalized_entries = [(x - min_value) / (max_value - min_value) for x in second_column_entries]
-
-            # Print the normalized entries
-            print(normalized_entries)
+            all_data.append(second_column_entries)
+    print(np.shape(all_data))
+    return all_data
 
 # Example usage:
+os.chdir('..')
 current_directory = os.getcwd()
 print("Current Directory:", current_directory)
 
-path_3b = "/your/path/to/3b"  # Replace this with your actual path
-path = os.path.join(current_directory, path_3b)
+path_3b = "/all_pd_3b"  # Replace this with your actual path
+path = current_directory + path_3b
+print(path)
 
 # Choose a specific chunk (e.g., Chunk_0) and mode ('equilibrium' or 'all')
 specific_chunk_index = 0
 mode = "equilibrium"  # Change this to 'all' if needed
 
-process_files(path, specific_chunk_index, mode)
+data = process_files(path, specific_chunk_index, mode)
+avg_data = np.mean(data, axis = 0)
+# Print the result
+print("Average Array (shape 1x60):")
+print(avg_data)
+print(np.shape(avg_data))
+avg_data = avg_data.reshape(-1,1)
+# # Print the result
+# print("Average Array (shape 1x60):")
+# print(np.shape(avg_data))
