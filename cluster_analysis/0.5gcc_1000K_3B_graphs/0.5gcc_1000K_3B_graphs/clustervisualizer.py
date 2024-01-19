@@ -374,16 +374,20 @@ class ClusterVisualizer:
 
         # Plot raw data with labels
         self.plot_raw_data(concat_data, labels, optimal_k)
+        
+        fp_data = "clusters.txt"
+        fp_labels = "labels.txt"
+        np.savetxt(fp_data, concat_data)
+        np.savetxt(fp_labels, labels)
 
 # Usage of the class
-# cluster_visualizer = ClusterVisualizer(directory="0.5gcc_1000K_3bR/",
-#                                        clustering_method="dbscan",
-#                                        transformation='r',
-#                                        cluster_dimension='2d')
-# cluster_visualizer.run()
-cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bS/",
-                                       file_range=(75, 100),
-                                       clustering_method="hc",
-                                       transformation='s',
-                                       cluster_dimension='3d')
+cluster_visualizer = ClusterVisualizer(directory="0.5gcc_1000K_3bR/",
+                                       clustering_method="kmeans",
+                                       transformation='r',
+                                       cluster_dimension='none')
 cluster_visualizer.run()
+# cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bS/",
+#                                        file_range=(75, 100),
+#                                        clustering_method="hc",
+#                                        transformation='s',
+#                                        cluster_dimension='3d')
