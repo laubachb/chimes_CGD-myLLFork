@@ -8,6 +8,7 @@ import os
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from keras.optimizers import Adam, SGD, RMSprop, Adadelta, Adagrad, Adamax, Nadam, Ftrl
+import matplotlib.pyplot as plt
 
 
 os.chdir("..")
@@ -41,37 +42,30 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# # Build the neural network model
-opt = Adam(lr = 0.8157059341410821)
+# Build the neural network model
+opt = Adam()
 nn = Sequential()
-nn.add(Dense(13.06693823685416, input_dim=X_train_scaled.shape[1], activation='softsign'))
-nn.add(Dense(13.06693823685416, activation='softsign'))
-nn.add(Dense(1, activation='sigmoid'))
-nn.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+nn.add(Dense(64, input_dim=X_train_scaled.shape[1], activation='softsign'))
+nn.add(Dense(32, activation='relu'))
+nn.add(Dropout(0.5)) 
+nn.add(Dense(32, activation='relu'))
+nn.add(Dense(len(np.unique(labels)), activation='softmax'))
+nn.compile(loss='sparse_categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 # Train the model
-nn.fit(X_train_scaled, y_train, epochs=100, batch_size=32, validation_split=0.2)
+history = nn.fit(X_train_scaled, y_train, epochs=250, batch_size=32, validation_split=0.33)
 
 # Evaluate the model on the test set
 loss, accuracy = nn.evaluate(X_test_scaled, y_test)
 print(f"Test Accuracy: {accuracy * 100:.2f}%")
 
-# # Train the model
-# history = model.fit(X_train_scaled, y_train, epochs=10, batch_size=32, validation_split=0.2)
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Mean Squared Error')
+plt.legend()
+plt.show()
 
-# # Evaluate the model on the test set
-# mse = model.evaluate(X_test_scaled, y_test)
-# print(f"Mean Squared Error on Test Set: {mse}")
-
-# # Optionally, plot the training history to visualize the loss during training
-# import matplotlib.pyplot as plt
-
-# plt.plot(history.history['loss'], label='Training Loss')
-# plt.plot(history.history['val_loss'], label='Validation Loss')
-# plt.xlabel('Epoch')
-# plt.ylabel('Mean Squared Error')
-# plt.legend()
-# plt.show()
 
 # # Import packages
 # import numpy as np
@@ -116,8 +110,8 @@ print(f"Test Accuracy: {accuracy * 100:.2f}%")
 #         nn = Sequential()
 #         nn.add(Dense(neurons, input_dim=X_train_scaled.shape[1], activation=activation))
 #         nn.add(Dense(neurons, activation=activation))
-#         nn.add(Dense(1, activation='sigmoid'))
-#         nn.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+#         nn.add(Dense(len(np.unique(labels)), activation='sigmoid'))
+#         nn.compile(loss='sparse_categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 #         return nn
 #     es = EarlyStopping(monitor='accuracy', mode='max', verbose=0, patience=20)
 #     nn = KerasClassifier(build_fn=nn_cl_fun, epochs=epochs, batch_size=batch_size,
