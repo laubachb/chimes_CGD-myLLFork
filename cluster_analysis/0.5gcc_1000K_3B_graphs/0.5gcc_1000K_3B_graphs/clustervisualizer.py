@@ -34,7 +34,7 @@ class ClusterVisualizer:
 
     def process_files(self):
         for i in range(*self.file_range):
-            filename = f'{self.directory}00{i}.3b_clu-{self.transformation}.txt'
+            filename = f'{self.directory}0{i}.3b_clu-{self.transformation}.txt'
             self.read_data(filename)
 
     def visualize_clusters(self, clusters, concat_data):
@@ -316,7 +316,7 @@ class ClusterVisualizer:
 
     def dbscan_silhouette_scores(self, concat_data):
         # Set the range of eps values
-        eps_values = np.arange(0.01, 0.6, 0.02)
+        eps_values = np.arange(0.01, 0.6, 0.03)
 
         # Collect silhouette scores for each eps value
         silhouette_scores = []
@@ -406,13 +406,20 @@ class ClusterVisualizer:
 
 # Usage of the class
 # cluster_visualizer = ClusterVisualizer(directory="0.5gcc_1000K_3bR/",
+#                                        file_range=(63, 75),
 #                                        clustering_method="hc",
 #                                        transformation='r',
 #                                        cluster_dimension='2d')
-# cluster_visualizer.run()
-cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bR/",
-                                       file_range=(75, 100),
-                                       clustering_method="hc",
+
+# cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bR/",
+#                                        file_range=(87, 100),
+#                                        clustering_method="dbscan",
+#                                        transformation='r',
+#                                        cluster_dimension='2d')
+
+cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/2.0gcc_6000K_3B_graphs/2.0gcc_6000k_3bR/",
+                                       file_range=(113, 125),
+                                       clustering_method="kmeans",
                                        transformation='r',
                                        cluster_dimension='2d')
 cluster_visualizer.run()
