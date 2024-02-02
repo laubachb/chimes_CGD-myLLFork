@@ -67,21 +67,94 @@ for i in range(len(concat_data)):
 print(np.shape(np.asarray(output_coords)))
 coords = np.asarray(output_coords)
 
-# Plot each row independently
-for i in range(len(coords)):
-    # Extract x and y coordinates for row i
-    x = coords[i, :, 0]  # Extract all x coordinates for row i
-    y = coords[i, :, 1]  # Extract all y coordinates for row i
+# # Plot each row independently
+# for i in range(len(coords)):
+#     # Extract x and y coordinates for row i
+#     x = coords[i, :, 0]  # Extract all x coordinates for row i
+#     y = coords[i, :, 1]  # Extract all y coordinates for row i
     
-    # Append the first point to the end to close the polygon
-    x = np.append(x, x[0])
-    y = np.append(y, y[0])
+#     # Append the first point to the end to close the polygon
+#     x = np.append(x, x[0])
+#     y = np.append(y, y[0])
     
-    # Compute kernel density estimate for the coordinates
-    xy = np.vstack([x, y])
-    z = gaussian_kde(xy)(xy)
+#     # Compute kernel density estimate for the coordinates
+#     xy = np.vstack([x, y])
+#     z = gaussian_kde(xy)(xy)
 
-    # Plot the points and connect them with lines, coloring by density
-    plt.plot(x, y, marker='o', linestyle='-', color=plt.cm.viridis(z[0]))
+#     # Plot the points and connect them with lines, coloring by density
+#     plt.plot(x, y, marker='o', linestyle='-', color=plt.cm.viridis(z[0]))
     
+# plt.show()
+
+# Instantiate KMeans object
+kmeans = KMeans(n_clusters=6)
+
+# Fit the KMeans model to the data
+kmeans.fit(concat_data)
+
+# Get the cluster centers and labels
+cluster_centers = kmeans.cluster_centers_
+labels = kmeans.labels_
+
+# # Create a 3D figure
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+
+# # Plot the 3D scatter plot
+# ax.scatter(concat_data[:, 0], concat_data[:, 1], concat_data[:, 2], c=labels)
+
+# # Set labels and title
+# ax.set_xlabel('X Label')
+# ax.set_ylabel('Y Label')
+# ax.set_zlabel('Z Label')
+# ax.set_title('3D Scatter Plot')
+
+# # Show the plot
+# plt.show()
+
+# # Iterate over each row in the array and apply the function
+#     # Get the number of unique clusters
+num_clusters = len(np.unique(labels))
+start = 0
+extra = 1
+fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(10, 10))
+# # Plot clusters
+for cluster_num in range(start, num_clusters):
+    # Filter data points belonging to the current cluster
+    x = []
+    y = []
+    xy = None
+    z = None
+
+    selected_data = concat_data[labels == cluster_num]
+    output_coords = []
+    coords = []
+
+    for i in range(len(selected_data)):
+        side_a, side_b, side_c = selected_data[i]
+        output_coords.append(coordinates_of_triangle_given_SSS(side_a, side_b, side_c))
+
+    print(np.shape(np.asarray(output_coords)))
+    coords = np.asarray(output_coords)
+    # Create a figure and subplots
+    
+    for i, ax in enumerate(axes.flatten()):
+        # Plot each row independently
+        for i in range(len(coords)):
+            # Extract x and y coordinates for row i
+            x = coords[i, :, 0]  # Extract all x coordinates for row i
+            y = coords[i, :, 1]  # Extract all y coordinates for row i
+            
+            # Append the first point to the end to close the polygon
+            x = np.append(x, x[0])
+            y = np.append(y, y[0])
+            
+            # Compute kernel density estimate for the coordinates
+            xy = np.vstack([x, y])
+            z = gaussian_kde(xy)(xy)
+
+            # Plot the points and connect them with lines, coloring by density
+            ax.plot(x, y, marker='o', linestyle='-', color=plt.cm.viridis(z[0]))
+            ax.set_title(f"Cluster {cluster_num}")  # Set title for each subplot
+        
 plt.show()
