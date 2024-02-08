@@ -34,6 +34,7 @@ def process_files(path, specific_chunk_index, mode="all"):
     # Process the chosen files
     for file_name in files_to_process:
         file_path = os.path.join(path, file_name)
+        print(file_path)
         with open(file_path, 'r') as file:
             lines = file.readlines()
             print(f"Processing {mode} files - Normalized second column entries of {file_name}:")
@@ -48,17 +49,17 @@ def process_files(path, specific_chunk_index, mode="all"):
     return all_data
 
 # Example usage:
-os.chdir('..')
+#os.chdir('..')
 current_directory = os.getcwd()
 print("Current Directory:", current_directory)
 
-path_3b = "/all_pd_3b"  # Replace this with your actual path
+path_3b = "/all_pd_2b"  # Replace this with your actual path
 path = current_directory + path_3b
 print(path)
 
 # Choose a specific chunk (e.g., Chunk_0) and mode ('equilibrium' or 'all')
 # specific_chunk_index = 0
-mode = "equilibrium"  # Change this to 'all' if needed
+mode = "all"  # Change this to 'all' if needed
 all_avgs_equilibrium = []
 all_data = []
 
@@ -78,18 +79,18 @@ print("All data:" ,np.shape(all_data))
 print("Avg. data:", np.shape(all_avgs_equilibrium))
 
 # Write the object to a pickle file
-pickle_filename = "3b_all_pd_equilibrium"
+pickle_filename = "2b_all_pd"
 with open(pickle_filename, 'wb') as pickle_file:
     pickle.dump(all_data, pickle_file)
 
 # Write the object to a pickle file
-pickle_filename = "3b_avg_pd_equilibrium"
+pickle_filename = "2b_avg_pd"
 with open(pickle_filename, 'wb') as pickle_file:
     pickle.dump(all_avgs_equilibrium, pickle_file)
 
 # Create the array
-array_length = 156
-increment_interval = 13
+array_length = 300
+increment_interval = 25
 
 # Calculate the number of intervals
 num_intervals = array_length // increment_interval
@@ -101,7 +102,7 @@ labels = np.repeat(np.arange(num_intervals), increment_interval)[:array_length]
 print(labels)
 
 # Write the object to a pickle file
-pickle_filename = "labels_pd_equilibrium"
+pickle_filename = "labels_pd"
 with open(pickle_filename, 'wb') as pickle_file:
     pickle.dump(labels, pickle_file)
 

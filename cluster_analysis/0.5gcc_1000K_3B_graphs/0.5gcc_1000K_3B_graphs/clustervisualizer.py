@@ -9,6 +9,7 @@ from tqdm import tqdm
 from sklearn.cluster import DBSCAN
 from sklearn.metrics import silhouette_score
 from matplotlib.patches import Polygon
+from scipy.stats import gaussian_kde
 
 class ClusterVisualizer:
     def __init__(self, directory="0.5gcc_1000K_3bS/", 
@@ -33,7 +34,7 @@ class ClusterVisualizer:
 
     def process_files(self):
         for i in range(*self.file_range):
-            filename = f'{self.directory}00{i}.3b_clu-{self.transformation}.txt'
+            filename = f'{self.directory}0{i}.3b_clu-{self.transformation}.txt'
             self.read_data(filename)
 
     def visualize_clusters(self, clusters, concat_data):
@@ -143,6 +144,9 @@ class ClusterVisualizer:
         # Plot clusters
         for cluster_num in range(start, num_clusters):
             # Filter data points belonging to the current cluster
+            x = []
+            y = []
+
             selected_data = concat_data[clusters == cluster_num]
             # print(np.shape(selected_data)[0])
             if (self.clustering_method == 'dbscan') and (int(np.shape(selected_data)[0]) == int(0)):
@@ -155,10 +159,16 @@ class ClusterVisualizer:
             for row in selected_data:
                 a, b, c = row
                 coords = self.coordinates_of_triangle_given_SSS(a, b, c)
-                edge_color = (0.5, 0.5, 0.5, 0.5)  # RGBA tuple for transparent grey
+                edge_color = (0.8, 0.8, 0.8, 0.8)  # RGBA tuple for transparent grey
                 p = Polygon(coords, edgecolor=edge_color, facecolor='none')
                 ax.add_patch(p)
-            
+                x.append(coords[0][0])
+                x.append(coords[1][0])
+                x.append(coords[2][0])
+                y.append(coords[0][1])
+                y.append(coords[1][1])
+                y.append(coords[2][1])
+
             # Calculate the average coordinates of the valid triangles
             average_triangle = np.mean(selected_data, axis=0)
             avg_a, avg_b, avg_c = average_triangle
@@ -173,6 +183,11 @@ class ClusterVisualizer:
             # Set the limits for the axes
             ax.set_xlim([0, 6])
             ax.set_ylim([0, 6])
+
+            xy = np.vstack([x,y])
+            z = gaussian_kde(xy)(xy)
+
+            ax.scatter(x,y,c=z)
 
             # Show the plot
             plt.show()
@@ -301,7 +316,7 @@ class ClusterVisualizer:
 
     def dbscan_silhouette_scores(self, concat_data):
         # Set the range of eps values
-        eps_values = np.arange(0.01, 0.6, 0.02)
+        eps_values = np.arange(0.01, 0.6, 0.03)
 
         # Collect silhouette scores for each eps value
         silhouette_scores = []
@@ -374,16 +389,37 @@ class ClusterVisualizer:
 
         # Plot raw data with labels
         self.plot_raw_data(concat_data, labels, optimal_k)
+        
+        direc = self.directory.replace("/","") + ".txt"
+        fp_data = f"{self.clustering_method}_{direc}"
+        # Ensure labels have the same number of columns as needed
+        labels = labels.reshape((-1, 1))  # Reshape labels to have one column
+
+        # Concatenate the arrays horizontally
+        combined_data = np.hstack((concat_data, labels))
+
+        # If you want the resulting array to have a shape of (19251, 4)
+        # Add an extra column of zeros (or adjust as needed)
+        extra_column = np.zeros((combined_data.shape[0], 1))
+        combined_data = np.hstack((combined_data, extra_column))
+        np.savetxt(fp_data, combined_data)
 
 # Usage of the class
 # cluster_visualizer = ClusterVisualizer(directory="0.5gcc_1000K_3bR/",
+#                                        file_range=(63, 75),
+#                                        clustering_method="hc",
+#                                        transformation='r',
+#                                        cluster_dimension='2d')
+
+# cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bR/",
+#                                        file_range=(87, 100),
 #                                        clustering_method="dbscan",
 #                                        transformation='r',
 #                                        cluster_dimension='2d')
-# cluster_visualizer.run()
-cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/1.0gcc_2000K_3B_graphs/1.0gcc_2000K_3B_graphs/1.0gcc_2000k_3bS/",
-                                       file_range=(75, 100),
-                                       clustering_method="hc",
-                                       transformation='s',
-                                       cluster_dimension='3d')
+
+cluster_visualizer = ClusterVisualizer(directory="/Users/blaubach/chimes_CGD-myLLFork/cluster_analysis/2.0gcc_6000K_3B_graphs/2.0gcc_6000k_3bR/",
+                                       file_range=(113, 125),
+                                       clustering_method="kmeans",
+                                       transformation='r',
+                                       cluster_dimension='2d')
 cluster_visualizer.run()
