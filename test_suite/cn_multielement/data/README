@@ -1,0 +1,48 @@
+The .xyzf training data files in this folder were collated via the following script:
+
+======================
+
+
+
+#!/bin/bash
+
+loc=/p/lustre1/rlindsey/ChIMES-CN-221105/al_2+3+4b-rand-lowerrcin-nohierarch/
+
+alc[0 ]=1; traj[0 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/20.3percN_2.0gcc.xyzf	# ALC-1, 20 frames
+alc[1 ]=1; traj[1 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/20.3percN_2.7gcc.xyzf	# ALC-1, 20 frames
+alc[2 ]=1; traj[2 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/20.3percN_3.5gcc.xyzf	# ALC-1, 20 frames
+alc[3 ]=1; traj[3 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/20.3percN_4.0gcc.xyzf	# ALC-1, 20 frames
+alc[4 ]=1; traj[4 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/50percN_1.0gcc.xyzf	# ALC-1, 20 frames
+alc[5 ]=1; traj[5 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/50percN_2.7gcc.xyzf	# ALC-1, 20 frames
+alc[6 ]=1; traj[6 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/50percN_3.5gcc.xyzf	# ALC-1, 20 frames
+alc[7 ]=1; traj[7 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/75percN_1.0gcc.xyzf	# ALC-1, 20 frames
+alc[8 ]=1; traj[8 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/75percN_2.7gcc.xyzf	# ALC-1, 20 frames
+alc[9 ]=1; traj[9 ]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/75percN_3.0gcc.xyzf	# ALC-1, 20 frames
+alc[10]=1; traj[10]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/cold_curve-C3N4-mp1985.all.cold.OUTCAR.xyzf	# ALC-1, 41 frames
+alc[11]=1; traj[11]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/cold_curve-C3N4-mp563.all.cold.OUTCAR.xyzf	# ALC-1, 27 frames
+alc[12]=1; traj[12]=${loc}/ALL_BASE_FILES/ALC-0_BASEFILES/cold_curve-C3N4-mp571653.all.cold.OUTCAR.xyzf	# ALC-1, 30 frames
+alc[13]=2; traj[13]=${loc}/ALC-1/VASP-20//OUTCAR.xyzf	# ALC-2, 285 frames
+alc[14]=3; traj[14]=${loc}/ALC-2/VASP-20//OUTCAR.xyzf	# ALC-3, 244 frames
+alc[15]=4; traj[15]=${loc}/ALC-3/VASP-20//OUTCAR.xyzf	# ALC-4, 212 frames
+alc[16]=5; traj[16]=${loc}/ALC-4/VASP-20//OUTCAR.xyzf	# ALC-5, 206 frames
+alc[17]=6; traj[17]=${loc}/ALC-5/VASP-20//OUTCAR.xyzf	# ALC-6, 238 frames
+alc[18]=7; traj[18]=${loc}/ALC-6/VASP-20//OUTCAR.xyzf	# ALC-7, 220 frames
+alc[19]=8; traj[19]=${loc}/ALC-7/VASP-20//OUTCAR.xyzf	# ALC-8, 219 frames
+alc[20]=9; traj[20]=${loc}/ALC-8/VASP-20//OUTCAR.xyzf	# ALC-9, 215 frames
+
+dir=CN-nohierarch_for_ben
+
+mkdir $dir
+
+for i in {0..20};
+do
+	echo ${traj[$i]}
+	cp ${traj[$i]} ${dir}/ALC-${alc[$i]}.${traj[$i]##*/}
+	echo ""
+done
+
+======================
+
+The DFT trajectory files used to build this training set are located on the CZ, in:
+
+/p/lustre1/fmatchDB/LIQUID-CN/PBE-D2-Gammapt_Large_Cells 

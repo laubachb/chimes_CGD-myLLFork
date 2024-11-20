@@ -98,18 +98,6 @@ void read_flat_clusters(string clufile, int npairs_per_cluster, vector<double > 
     clustream.close();
 }
 
-double get_cludist(vector<double> & clu1, vector<double> & clu2) // Don't need rcout since cutoff was taken into account when generating cluster lists
-{
-    double dist = 0;
-    
-    for (int i=0; i<clu1.size(); i++)
-        dist += pow(clu1[i] - clu2[i],2.0);
-    
-    return sqrt(dist);
-}
-
-
-
 int get_bin(double binw, double maxval, double dist)
 {
     int bin = floor(dist/binw);
