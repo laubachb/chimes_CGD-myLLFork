@@ -1,0 +1,11 @@
+srun: First task exited 30s ago
+srun: StepId=3583168.0 tasks 39-47: running
+srun: StepId=3583168.0 tasks 0-38: exited
+srun: Terminating StepId=3583168.0
+slurmstepd: error: *** STEP 3583168.0 ON ruby52 CANCELLED AT 2024-11-20T13:22:59 ***
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+srun: error: ruby52: tasks 39-47: Killed
+
+real	0m31.638s
+user	0m0.014s
+sys	0m0.011s

@@ -1,0 +1,2041 @@
+Code compiled in MPI mode. Will run on 48 processor(s).
+Rank: 2 ERROR: computed bin larger than nbins:
+Rank: 2 nbin: 100
+Rank: 2 bin:  173
+Rank: 2 binw: 0.02
+Rank: 2 maxd: 2
+Rank: 2 dist: 12.0572
+Rank: 2 clus: 
+Rank: 2-0.943995 <--> 2.52835
+Rank: 2
+Rank: 7 ERROR: computed bin larger than nbins:
+Rank: 7 nbin: 100
+Rank: 7 bin:  172
+Rank: 7 binw: 0.02
+Rank: 7 maxd: 2
+Rank: 7 dist: 11.9269
+Rank: 7 clus: 
+Rank: 7-0.925189 <--> 2.52835
+Rank: 7
+Rank: 19 ERROR: computed bin larger than nbins:
+Rank: 19 nbin: 100
+Rank: 19 bin:  172
+Rank: 19 binw: 0.02
+Rank: 19 maxd: 2
+Rank: 19 dist: 11.871
+Rank: 19 clus: 
+Rank: 19-0.917076 <--> 2.52835
+Rank: 19
+Rank: 6 ERROR: computed bin larger than nbins:
+Rank: 6 nbin: 100
+Rank: 6 bin:  167
+Rank: 6 binw: 0.02
+Rank: 6 maxd: 2
+Rank: 6 dist: 11.2818
+Rank: 6 clus: 
+Rank: 6-0.830483 <--> 2.52835
+Rank: 6
+Rank: 13 ERROR: computed bin larger than nbins:
+Rank: 13 nbin: 100
+Rank: 13 bin:  147
+Rank: 13 binw: 0.02
+Rank: 13 maxd: 2
+Rank: 13 dist: 8.65632
+Rank: 13 clus: 
+Rank: 13-0.413812 <--> 2.52835
+Rank: 13
+Rank: 12 ERROR: computed bin larger than nbins:
+Rank: 12 nbin: 100
+Rank: 12 bin:  167
+Rank: 12 binw: 0.02
+Rank: 12 maxd: 2
+Rank: 12 dist: 11.2476
+Rank: 12 clus: 
+Rank: 12-0.825389 <--> 2.52835
+Rank: 12
+Rank: 9 ERROR: computed bin larger than nbins:
+Rank: 9 nbin: 100
+Rank: 9 bin:  166
+Rank: 8 ERROR: computed bin larger than nbins:
+Rank: 8 nbin: 100
+Rank: 8 bin:  164
+Rank: 8 binw: 0.02
+Rank: 8 maxd: 2
+Rank: 9 binw: 0.02
+Rank: 9 maxd: 2
+Rank: 9 dist: 11.1201
+Rank: 9 clus: 
+Rank: 9-0.806334 <--> 2.52835
+Rank: 9
+Rank: 8 dist: 10.796
+Rank: 8 clus: 
+Rank: 8-0.757378 <--> 2.52835
+Rank: 8
+Rank: 14 ERROR: computed bin larger than nbins:
+Rank: 4 ERROR: computed bin larger than nbins:
+Rank: 4 nbin: 100
+Rank: 4 bin:  175
+Rank: 4 binw: 0.02
+Rank: 14 nbin: 100
+Rank: 14 bin:  146
+Rank: 14 binw: 0.02
+Rank: 14 maxd: 2
+Rank: 14 dist: 8.58973
+Rank: 14 clus: 
+Rank: 14-0.402474 <--> 2.52835
+Rank: 3 ERROR: computed bin larger than nbins:
+Rank: 3 nbin: 100
+Rank: 3 bin:  173
+Rank: 4 maxd: 2
+Rank: 4 dist: 12.3672
+Rank: 4 clus: 
+Rank: 4-0.988348 <--> 2.52835
+Rank: 4
+Rank: 10 ERROR: computed bin larger than nbins:
+Rank: 10 nbin: 100
+Rank: 10 bin:  174
+Rank: 10 binw: 0.02
+Rank: 14
+Rank: 18 ERROR: computed bin larger than nbins:
+Rank: 18 nbin: 100
+Rank: 18 bin:  165
+Rank: 18 binw: 0.02
+Rank: 18 maxd: 2
+Rank: 18 dist: 10.9207
+Rank: 18 clus: 
+Rank: 18-0.776302 <--> 2.52835
+Rank: 18
+Rank: 3 binw: 0.02
+Rank: 3 maxd: 2
+Rank: 3 dist: 12.0198
+Rank: 3 clus: 
+Rank: 3-0.938609 <--> 2.52835
+Rank: 3
+Rank: 10 maxd: 2
+Rank: 10 dist: 12.1677
+Rank: 10 clus: 
+Rank: 10-0.959876 <--> 2.52835
+Rank: 10
+Rank: 15 ERROR: computed bin larger than nbins:
+Rank: 15 nbin: 100
+Rank: 15 bin:  163
+Rank: 15 binw: 0.02
+Rank: 15 maxd: 2
+Rank: 15 dist: 10.6512
+Rank: 15 clus: 
+Rank: 15-0.735265 <--> 2.52835
+Rank: 15
+Rank: 23 ERROR: computed bin larger than nbins:
+Rank: 23 nbin: 100
+Rank: 23 bin:  155
+Rank: 23 binw: 0.02
+Rank: 23 maxd: 2
+Rank: 23 dist: 9.65817
+Rank: 23 clus: 
+Rank: 23-0.579409 <--> 2.52835
+Rank: 23
+Rank: 11 ERROR: computed bin larger than nbins:
+Rank: 11 nbin: 100
+Rank: 11 bin:  173
+Rank: 11 binw: 0.02
+Rank: 20 ERROR: computed bin larger than nbins:
+Rank: 20 nbin: 100
+Rank: 20 bin:  171
+Rank: 20 binw: 0.02
+Rank: 20 maxd: 2
+Rank: 20 dist: 11.8151
+Rank: 20 clus: 
+Rank: 20-0.908966 <--> 2.52835
+Rank: 20
+Rank: 5 ERROR: computed bin larger than nbins:
+Rank: 5 nbin: 100
+Rank: 5 bin:  169
+Rank: 11 maxd: 2
+Rank: 11 dist: 11.973
+Rank: 11 clus: 
+Rank: 11-0.931858 <--> 2.52835
+Rank: 11
+Rank: 1 ERROR: computed bin larger than nbins:
+Rank: 1 nbin: 100
+Rank: 1 bin:  171
+Rank: 1 binw: 0.02
+Rank: 1 maxd: 2
+Rank: 1 dist: 11.8227
+Rank: 1 clus: 
+Rank: 1-0.910068 <--> 2.52835
+Rank: 5 binw: 0.02
+Rank: 5 maxd: 2
+Rank: 5 dist: 11.5262
+Rank: 5 clus: 
+Rank: 5-0.866679 <--> 2.52835
+Rank: 5
+Rank: 1
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 3985 tasks across 48 processors
+000-000.2b_clu-s.hist Completion percent: 0 0 of 83 assigned
+Rank: 17 ERROR: computed bin larger than nbins:
+Rank: 17 nbin: 100
+Rank: 17 bin:  147
+Rank: 22 ERROR: computed bin larger than nbins:
+Rank: 22 nbin: 100
+Rank: 22 bin:  175
+Rank: 22 binw: 0.02
+Rank: 22 maxd: 2
+Rank: 22 dist: 12.3587
+Rank: 0 ERROR: computed bin larger than nbins:
+Rank: 0 nbin: 100
+Rank: 0 bin:  172
+Rank: 0 binw: 0.02
+Rank: 0 maxd: 2
+Rank: 0 dist: 11.9007
+Rank: 0 clus: 
+Rank: 0-0.921383 <--> 2.52835
+Rank: 0
+Rank: 17 binw: 0.02
+Rank: 17 maxd: 2
+Rank: 17 dist: 8.6812
+Rank: 17 clus: 
+Rank: 17-0.418038 <--> 2.52835
+Rank: 17
+Rank: 22 clus: 
+Rank: 22-0.98715 <--> 2.52835
+Rank: 22
+Rank: 21 ERROR: computed bin larger than nbins:
+Rank: 21 nbin: 100
+Rank: 21 bin:  168
+Rank: 21 binw: 0.02
+Rank: 16 ERROR: computed bin larger than nbins:
+Rank: 16 nbin: 100
+Rank: 16 bin:  175
+Rank: 16 binw: 0.02
+Rank: 21 maxd: 2
+Rank: 21 dist: 11.2959
+Rank: 21 clus: 
+Rank: 21-0.832586 <--> 2.52835
+Rank: 21
+Rank: 16 maxd: 2
+Rank: 16 dist: 12.385
+Rank: 16 clus: 
+Rank: 16-0.990886 <--> 2.52835
+Rank: 16
+Rank: 29 ERROR: computed bin larger than nbins:
+Rank: 29 nbin: 100
+Rank: 29 bin:  155
+Rank: 29 binw: 0.02
+Rank: 29 maxd: 2
+Rank: 29 dist: 9.71626
+Rank: 29 clus: 
+Rank: 29-0.588742 <--> 2.52835
+Rank: 29
+Rank: 30 ERROR: computed bin larger than nbins:
+Rank: 30 nbin: 100
+Rank: 30 bin:  146
+Rank: 30 binw: 0.02
+Rank: 30 maxd: 2
+Rank: 30 dist: 8.56512
+Rank: 30 clus: 
+Rank: 30-0.398273 <--> 2.52835
+Rank: 30
+Rank: 25 ERROR: computed bin larger than nbins:
+Rank: 25 nbin: 100
+Rank: 25 bin:  155
+Rank: 25 binw: 0.02
+Rank: 25 maxd: 2
+Rank: 25 dist: 9.61537
+Rank: 25 clus: 
+Rank: 25-0.572516 <--> 2.52835
+Rank: 25
+Rank: 34 ERROR: computed bin larger than nbins:
+Rank: 34 nbin: 100
+Rank: 34 bin:  104
+Rank: 34 binw: 0.02
+Rank: 34 maxd: 2
+Rank: 34 dist: 4.4075
+Rank: 34 clus: 
+Rank: 340.428946 <--> 2.52835
+Rank: 34
+Rank: 35 ERROR: computed bin larger than nbins:
+Rank: 35 nbin: 100
+Rank: 35 bin:  168
+Rank: 35 binw: 0.02
+Rank: 35 maxd: 2
+Rank: 35 dist: 11.2966
+Rank: 35 clus: 
+Rank: 35-0.832697 <--> 2.52835
+Rank: 35
+Rank: 36 ERROR: computed bin larger than nbins:
+Rank: 36 nbin: 100
+Rank: 36 bin:  155
+Rank: 36 binw: 0.02
+Rank: 36 maxd: 2
+Rank: 36 dist: 9.72213
+Rank: 36 clus: 
+Rank: 36-0.589683 <--> 2.52835
+Rank: 36
+Rank: 37 ERROR: computed bin larger than nbins:
+Rank: 37 nbin: 100
+Rank: 37 bin:  173
+Rank: 37 binw: 0.02
+Rank: 37 maxd: 2
+Rank: 37 dist: 11.9939
+Rank: 37 clus: 
+Rank: 37-0.934865 <--> 2.52835
+Rank: 37
+Rank: 38 ERROR: computed bin larger than nbins:
+Rank: 38 nbin: 100
+Rank: 38 bin:  166
+Rank: 38 binw: 0.02
+Rank: 38 maxd: 2
+Rank: 38 dist: 11.0445
+Rank: 38 clus: 
+Rank: 38-0.794978 <--> 2.52835
+Rank: 38
+Rank: 27 ERROR: computed bin larger than nbins:
+Rank: 27 nbin: 100
+Rank: 27 bin:  173
+Rank: 27 binw: 0.02
+Rank: 27 maxd: 2
+Rank: 27 dist: 12.0103
+Rank: 31 ERROR: computed bin larger than nbins:
+Rank: 31 nbin: 100
+Rank: 31 bin:  173
+Rank: 31 binw: 0.02
+Rank: 31 maxd: 2
+Rank: 31 dist: 12.0628
+Rank: 31 clus: 
+Rank: 27 clus: 
+Rank: 27-0.937238 <--> 2.52835
+Rank: 27
+Rank: 31-0.944804 <--> 2.52835
+Rank: 31
+Rank: 33 ERROR: computed bin larger than nbins:
+Rank: 33 nbin: 100
+Rank: 33 bin:  166
+Rank: 33 binw: 0.02
+Rank: 33 maxd: 2
+Rank: 33 dist: 11.0654
+Rank: 33 clus: 
+Rank: 33-0.798123 <--> 2.52835
+Rank: 33
+Rank: 24 ERROR: computed bin larger than nbins:
+Rank: 24 nbin: 100
+Rank: 24 bin:  172
+Rank: 24 binw: 0.02
+Rank: 24 maxd: 2
+Rank: 24 dist: 11.9183
+Rank: 24 clus: 
+Rank: 24-0.923943 <--> 2.52835
+Rank: 24
+Rank: 32 ERROR: computed bin larger than nbins:
+Rank: 32 nbin: 100
+Rank: 32 bin:  173
+Rank: 32 binw: 0.02
+Rank: 32 maxd: 2
+Rank: 32 dist: 11.9869
+Rank: 32 clus: 
+Rank: 32-0.933854 <--> 2.52835
+Rank: 32
+Rank: 28 ERROR: computed bin larger than nbins:
+Rank: 28 nbin: 100
+Rank: 28 bin:  168
+Rank: 28 binw: 0.02
+Rank: 28 maxd: 2
+Rank: 28 dist: 11.3407
+Rank: 28 clus: 
+Rank: 28-0.839241 <--> 2.52835
+Rank: 28
+Rank: 26 ERROR: computed bin larger than nbins:
+Rank: 26 nbin: 100
+Rank: 26 bin:  167
+Rank: 26 binw: 0.02
+Rank: 26 maxd: 2
+Rank: 26 dist: 11.1699
+Rank: 26 clus: 
+Rank: 26-0.813785 <--> 2.52835
+Rank: 26
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Dividing 0 tasks across 48 processors
+Loop done, printing results: 
+Counted nsamples: 0
+Printed.
+Code compiled in MPI mode. Will run on 48 processor(s).
+Rank: 24 ERROR: computed bin larger than nbins:
+Rank: 24 nbin: 100
+Rank: 24 bin:  172
+Rank: 24 binw: 0.02
+Rank: 24 maxd: 2
+Rank: 24 dist: 11.9183
+Rank: 24 clus: 
+Rank: 24-0.923943 <--> 2.52835
+Rank: 24
+Rank: 29 ERROR: computed bin larger than nbins:
+Rank: 29 nbin: 100
+Rank: 29 bin:  155
+Rank: 29 binw: 0.02
+Rank: 29 maxd: 2
+Rank: 29 dist: 9.71626
+Rank: 29 clus: 
+Rank: 29-0.588742 <--> 2.52835
+Rank: 29
+Rank: 30 ERROR: computed bin larger than nbins:
+Rank: 30 nbin: 100
+Rank: 30 bin:  146
+Rank: 30 binw: 0.02
+Rank: 30 maxd: 2
+Rank: 30 dist: 8.56512
+Rank: 30 clus: 
+Rank: 30-0.398273 <--> 2.52835
+Rank: 30
+Rank: 33 ERROR: computed bin larger than nbins:
+Rank: 33 nbin: 100
+Rank: 33 bin:  166
+Rank: 33 binw: 0.02
+Rank: 33 maxd: 2
+Rank: 33 dist: 11.0654
+Rank: 33 clus: 
+Rank: 33-0.798123 <--> 2.52835
+Rank: 33
+Rank: 34 ERROR: computed bin larger than nbins:
+Rank: 34 nbin: 100
+Rank: 34 bin:  104
+Rank: 34 binw: 0.02
+Rank: 34 maxd: 2
+Rank: 34 dist: 4.4075
+Rank: 34 clus: 
+Rank: 340.428946 <--> 2.52835
+Rank: 34
+Rank: 37 ERROR: computed bin larger than nbins:
+Rank: 37 nbin: 100
+Rank: 37 bin:  173
+Rank: 37 binw: 0.02
+Rank: 37 maxd: 2
+Rank: 37 dist: 11.9939
+Rank: 37 clus: 
+Rank: 37-0.934865 <--> 2.52835
+Rank: 37
+Rank: 26 ERROR: computed bin larger than nbins:
+Rank: 26 nbin: 100
+Rank: 26 bin:  167
+Rank: 26 binw: 0.02
+Rank: 26 maxd: 2
+Rank: 26 dist: 11.1699
+Rank: 26 clus: 
+Rank: 26-0.813785 <--> 2.52835
+Rank: 26
+Rank: 28 ERROR: computed bin larger than nbins:
+Rank: 28 nbin: 100
+Rank: 28 bin:  168
+Rank: 28 binw: 0.02
+Rank: 28 maxd: 2
+Rank: 28 dist: 11.3407
+Rank: 28 clus: 
+Rank: 28-0.839241 <--> 2.52835
+Rank: 28
+Rank: 36 ERROR: computed bin larger than nbins:
+Rank: 36 nbin: 100
+Rank: 36 bin:  155
+Rank: 36 binw: 0.02
+Rank: 36 maxd: 2
+Rank: 36 dist: 9.72213
+Rank: 36 clus: 
+Rank: 36-0.589683 <--> 2.52835
+Rank: 36
+Rank: 25 ERROR: computed bin larger than nbins:
+Rank: 25 nbin: 100
+Rank: 25 bin:  155
+Rank: 25 binw: 0.02
+Rank: 25 maxd: 2
+Rank: 25 dist: 9.61537
+Rank: 25 clus: 
+Rank: 25-0.572516 <--> 2.52835
+Rank: 25
+Rank: 35 ERROR: computed bin larger than nbins:
+Rank: 35 nbin: 100
+Rank: 35 bin:  168
+Rank: 35 binw: 0.02
+Rank: 35 maxd: 2
+Rank: 35 dist: 11.2966
+Rank: 35 clus: 
+Rank: 35-0.832697 <--> 2.52835
+Rank: 35
+Rank: 38 ERROR: computed bin larger than nbins:
+Rank: 38 nbin: 100
+Rank: 38 bin:  166
+Rank: 38 binw: 0.02
+Rank: 38 maxd: 2
+Rank: 38 dist: 11.0445
+Rank: 38 clus: 
+Rank: 38-0.794978 <--> 2.52835
+Rank: 38
+Rank: 27 ERROR: computed bin larger than nbins:
+Rank: 27 nbin: 100
+Rank: 27 bin:  173
+Rank: 31 ERROR: computed bin larger than nbins:
+Rank: 31 nbin: 100
+Rank: 31 bin:  173
+Rank: 31 binw: 0.02
+Rank: 31 maxd: 2
+Rank: 31 dist: 12.0628
+Rank: 31 clus: 
+Rank: 31-0.944804 <--> 2.52835
+Rank: 31
+Rank: 27 binw: 0.02
+Rank: 27 maxd: 2
+Rank: 27 dist: 12.0103
+Rank: 27 clus: 
+Rank: 27-0.937238 <--> 2.52835
+Rank: 27
+Rank: 32 ERROR: computed bin larger than nbins:
+Rank: 32 nbin: 100
+Rank: 32 bin:  173
+Rank: 32 binw: 0.02
+Rank: 32 maxd: 2
+Rank: 32 dist: 11.9869
+Rank: 32 clus: 
+Rank: 32-0.933854 <--> 2.52835
+Rank: 32
+Rank: 11 ERROR: computed bin larger than nbins:
+Rank: 11 nbin: 100
+Rank: 11 bin:  173
+Rank: 11 binw: 0.02
+Rank: 11 maxd: 2
+Rank: 11 dist: 11.973
+Rank: 11 clus: 
+Rank: 11-0.931858 <--> 2.52835
+Rank: 11
+Rank: 19 ERROR: computed bin larger than nbins:
+Rank: 19 nbin: 100
+Rank: 19 bin:  172
+Rank: 19 binw: 0.02
+Rank: 19 maxd: 2
+Rank: 19 dist: 11.871
+Rank: 19 clus: 
+Rank: 19-0.917076 <--> 2.52835
+Rank: 19
+Rank: 5 ERROR: computed bin larger than nbins:
+Rank: 5 nbin: 100
+Rank: 5 bin:  169
+Rank: 5 binw: 0.02
+Rank: 5 maxd: 2
+Rank: 5 dist: 11.5262
+Rank: 5 clus: 
+Rank: 5-0.866679 <--> 2.52835
+Rank: 5
+Rank: 12 ERROR: computed bin larger than nbins:
+Rank: 12 nbin: 100
+Rank: 12 bin:  167
+Rank: 12 binw: 0.02
+Rank: 12 maxd: 2
+Rank: 12 dist: 11.2476
+Rank: 12 clus: 
+Rank: 12-0.825389 <--> 2.52835
+Rank: 12
+Rank: 21 ERROR: computed bin larger than nbins:
+Rank: 21 nbin: 100
+Rank: 21 bin:  168
+Rank: 21 binw: 0.02
+Rank: 21 maxd: 2
+Rank: 21 dist: 11.2959
+Rank: 21 clus: 
+Rank: 6 ERROR: computed bin larger than nbins:
+Rank: 6 nbin: 100
+Rank: 7 ERROR: computed bin larger than nbins:
+Rank: 7 nbin: 100
+Rank: 7 bin:  172
+Rank: 7 binw: 0.02
+Rank: 7 maxd: 2
+Rank: 7 dist: 11.9269
+Rank: 7 clus: 
+Rank: 13 ERROR: computed bin larger than nbins:
+Rank: 13 nbin: 100
+Rank: 13 bin:  147
+Rank: 13 binw: 0.02
+Rank: 13 maxd: 2
+Rank: 13 dist: 8.65632
+Rank: 13 clus: 
+Rank: 13-0.413812 <--> 2.52835
+Rank: 21-0.832586 <--> 2.52835
+Rank: 21
+Rank: 6 bin:  167
+Rank: 6 binw: 0.02
+Rank: 6 maxd: 2
+Rank: 6 dist: 11.2818
+Rank: 6 clus: 
+Rank: 6-0.830483 <--> 2.52835
+Rank: 6
+Rank: 7-0.925189 <--> 2.52835
+Rank: 7
+Rank: 13
+Rank: 22 ERROR: computed bin larger than nbins:
+Rank: 22 nbin: 100
+Rank: 22 bin:  175
+Rank: 22 binw: 0.02
+Rank: 22 maxd: 2
+Rank: 22 dist: 12.3587
+Rank: 22 clus: 
+Rank: 22-0.98715 <--> 2.52835
+Rank: 22
+Rank: 10 ERROR: computed bin larger than nbins:
+Rank: 10 nbin: 100
+Rank: 10 bin:  174
+Rank: 10 binw: 0.02
+Rank: 10 maxd: 2
+Rank: 10 dist: 12.1677
+Rank: 10 clus: 
+Rank: 10-0.959876 <--> 2.52835
+Rank: 14 ERROR: computed bin larger than nbins:
+Rank: 14 nbin: 100
+Rank: 14 bin:  146
+Rank: 10
+Rank: 14 binw: 0.02
+Rank: 14 maxd: 2
+Rank: 14 dist: 8.58973
+Rank: 14 clus: 
+Rank: 14-0.402474 <--> 2.52835
+Rank: 14
+Rank: 18 ERROR: computed bin larger than nbins:
+Rank: 18 nbin: 100
+Rank: 18 bin:  165
+Rank: 2 ERROR: computed bin larger than nbins:
+Rank: 2 nbin: 100
+Rank: 2 bin:  173
+Rank: 18 binw: 0.02
+Rank: 18 maxd: 2
+Rank: 18 dist: 10.9207
+Rank: 18 clus: 
+Rank: 18-0.776302 <--> 2.52835
+Rank: 18
+Rank: 2 binw: 0.02
+Rank: 2 maxd: 2
+Rank: 2 dist: 12.0572
+Rank: 2 clus: 
+Rank: 2-0.943995 <--> 2.52835
+Rank: 2
+Rank: 4 ERROR: computed bin larger than nbins:
+Rank: 4 nbin: 100
+Rank: 4 bin:  175
+Rank: 8 ERROR: computed bin larger than nbins:
+Rank: 8 nbin: 100
+Rank: 8 bin:  164
+Rank: 8 binw: 0.02
+Rank: 8 maxd: 2
+Rank: 4 binw: 0.02
+Rank: 4 maxd: 2
+Rank: 4 dist: 12.3672
+Rank: 4 clus: 
+Rank: 4-0.988348 <--> 2.52835
+Rank: 4
+Rank: 8 dist: 10.796
+Rank: 8 clus: 
+Rank: 8-0.757378 <--> 2.52835
+Rank: 8
+Rank: 15 ERROR: computed bin larger than nbins:
+Rank: 15 nbin: 100
+Rank: 15 bin:  163
+Rank: 15 binw: 0.02
+Rank: 15 maxd: 2
+Rank: 15 dist: 10.6512
+Rank: 15 clus: 
+Rank: 15-0.735265 <--> 2.52835
+Rank: 15
+Rank: 17 ERROR: computed bin larger than nbins:
+Rank: 17 nbin: 100
+Rank: 17 bin:  147
+Rank: 17 binw: 0.02
+Rank: 17 maxd: 2
+Rank: 17 dist: 8.6812
+Rank: 17 clus: 
+Rank: 17-0.418038 <--> 2.52835
+Rank: 17
+Rank: 20 ERROR: computed bin larger than nbins:
+Rank: 20 nbin: 100
+Rank: 20 bin:  171
+Rank: 16 ERROR: computed bin larger than nbins:
+Rank: 16 nbin: 100
+Rank: 16 bin:  175
+Rank: 16 binw: 0.02
+Rank: 16 maxd: 2
+Rank: 16 dist: 12.385
+Rank: 16 clus: 
+Rank: 20 binw: 0.02
+Rank: 20 maxd: 2
+Rank: 20 dist: 11.8151
+Rank: 20 clus: 
+Rank: 20-0.908966 <--> 2.52835
+Rank: 20
+Rank: 9 ERROR: computed bin larger than nbins:
+Rank: 9 nbin: 100
+Rank: 9 bin:  166
+Rank: 16-0.990886 <--> 2.52835
+Rank: 16
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 3985 tasks across 48 processors
+Rank: 3 ERROR: computed bin larger than nbins:
+Rank: 3 nbin: 100
+Rank: 3 bin:  173
+Rank: 3 binw: 0.02
+Rank: 9 binw: 0.02
+Rank: 9 maxd: 2
+Rank: 9 dist: 11.1201
+Rank: 9 clus: 
+Rank: 9-0.806334 <--> 2.52835
+Rank: 9
+000-000.2b_clu-s.hist Completion percent: 0 0 of 83 assigned
+Rank: 0 ERROR: computed bin larger than nbins:
+Rank: 1 ERROR: computed bin larger than nbins:
+Rank: 1 nbin: 100
+Rank: 1 bin:  171
+Rank: 1 binw: 0.02
+Rank: 1 maxd: 2
+Rank: 1 dist: 11.8227
+Rank: 1 clus: 
+Rank: 1-0.910068 <--> 2.52835
+Rank: 1
+Rank: 3 maxd: 2
+Rank: 3 dist: 12.0198
+Rank: 3 clus: 
+Rank: 3-0.938609 <--> 2.52835
+Rank: 3
+Rank: 23 ERROR: computed bin larger than nbins:
+Rank: 23 nbin: 100
+Rank: 23 bin:  155
+Rank: 23 binw: 0.02
+Rank: 23 maxd: 2
+Rank: 23 dist: 9.65817
+Rank: 23 clus: 
+Rank: 0 nbin: 100
+Rank: 0 bin:  172
+Rank: 0 binw: 0.02
+Rank: 0 maxd: 2
+Rank: 0 dist: 11.9007
+Rank: 0 clus: 
+Rank: 0-0.921383 <--> 2.52835
+Rank: 0
+Rank: 23-0.579409 <--> 2.52835
+Rank: 23
+Code compiled in MPI mode. Will run on 48 processor(s).
+Rank: 12 ERROR: computed bin larger than nbins:
+Rank: 12 nbin: 100
+Rank: 12 bin:  167
+Rank: 12 binw: 0.02
+Rank: 12 maxd: 2
+Rank: 12 dist: 11.2476
+Rank: 12 clus: 
+Rank: 12-0.825389 <--> 2.52835
+Rank: 12
+Rank: 4 ERROR: computed bin larger than nbins:
+Rank: 4 nbin: 100
+Rank: 4 bin:  175
+Rank: 4 binw: 0.02
+Rank: 4 maxd: 2
+Rank: 4 dist: 12.3672
+Rank: 4 clus: 
+Rank: 14 ERROR: computed bin larger than nbins:
+Rank: 14 nbin: 100
+Rank: 14 bin:  146
+Rank: 14 binw: 0.02
+Rank: 14 maxd: 2
+Rank: 14 dist: 8.58973
+Rank: 14 clus: 
+Rank: 14-0.402474 <--> 2.52835
+Rank: 14
+Rank: 4-0.988348 <--> 2.52835
+Rank: 4
+Rank: 7 ERROR: computed bin larger than nbins:
+Rank: 7 nbin: 100
+Rank: 7 bin:  172
+Rank: 7 binw: 0.02
+Rank: 7 maxd: 2
+Rank: 7 dist: 11.9269
+Rank: 7 clus: 
+Rank: 7-0.925189 <--> 2.52835
+Rank: 7
+Rank: 20 ERROR: computed bin larger than nbins:
+Rank: 20 nbin: 100
+Rank: 20 bin:  171
+Rank: 20 binw: 0.02
+Rank: 20 maxd: 2
+Rank: 20 dist: 11.8151
+Rank: 2 ERROR: computed bin larger than nbins:
+Rank: 2 nbin: 100
+Rank: 2 bin:  173
+Rank: 20 clus: 
+Rank: 20-0.908966 <--> 2.52835
+Rank: 20
+Rank: 2 binw: 0.02
+Rank: 2 maxd: 2
+Rank: 2 dist: 12.0572
+Rank: 2 clus: 
+Rank: 2-0.943995 <--> 2.52835
+Rank: 2
+Rank: 15 ERROR: computed bin larger than nbins:
+Rank: 15 nbin: 100
+Rank: 15 bin:  163
+Rank: 15 binw: 0.02
+Rank: 15 maxd: 2
+Rank: 15 dist: 10.6512
+Rank: 15 clus: 
+Rank: 15-0.735265 <--> 2.52835
+Rank: 15
+Rank: 8 ERROR: computed bin larger than nbins:
+Rank: 8 nbin: 100
+Rank: 8 bin:  164
+Rank: 6 ERROR: computed bin larger than nbins:
+Rank: 8 binw: 0.02
+Rank: 8 maxd: 2
+Rank: 8 dist: 10.796
+Rank: 8 clus: 
+Rank: 8-0.757378 <--> 2.52835
+Rank: 8
+Rank: 11 ERROR: computed bin larger than nbins:
+Rank: 11 nbin: 100
+Rank: 11 bin:  173
+Rank: 11 binw: 0.02
+Rank: 11 maxd: 2
+Rank: 11 dist: 11.973
+Rank: 11 clus: 
+Rank: 11-0.931858 <--> 2.52835
+Rank: 11
+Rank: 6 nbin: 100
+Rank: 6 bin:  167
+Rank: 6 binw: 0.02
+Rank: 6 maxd: 2
+Rank: 6 dist: 11.2818
+Rank: 6 clus: 
+Rank: 6-0.830483 <--> 2.52835
+Rank: 6
+Rank: 9 ERROR: computed bin larger than nbins:
+Rank: 9 nbin: 100
+Rank: 9 bin:  166
+Rank: 9 binw: 0.02
+Rank: 9 maxd: 2
+Rank: 9 dist: 11.1201
+Rank: 9 clus: 
+Rank: 9-0.806334 <--> 2.52835
+Rank: 9
+Rank: 10 ERROR: computed bin larger than nbins:
+Rank: 10 nbin: 100
+Rank: 10 bin:  174
+Rank: 10 binw: 0.02
+Rank: 10 maxd: 2
+Rank: 10 dist: 12.1677
+Rank: 10 clus: 
+Rank: 10-0.959876 <--> 2.52835
+Rank: 10
+Rank: 17 ERROR: computed bin larger than nbins:
+Rank: 17 nbin: 100
+Rank: 17 bin:  147
+Rank: 17 binw: 0.02
+Rank: 17 maxd: 2
+Rank: 17 dist: 8.6812
+Rank: 17 clus: 
+Rank: 17-0.418038 <--> 2.52835
+Rank: 5 ERROR: computed bin larger than nbins:
+Rank: 5 nbin: 100
+Rank: 17
+Rank: 5 bin:  169
+Rank: 5 binw: 0.02
+Rank: 5 maxd: 2
+Rank: 5 dist: 11.5262
+Rank: 5 clus: 
+Rank: 5-0.866679 <--> 2.52835
+Rank: 5
+Rank: 16 ERROR: computed bin larger than nbins:
+Rank: 16 nbin: 100
+Rank: 16 bin:  175
+Rank: 16 binw: 0.02
+Rank: 16 maxd: 2
+Rank: 16 dist: 12.385
+Rank: 16 clus: 
+Rank: 16-0.990886 <--> 2.52835
+Rank: 16
+Rank: 1 ERROR: computed bin larger than nbins:
+Rank: 1 nbin: 100
+Rank: 1 bin:  171
+Rank: 1 binw: 0.02
+Rank: 1 maxd: 2
+Rank: 1 dist: 11.8227
+Rank: 1 clus: 
+Rank: 19 ERROR: computed bin larger than nbins:
+Rank: 19 nbin: 100
+Rank: 19 bin:  172
+Rank: 19 binw: 0.02
+Rank: 19 maxd: 2
+Rank: 19 dist: 11.871
+Rank: 1-0.910068 <--> 2.52835
+Rank: 1
+Rank: 19 clus: 
+Rank: 19-0.917076 <--> 2.52835
+Rank: 19
+Rank: 21 ERROR: computed bin larger than nbins:
+Rank: 21 nbin: 100
+Rank: 21 bin:  168
+Rank: 21 binw: 0.02
+Rank: 21 maxd: 2
+Rank: 21 dist: 11.2959
+Rank: 21 clus: 
+Rank: 21-0.832586 <--> 2.52835
+Rank: 21
+Rank: 23 ERROR: computed bin larger than nbins:
+Rank: 23 nbin: 100
+Rank: 23 bin:  155
+Rank: 23 binw: 0.02
+Rank: 23 maxd: 2
+Rank: 23 dist: 9.65817
+Rank: 23 clus: 
+Rank: 23-0.579409 <--> 2.52835
+Rank: 23
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 3985 tasks across 48 processors
+000-000.2b_clu-s.hist Completion percent: 0 0 of 83 assigned
+Rank: 0 ERROR: computed bin larger than nbins:
+Rank: 0 nbin: 100
+Rank: 0 bin:  172
+Rank: 0 binw: 0.02
+Rank: 0 maxd: 2
+Rank: 0 dist: 11.9007
+Rank: 0 clus: 
+Rank: 0-0.921383 <--> 2.52835
+Rank: 0
+Rank: 22 ERROR: computed bin larger than nbins:
+Rank: 22 nbin: 100
+Rank: 22 bin:  175
+Rank: 22 binw: 0.02
+Rank: 22 maxd: 2
+Rank: 22 dist: 12.3587
+Rank: 22 clus: 
+Rank: 22-0.98715 <--> 2.52835
+Rank: 22
+Rank: 38 ERROR: computed bin larger than nbins:
+Rank: 38 nbin: 100
+Rank: 38 bin:  166
+Rank: 38 binw: 0.02
+Rank: 38 maxd: 2
+Rank: 38 dist: 11.0445
+Rank: 38 clus: 
+Rank: 38-0.794978 <--> 2.52835
+Rank: 38
+Rank: 13 ERROR: computed bin larger than nbins:
+Rank: 13 nbin: 100
+Rank: 13 bin:  147
+Rank: 13 binw: 0.02
+Rank: 13 maxd: 2
+Rank: 3 ERROR: computed bin larger than nbins:
+Rank: 3 nbin: 100
+Rank: 3 bin:  173
+Rank: 3 binw: 0.02
+Rank: 3 maxd: 2
+Rank: 3 dist: 12.0198
+Rank: 3 clus: 
+Rank: 3-0.938609 <--> 2.52835
+Rank: 3
+Rank: 13 dist: 8.65632
+Rank: 13 clus: 
+Rank: 13-0.413812 <--> 2.52835
+Rank: 13
+Rank: 18 ERROR: computed bin larger than nbins:
+Rank: 18 nbin: 100
+Rank: 18 bin:  165
+Rank: 18 binw: 0.02
+Rank: 18 maxd: 2
+Rank: 18 dist: 10.9207
+Rank: 18 clus: 
+Rank: 18-0.776302 <--> 2.52835
+Rank: 18
+Rank: 35 ERROR: computed bin larger than nbins:
+Rank: 35 nbin: 100
+Rank: 35 bin:  168
+Rank: 35 binw: 0.02
+Rank: 35 maxd: 2
+Rank: 35 dist: 11.2966
+Rank: 35 clus: 
+Rank: 35-0.832697 <--> 2.52835
+Rank: 35
+Rank: 28 ERROR: computed bin larger than nbins:
+Rank: 28 nbin: 100
+Rank: 28 bin:  168
+Rank: 28 binw: 0.02
+Rank: 28 maxd: 2
+Rank: 28 dist: 11.3407
+Rank: 28 clus: 
+Rank: 28-0.839241 <--> 2.52835
+Rank: 28
+Rank: 34 ERROR: computed bin larger than nbins:
+Rank: 34 nbin: 100
+Rank: 34 bin:  104
+Rank: 34 binw: 0.02
+Rank: 34 maxd: 2
+Rank: 34 dist: 4.4075
+Rank: 34 clus: 
+Rank: 340.428946 <--> 2.52835
+Rank: 34
+Rank: 36 ERROR: computed bin larger than nbins:
+Rank: 36 nbin: 100
+Rank: 36 bin:  155
+Rank: 36 binw: 0.02
+Rank: 36 maxd: 2
+Rank: 36 dist: 9.72213
+Rank: 36 clus: 
+Rank: 36-0.589683 <--> 2.52835
+Rank: 36
+Rank: 31 ERROR: computed bin larger than nbins:
+Rank: 31 nbin: 100
+Rank: 31 bin:  173
+Rank: 31 binw: 0.02
+Rank: 31 maxd: 2
+Rank: 31 dist: 12.0628
+Rank: 31 clus: 
+Rank: 31-0.944804 <--> 2.52835
+Rank: 31
+Rank: 33 ERROR: computed bin larger than nbins:
+Rank: 33 nbin: 100
+Rank: 33 bin:  166
+Rank: 33 binw: 0.02
+Rank: 33 maxd: 2
+Rank: 33 dist: 11.0654
+Rank: 33 clus: 
+Rank: 33-0.798123 <--> 2.52835
+Rank: 33
+Rank: 24 ERROR: computed bin larger than nbins:
+Rank: 24 nbin: 100
+Rank: 24 bin:  172
+Rank: 24 binw: 0.02
+Rank: 24 maxd: 2
+Rank: 24 dist: 11.9183
+Rank: 24 clus: 
+Rank: 24-0.923943 <--> 2.52835
+Rank: 24
+Rank: 30 ERROR: computed bin larger than nbins:
+Rank: 30 nbin: 100
+Rank: 30 bin:  146
+Rank: 30 binw: 0.02
+Rank: 30 maxd: 2
+Rank: 30 dist: 8.56512
+Rank: 30 clus: 
+Rank: 30-0.398273 <--> 2.52835
+Rank: 30
+Rank: 25 ERROR: computed bin larger than nbins:
+Rank: 25 nbin: 100
+Rank: 25 bin:  155
+Rank: 25 binw: 0.02
+Rank: 25 maxd: 2
+Rank: 25 dist: 9.61537
+Rank: 25 clus: 
+Rank: 25-0.572516 <--> 2.52835
+Rank: 25
+Rank: 37 ERROR: computed bin larger than nbins:
+Rank: 37 nbin: 100
+Rank: 37 bin:  173
+Rank: 37 binw: 0.02
+Rank: 37 maxd: 2
+Rank: 37 dist: 11.9939
+Rank: 37 clus: 
+Rank: 37-0.934865 <--> 2.52835
+Rank: 37
+Rank: 29 ERROR: computed bin larger than nbins:
+Rank: 29 nbin: 100
+Rank: 29 bin:  155
+Rank: 29 binw: 0.02
+Rank: 29 maxd: 2
+Rank: 29 dist: 9.71626
+Rank: 29 clus: 
+Rank: 29-0.588742 <--> 2.52835
+Rank: 29
+Rank: 32 ERROR: computed bin larger than nbins:
+Rank: 32 nbin: 100
+Rank: 32 bin:  173
+Rank: 32 binw: 0.02
+Rank: 32 maxd: 2
+Rank: 32 dist: 11.9869
+Rank: 32 clus: 
+Rank: 32-0.933854 <--> 2.52835
+Rank: 32
+Rank: 27 ERROR: computed bin larger than nbins:
+Rank: 27 nbin: 100
+Rank: 27 bin:  173
+Rank: 27 binw: 0.02
+Rank: 27 maxd: 2
+Rank: 27 dist: 12.0103
+Rank: 27 clus: 
+Rank: 27-0.937238 <--> 2.52835
+Rank: 27
+Rank: 26 ERROR: computed bin larger than nbins:
+Rank: 26 nbin: 100
+Rank: 26 bin:  167
+Rank: 26 binw: 0.02
+Rank: 26 maxd: 2
+Rank: 26 dist: 11.1699
+Rank: 26 clus: 
+Rank: 26-0.813785 <--> 2.52835
+Rank: 26
+Code compiled in MPI mode. Will run on 48 processor(s).
+Rank: 20 ERROR: computed bin larger than nbins:
+Rank: 20 nbin: 100
+Rank: 20 bin:  171
+Rank: 20 binw: 0.02
+Rank: 20 maxd: 2
+Rank: 20 dist: 11.8151
+Rank: 20 clus: 
+Rank: 20-0.908966 <--> 2.52835
+Rank: 20
+Rank: 17 ERROR: computed bin larger than nbins:
+Rank: 17 nbin: 100
+Rank: 17 bin:  147
+Rank: 17 binw: 0.02
+Rank: 17 maxd: 2
+Rank: 17 dist: 8.6812
+Rank: 17 clus: 
+Rank: 17-0.418038 <--> 2.52835
+Rank: 17
+Rank: 5 ERROR: computed bin larger than nbins:
+Rank: 5 nbin: 100
+Rank: 5 bin:  169
+Rank: 5 binw: 0.02
+Rank: 5 maxd: 2
+Rank: 4 ERROR: computed bin larger than nbins:
+Rank: 4 nbin: 100
+Rank: 4 bin:  175
+Rank: 4 binw: 0.02
+Rank: 4 maxd: 2
+Rank: 4 dist: 12.3672
+Rank: 4 clus: 
+Rank: 5 dist: 11.5262
+Rank: 5 clus: 
+Rank: 5-0.866679 <--> 2.52835
+Rank: 5
+Rank: 4-0.988348 <--> 2.52835
+Rank: 4
+Rank: 14 ERROR: computed bin larger than nbins:
+Rank: 14 nbin: 100
+Rank: 14 bin:  146
+Rank: 14 binw: 0.02
+Rank: 14 maxd: 2
+Rank: 14 dist: 8.58973
+Rank: 14 clus: 
+Rank: 14-0.402474 <--> 2.52835
+Rank: 14
+Rank: 22 ERROR: computed bin larger than nbins:
+Rank: 22 nbin: 100
+Rank: 22 bin:  175
+Rank: 22 binw: 0.02
+Rank: 22 maxd: 2
+Rank: 22 dist: 12.3587
+Rank: 22 clus: 
+Rank: 22-0.98715 <--> 2.52835
+Rank: 22
+Rank: 1 ERROR: computed bin larger than nbins:
+Rank: 1 nbin: 100
+Rank: 1 bin:  171
+Rank: 1 binw: 0.02
+Rank: 1 maxd: 2
+Rank: 1 dist: 11.8227
+Rank: 1 clus: 
+Rank: 1-0.910068 <--> 2.52835
+Rank: 1
+Rank: 12 ERROR: computed bin larger than nbins:
+Rank: 12 nbin: 100
+Rank: 12 bin:  167
+Rank: 12 binw: 0.02
+Rank: 12 maxd: 2
+Rank: 12 dist: 11.2476
+Rank: 12 clus: 
+Rank: 12-0.825389 <--> 2.52835
+Rank: 12
+Rank: 9 ERROR: computed bin larger than nbins:
+Rank: 9 nbin: 100
+Rank: 9 bin:  166
+Rank: 9 binw: 0.02
+Rank: 9 maxd: 2
+Rank: 9 dist: 11.1201
+Rank: 9 clus: 
+Rank: 9-0.806334 <--> 2.52835
+Rank: 9
+Rank: 19 ERROR: computed bin larger than nbins:
+Rank: 19 nbin: 100
+Rank: 19 bin:  172
+Rank: 19 binw: 0.02
+Rank: 19 maxd: 2
+Rank: 19 dist: 11.871
+Rank: 19 clus: 
+Rank: 19-0.917076 <--> 2.52835
+Rank: 13 ERROR: computed bin larger than nbins:
+Rank: 13 nbin: 100
+Rank: 13 bin:  147
+Rank: 13 binw: 0.02
+Rank: 19
+Rank: 11 ERROR: computed bin larger than nbins:
+Rank: 11 nbin: 100
+Rank: 13 maxd: 2
+Rank: 13 dist: 8.65632
+Rank: 13 clus: 
+Rank: 13-0.413812 <--> 2.52835
+Rank: 13
+Rank: 11 bin:  173
+Rank: 11 binw: 0.02
+Rank: 11 maxd: 2
+Rank: 11 dist: 11.973
+Rank: 11 clus: 
+Rank: 11-0.931858 <--> 2.52835
+Rank: 11
+Rank: 23 ERROR: computed bin larger than nbins:
+Rank: 23 nbin: 100
+Rank: 23 bin:  155
+Rank: 2 ERROR: computed bin larger than nbins:
+Rank: 2 nbin: 100
+Rank: 2 bin:  173
+Rank: 2 binw: 0.02
+Rank: 2 maxd: 2
+Rank: 2 dist: 12.0572
+Rank: 3 ERROR: computed bin larger than nbins:
+Rank: 3 nbin: 100
+Rank: 3 bin:  173
+Rank: 3 binw: 0.02
+Rank: 3 maxd: 2
+Rank: 3 dist: 12.0198
+Rank: 3 clus: 
+Rank: 23 binw: 0.02
+Rank: 23 maxd: 2
+Rank: 23 dist: 9.65817
+Rank: 23 clus: 
+Rank: 23-0.579409 <--> 2.52835
+Rank: 23
+Rank: 2 clus: 
+Rank: 2-0.943995 <--> 2.52835
+Rank: 2
+Rank: 3-0.938609 <--> 2.52835
+Rank: 3
+Rank: 16 ERROR: computed bin larger than nbins:
+Rank: 16 nbin: 100
+Rank: 16 bin:  175
+Rank: 16 binw: 0.02
+Rank: 16 maxd: 2
+Rank: 16 dist: 12.385
+Rank: 16 clus: 
+Rank: 16-0.990886 <--> 2.52835
+Rank: 16
+Rank: 18 ERROR: computed bin larger than nbins:
+Rank: 18 nbin: 100
+Rank: 18 bin:  165
+Rank: 18 binw: 0.02
+Rank: 18 maxd: 2
+Rank: 18 dist: 10.9207
+Rank: 18 clus: 
+Rank: 18-0.776302 <--> 2.52835
+Rank: 18
+Rank: 21 ERROR: computed bin larger than nbins:
+Rank: 21 nbin: 100
+Rank: 21 bin:  168
+Rank: 21 binw: 0.02
+Rank: 21 maxd: 2
+Rank: 21 dist: 11.2959
+Rank: 21 clus: 
+Rank: 21-0.832586 <--> 2.52835
+Rank: 21
+Rank: 6 ERROR: computed bin larger than nbins:
+Rank: 6 nbin: 100
+Rank: 6 bin:  167
+Rank: 6 binw: 0.02
+Rank: 6 maxd: 2
+Rank: 6 dist: 11.2818
+Rank: 6 clus: 
+Rank: 6-0.830483 <--> 2.52835
+Rank: 6
+Rank: 8 ERROR: computed bin larger than nbins:
+Rank: 8 nbin: 100
+Rank: 8 bin:  164
+Rank: 8 binw: 0.02
+Rank: 8 maxd: 2
+Rank: 8 dist: 10.796
+Rank: 15 ERROR: computed bin larger than nbins:
+Rank: 15 nbin: 100
+Rank: 15 bin:  163
+Rank: 15 binw: 0.02
+Rank: 8 clus: 
+Rank: 8-0.757378 <--> 2.52835
+Rank: 8
+Rank: 10 ERROR: computed bin larger than nbins:
+Rank: 10 nbin: 100
+Rank: 10 bin:  174
+Rank: 10 binw: 0.02
+Rank: 10 maxd: 2
+Rank: 10 dist: 12.1677
+Rank: 10 clus: 
+Rank: 10-0.959876 <--> 2.52835
+Rank: 10
+Rank: 15 maxd: 2
+Rank: 15 dist: 10.6512
+Rank: 15 clus: 
+Rank: 15-0.735265 <--> 2.52835
+Rank: 15
+Rank: 7 ERROR: computed bin larger than nbins:
+Rank: 7 nbin: 100
+Setting maximum histogram values: 2 3.4641 4.89898
+Rank: 7 bin:  172
+Rank: 7 binw: 0.02
+Rank: 7 maxd: 2
+Rank: 7 dist: 11.9269
+Rank: 7 clus: 
+Dividing 3985 tasks across 48 processors
+000-000.2b_clu-s.hist Completion percent: 0 0 of 83 assigned
+Rank: 7-0.925189 <--> 2.52835
+Rank: 7
+Rank: 0 ERROR: computed bin larger than nbins:
+Rank: 0 nbin: 100
+Rank: 0 bin:  172
+Rank: 0 binw: 0.02
+Rank: 0 maxd: 2
+Rank: 0 dist: 11.9007
+Rank: 0 clus: 
+Rank: 0-0.921383 <--> 2.52835
+Rank: 0
+Rank: 25 ERROR: computed bin larger than nbins:
+Rank: 25 nbin: 100
+Rank: 25 bin:  155
+Rank: 25 binw: 0.02
+Rank: 25 maxd: 2
+Rank: 25 dist: 9.61537
+Rank: 25 clus: 
+Rank: 25-0.572516 <--> 2.52835
+Rank: 25
+Rank: 27 ERROR: computed bin larger than nbins:
+Rank: 27 nbin: 100
+Rank: 27 bin:  173
+Rank: 27 binw: 0.02
+Rank: 27 maxd: 2
+Rank: 27 dist: 12.0103
+Rank: 27 clus: 
+Rank: 27-0.937238 <--> 2.52835
+Rank: 27
+Rank: 31 ERROR: computed bin larger than nbins:
+Rank: 31 nbin: 100
+Rank: 31 bin:  173
+Rank: 31 binw: 0.02
+Rank: 31 maxd: 2
+Rank: 31 dist: 12.0628
+Rank: 31 clus: 
+Rank: 31-0.944804 <--> 2.52835
+Rank: 31
+Rank: 33 ERROR: computed bin larger than nbins:
+Rank: 33 nbin: 100
+Rank: 33 bin:  166
+Rank: 33 binw: 0.02
+Rank: 33 maxd: 2
+Rank: 33 dist: 11.0654
+Rank: 33 clus: 
+Rank: 33-0.798123 <--> 2.52835
+Rank: 33
+Rank: 24 ERROR: computed bin larger than nbins:
+Rank: 24 nbin: 100
+Rank: 24 bin:  172
+Rank: 24 binw: 0.02
+Rank: 24 maxd: 2
+Rank: 24 dist: 11.9183
+Rank: 24 clus: 
+Rank: 24-0.923943 <--> 2.52835
+Rank: 24
+Rank: 26 ERROR: computed bin larger than nbins:
+Rank: 26 nbin: 100
+Rank: 26 bin:  167
+Rank: 26 binw: 0.02
+Rank: 26 maxd: 2
+Rank: 26 dist: 11.1699
+Rank: 26 clus: 
+Rank: 26-0.813785 <--> 2.52835
+Rank: 26
+Rank: 38 ERROR: computed bin larger than nbins:
+Rank: 38 nbin: 100
+Rank: 38 bin:  166
+Rank: 38 binw: 0.02
+Rank: 38 maxd: 2
+Rank: 38 dist: 11.0445
+Rank: 38 clus: 
+Rank: 38-0.794978 <--> 2.52835
+Rank: 38
+Rank: 34 ERROR: computed bin larger than nbins:
+Rank: 34 nbin: 100
+Rank: 34 bin:  104
+Rank: 34 binw: 0.02
+Rank: 34 maxd: 2
+Rank: 34 dist: 4.4075
+Rank: 34 clus: 
+Rank: 340.428946 <--> 2.52835
+Rank: 34
+Rank: 36 ERROR: computed bin larger than nbins:
+Rank: 36 nbin: 100
+Rank: 36 bin:  155
+Rank: 36 binw: 0.02
+Rank: 36 maxd: 2
+Rank: 36 dist: 9.72213
+Rank: 36 clus: 
+Rank: 36-0.589683 <--> 2.52835
+Rank: 36
+Rank: 37 ERROR: computed bin larger than nbins:
+Rank: 37 nbin: 100
+Rank: 37 bin:  173
+Rank: 37 binw: 0.02
+Rank: 37 maxd: 2
+Rank: 37 dist: 11.9939
+Rank: 37 clus: 
+Rank: 37-0.934865 <--> 2.52835
+Rank: 37
+Rank: 28 ERROR: computed bin larger than nbins:
+Rank: 28 nbin: 100
+Rank: 28 bin:  168
+Rank: 28 binw: 0.02
+Rank: 28 maxd: 2
+Rank: 32 ERROR: computed bin larger than nbins:
+Rank: 32 nbin: 100
+Rank: 32 bin:  173
+Rank: 32 binw: 0.02
+Rank: 32 maxd: 2
+Rank: 32 dist: 11.9869
+Rank: 32 clus: 
+Rank: 32-0.933854 <--> 2.52835
+Rank: 32
+Rank: 28 dist: 11.3407
+Rank: 28 clus: 
+Rank: 28-0.839241 <--> 2.52835
+Rank: 28
+Rank: 35 ERROR: computed bin larger than nbins:
+Rank: 35 nbin: 100
+Rank: 35 bin:  168
+Rank: 35 binw: 0.02
+Rank: 35 maxd: 2
+Rank: 35 dist: 11.2966
+Rank: 35 clus: 
+Rank: 35-0.832697 <--> 2.52835
+Rank: 35
+Rank: 29 ERROR: computed bin larger than nbins:
+Rank: 29 nbin: 100
+Rank: 29 bin:  155
+Rank: 29 binw: 0.02
+Rank: 29 maxd: 2
+Rank: 29 dist: 9.71626
+Rank: 29 clus: 
+Rank: 29-0.588742 <--> 2.52835
+Rank: 29
+Rank: 30 ERROR: computed bin larger than nbins:
+Rank: 30 nbin: 100
+Rank: 30 bin:  146
+Rank: 30 binw: 0.02
+Rank: 30 maxd: 2
+Rank: 30 dist: 8.56512
+Rank: 30 clus: 
+Rank: 30-0.398273 <--> 2.52835
+Rank: 30
+Code compiled in MPI mode. Will run on 48 processor(s).
+Rank: 2 ERROR: computed bin larger than nbins:
+Rank: 2 nbin: 100
+Rank: 2 bin:  173
+Rank: 2 binw: 0.02
+Rank: 2 maxd: 2
+Rank: 2 dist: 12.0572
+Rank: 2 clus: 
+Rank: 2-0.943995 <--> 2.52835
+Rank: 2
+Rank: 12 ERROR: computed bin larger than nbins:
+Rank: 12 nbin: 100
+Rank: 12 bin:  167
+Rank: 15 ERROR: computed bin larger than nbins:
+Rank: 15 nbin: 100
+Rank: 15 bin:  163
+Rank: 15 binw: 0.02
+Rank: 15 maxd: 2
+Rank: 15 dist: 10.6512
+Rank: 15 clus: 
+Rank: 12 binw: 0.02
+Rank: 12 maxd: 2
+Rank: 12 dist: 11.2476
+Rank: 12 clus: 
+Rank: 12-0.825389 <--> 2.52835
+Rank: 12
+Rank: 15-0.735265 <--> 2.52835
+Rank: 15
+Rank: 21 ERROR: computed bin larger than nbins:
+Rank: 21 nbin: 100
+Rank: 21 bin:  168
+Rank: 21 binw: 0.02
+Rank: 21 maxd: 2
+Rank: 21 dist: 11.2959
+Rank: 21 clus: 
+Rank: 21-0.832586 <--> 2.52835
+Rank: 21
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 3985 tasks across 48 processors
+000-000.2b_clu-s.hist Completion percent: 0 0 of 83 assigned
+Rank: 0 ERROR: computed bin larger than nbins:
+Rank: 0 nbin: 100
+Rank: 0 bin:  172
+Rank: 0 binw: 0.02
+Rank: 0 maxd: 2
+Rank: 0 dist: 11.9007
+Rank: 0 clus: 
+Rank: 0-0.921383 <--> 2.52835
+Rank: 0
+Rank: 22 ERROR: computed bin larger than nbins:
+Rank: 22 nbin: 100
+Rank: 22 bin:  175
+Rank: 22 binw: 0.02
+Rank: 22 maxd: 2
+Rank: 22 dist: 12.3587
+Rank: 22 clus: 
+Rank: 22-0.98715 <--> 2.52835
+Rank: 22
+Rank: 14 ERROR: computed bin larger than nbins:
+Rank: 14 nbin: 100
+Rank: 14 bin:  146
+Rank: 4 ERROR: computed bin larger than nbins:
+Rank: 14 binw: 0.02
+Rank: 14 maxd: 2
+Rank: 14 dist: 8.58973
+Rank: 14 clus: 
+Rank: 14-0.402474 <--> 2.52835
+Rank: 14
+Rank: 1 ERROR: computed bin larger than nbins:
+Rank: 1 nbin: 100
+Rank: 1 bin:  171
+Rank: 1 binw: 0.02
+Rank: 1 maxd: 2
+Rank: 3 ERROR: computed bin larger than nbins:
+Rank: 3 nbin: 100
+Rank: 3 bin:  173
+Rank: 3 binw: 0.02
+Rank: 3 maxd: 2
+Rank: 4 nbin: 100
+Rank: 4 bin:  175
+Rank: 4 binw: 0.02
+Rank: 4 maxd: 2
+Rank: 4 dist: 12.3672
+Rank: 4 clus: 
+Rank: 4-0.988348 <--> 2.52835
+Rank: 4
+Rank: 5 ERROR: computed bin larger than nbins:
+Rank: 5 nbin: 100
+Rank: 5 bin:  169
+Rank: 5 binw: 0.02
+Rank: 5 maxd: 2
+Rank: 1 dist: 11.8227
+Rank: 1 clus: 
+Rank: 1-0.910068 <--> 2.52835
+Rank: 1
+Rank: 3 dist: 12.0198
+Rank: 3 clus: 
+Rank: 3-0.938609 <--> 2.52835
+Rank: 3
+Rank: 5 dist: 11.5262
+Rank: 5 clus: 
+Rank: 5-0.866679 <--> 2.52835
+Rank: 5
+Rank: 13 ERROR: computed bin larger than nbins:
+Rank: 13 nbin: 100
+Rank: 13 bin:  147
+Rank: 13 binw: 0.02
+Rank: 13 maxd: 2
+Rank: 19 ERROR: computed bin larger than nbins:
+Rank: 19 nbin: 100
+Rank: 19 bin:  172
+Rank: 19 binw: 0.02
+Rank: 19 maxd: 2
+Rank: 19 dist: 11.871
+Rank: 19 clus: 
+Rank: 19-0.917076 <--> 2.52835
+Rank: 19
+Rank: 20 ERROR: computed bin larger than nbins:
+Rank: 20 nbin: 100
+Rank: 20 bin:  171
+Rank: 20 binw: 0.02
+Rank: 20 maxd: 2
+Rank: 20 dist: 11.8151
+Rank: 20 clus: 
+Rank: 20-0.908966 <--> 2.52835
+Rank: 20
+Rank: 23 ERROR: computed bin larger than nbins:
+Rank: 23 nbin: 100
+Rank: 23 bin:  155
+Rank: 23 binw: 0.02
+Rank: 23 maxd: 2
+Rank: 23 dist: 9.65817
+Rank: 23 clus: 
+Rank: 23-0.579409 <--> 2.52835
+Rank: 23
+Rank: 8 ERROR: computed bin larger than nbins:
+Rank: 8 nbin: 100
+Rank: 8 bin:  164
+Rank: 8 binw: 0.02
+Rank: 8 maxd: 2
+Rank: 8 dist: 10.796
+Rank: 8 clus: 
+Rank: 8-0.757378 <--> 2.52835
+Rank: 8
+Rank: 10 ERROR: computed bin larger than nbins:
+Rank: 10 nbin: 100
+Rank: 10 bin:  174
+Rank: 10 binw: 0.02
+Rank: 10 maxd: 2
+Rank: 10 dist: 12.1677
+Rank: 10 clus: 
+Rank: 10-0.959876 <--> 2.52835
+Rank: 10
+Rank: 13 dist: 8.65632
+Rank: 13 clus: 
+Rank: 13-0.413812 <--> 2.52835
+Rank: 13
+Rank: 11 ERROR: computed bin larger than nbins:
+Rank: 11 nbin: 100
+Rank: 11 bin:  173
+Rank: 11 binw: 0.02
+Rank: 18 ERROR: computed bin larger than nbins:
+Rank: 18 nbin: 100
+Rank: 18 bin:  165
+Rank: 18 binw: 0.02
+Rank: 18 maxd: 2
+Rank: 18 dist: 10.9207
+Rank: 18 clus: 
+Rank: 18-0.776302 <--> 2.52835
+Rank: 18
+Rank: 11 maxd: 2
+Rank: 11 dist: 11.973
+Rank: 11 clus: 
+Rank: 11-0.931858 <--> 2.52835
+Rank: 11
+Rank: 17 ERROR: computed bin larger than nbins:
+Rank: 17 nbin: 100
+Rank: 17 bin:  147
+Rank: 9 ERROR: computed bin larger than nbins:
+Rank: 9 nbin: 100
+Rank: 9 bin:  166
+Rank: 9 binw: 0.02
+Rank: 9 maxd: 2
+Rank: 9 dist: 11.1201
+Rank: 9 clus: 
+Rank: 9-0.806334 <--> 2.52835
+Rank: 16 ERROR: computed bin larger than nbins:
+Rank: 16 nbin: 100
+Rank: 16 bin:  175
+Rank: 16 binw: 0.02
+Rank: 16 maxd: 2
+Rank: 16 dist: 12.385
+Rank: 16 clus: 
+Rank: 16-0.990886 <--> 2.52835
+Rank: 16
+Rank: 17 binw: 0.02
+Rank: 17 maxd: 2
+Rank: 17 dist: 8.6812
+Rank: 17 clus: 
+Rank: 17-0.418038 <--> 2.52835
+Rank: 17
+Rank: 9
+Rank: 6 ERROR: computed bin larger than nbins:
+Rank: 6 nbin: 100
+Rank: 6 bin:  167
+Rank: 7 ERROR: computed bin larger than nbins:
+Rank: 7 nbin: 100
+Rank: 7 bin:  172
+Rank: 6 binw: 0.02
+Rank: 6 maxd: 2
+Rank: 6 dist: 11.2818
+Rank: 6 clus: 
+Rank: 6-0.830483 <--> 2.52835
+Rank: 6
+Rank: 7 binw: 0.02
+Rank: 7 maxd: 2
+Rank: 7 dist: 11.9269
+Rank: 7 clus: 
+Rank: 7-0.925189 <--> 2.52835
+Rank: 7
+Rank: 25 ERROR: computed bin larger than nbins:
+Rank: 25 nbin: 100
+Rank: 25 bin:  155
+Rank: 25 binw: 0.02
+Rank: 25 maxd: 2
+Rank: 25 dist: 9.61537
+Rank: 25 clus: 
+Rank: 25-0.572516 <--> 2.52835
+Rank: 25
+Rank: 28 ERROR: computed bin larger than nbins:
+Rank: 28 nbin: 100
+Rank: 28 bin:  168
+Rank: 28 binw: 0.02
+Rank: 28 maxd: 2
+Rank: 28 dist: 11.3407
+Rank: 28 clus: 
+Rank: 28-0.839241 <--> 2.52835
+Rank: 28
+Rank: 29 ERROR: computed bin larger than nbins:
+Rank: 29 nbin: 100
+Rank: 29 bin:  155
+Rank: 29 binw: 0.02
+Rank: 29 maxd: 2
+Rank: 29 dist: 9.71626
+Rank: 29 clus: 
+Rank: 29-0.588742 <--> 2.52835
+Rank: 29
+Rank: 34 ERROR: computed bin larger than nbins:
+Rank: 34 nbin: 100
+Rank: 34 bin:  104
+Rank: 34 binw: 0.02
+Rank: 34 maxd: 2
+Rank: 34 dist: 4.4075
+Rank: 34 clus: 
+Rank: 340.428946 <--> 2.52835
+Rank: 34
+Rank: 38 ERROR: computed bin larger than nbins:
+Rank: 38 nbin: 100
+Rank: 38 bin:  166
+Rank: 38 binw: 0.02
+Rank: 38 maxd: 2
+Rank: 38 dist: 11.0445
+Rank: 38 clus: 
+Rank: 38-0.794978 <--> 2.52835
+Rank: 38
+Rank: 26 ERROR: computed bin larger than nbins:
+Rank: 26 nbin: 100
+Rank: 26 bin:  167
+Rank: 30 ERROR: computed bin larger than nbins:
+Rank: 30 nbin: 100
+Rank: 30 bin:  146
+Rank: 30 binw: 0.02
+Rank: 30 maxd: 2
+Rank: 30 dist: 8.56512
+Rank: 30 clus: 
+Rank: 30-0.398273 <--> 2.52835
+Rank: 30
+Rank: 32 ERROR: computed bin larger than nbins:
+Rank: 32 nbin: 100
+Rank: 32 bin:  173
+Rank: 32 binw: 0.02
+Rank: 32 maxd: 2
+Rank: 32 dist: 11.9869
+Rank: 32 clus: 
+Rank: 32-0.933854 <--> 2.52835
+Rank: 32
+Rank: 33 ERROR: computed bin larger than nbins:
+Rank: 33 nbin: 100
+Rank: 33 bin:  166
+Rank: 33 binw: 0.02
+Rank: 33 maxd: 2
+Rank: 33 dist: 11.0654
+Rank: 33 clus: 
+Rank: 33-0.798123 <--> 2.52835
+Rank: 33
+Rank: 35 ERROR: computed bin larger than nbins:
+Rank: 35 nbin: 100
+Rank: 35 bin:  168
+Rank: 35 binw: 0.02
+Rank: 35 maxd: 2
+Rank: 35 dist: 11.2966
+Rank: 35 clus: 
+Rank: 35-0.832697 <--> 2.52835
+Rank: 35
+Rank: 37 ERROR: computed bin larger than nbins:
+Rank: 37 nbin: 100
+Rank: 37 bin:  173
+Rank: 37 binw: 0.02
+Rank: 37 maxd: 2
+Rank: 37 dist: 11.9939
+Rank: 37 clus: 
+Rank: 37-0.934865 <--> 2.52835
+Rank: 37
+Rank: 26 binw: 0.02
+Rank: 26 maxd: 2
+Rank: 26 dist: 11.1699
+Rank: 26 clus: 
+Rank: 26-0.813785 <--> 2.52835
+Rank: 26
+Rank: 36 ERROR: computed bin larger than nbins:
+Rank: 36 nbin: 100
+Rank: 36 bin:  155
+Rank: 36 binw: 0.02
+Rank: 24 ERROR: computed bin larger than nbins:
+Rank: 24 nbin: 100
+Rank: 24 bin:  172
+Rank: 24 binw: 0.02
+Rank: 24 maxd: 2
+Rank: 24 dist: 11.9183
+Rank: 24 clus: 
+Rank: 24-0.923943 <--> 2.52835
+Rank: 24
+Rank: 27 ERROR: computed bin larger than nbins:
+Rank: 27 nbin: 100
+Rank: 27 bin:  173
+Rank: 27 binw: 0.02
+Rank: 27 maxd: 2
+Rank: 27 dist: 12.0103
+Rank: 27 clus: 
+Rank: 27-0.937238 <--> 2.52835
+Rank: 27
+Rank: 31 ERROR: computed bin larger than nbins:
+Rank: 31 nbin: 100
+Rank: 31 bin:  173
+Rank: 31 binw: 0.02
+Rank: 31 maxd: 2
+Rank: 31 dist: 12.0628
+Rank: 31 clus: 
+Rank: 31-0.944804 <--> 2.52835
+Rank: 31
+Rank: 36 maxd: 2
+Rank: 36 dist: 9.72213
+Rank: 36 clus: 
+Rank: 36-0.589683 <--> 2.52835
+Rank: 36
