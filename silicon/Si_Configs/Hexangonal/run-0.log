@@ -1,0 +1,47 @@
+Code compiled in MPI mode. Will run on 36 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 1572 tasks across 36 processors
+training_data-training_data.2b_clu-s.hist Completion percent: 0 0 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 9 4 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 18 8 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 27 12 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 37 16 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 46 20 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 55 24 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 65 28 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 74 32 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 83 36 of 43 assigned
+training_data-training_data.2b_clu-s.hist Completion percent: 93 40 of 43 assigned
+Loop done, printing results: 
+Counted nsamples: 68178
+Printed.
+Dividing 14592 tasks across 36 processors
+training_data-training_data.3b_clu-s.hist Completion percent: 0 0 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 9 40 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 19 80 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 29 120 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 39 160 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 49 200 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 59 240 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 69 280 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 79 320 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 88 360 of 405 assigned
+training_data-training_data.3b_clu-s.hist Completion percent: 98 400 of 405 assigned
+Loop done, printing results: 
+Counted nsamples: 5841731
+Printed.
+Dividing 16956 tasks across 36 processors
+training_data-training_data.4b_clu-s.hist Completion percent: 0 0 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 10 47 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 20 94 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 30 141 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 40 188 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 50 235 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 60 282 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 70 329 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 80 376 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 90 423 of 470 assigned
+training_data-training_data.4b_clu-s.hist Completion percent: 100 470 of 470 assigned
+Loop done, printing results: 
+Counted nsamples: 7875120
+Printed.
