@@ -1,0 +1,18 @@
+################################
+##### General options
+################################
+EMAIL_ADD = "blaubach@umich.edu"
+
+CGD_DIR     = "/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/"
+WORKING_DIR = "/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/"
+
+################################
+##### Parameters for get_clusters.cpp
+################################
+RCOUT_2B = 5.0
+RCOUT_3B = 5.0
+RCOUT_4B = 4.5
+
+ATOM_PAIRS = "CC","NN","CN"
+LAMBDA_SET = 1.4,1.09,1.34
+RCIN_LIST  = 0.98,0.86,0.90
