@@ -266,7 +266,6 @@ int main(int argc, char* argv[]) {
     }
     // Compute prop_combined and x_combined
     vector<double> prop_combined;
-    vector<double> x_combined;
 
     for (const auto& pair : atom_pairs) {
         // Ensure the pair has exactly two characters (assuming valid input like "CN")
@@ -289,7 +288,6 @@ int main(int argc, char* argv[]) {
         // Compute sqrt(prop1 * prop2) and store in prop_combined
         double prop_value = sqrt(prop1 * prop2);
         prop_combined.push_back(prop_value);
-        x_combined.push_back(prop_value);
     }
 
     // Output parsed values
@@ -309,6 +307,8 @@ int main(int argc, char* argv[]) {
             cout << lambda << " ";
         }
         cout << endl;
+    } else {
+        cout << "Lambda set not provided\n";
     }
 
     cout << "RCIN List: ";
@@ -318,10 +318,12 @@ int main(int argc, char* argv[]) {
     /////////////////////////////////////////////
     // Hard-coded for now, for a single atom type: rcutin, rcut out, morse lambda
     /////////////////////////////////////////////
-    
-    //vector<string> atom_pairs = {"CC", "NN", "CN"};
-    //vector<float> lambda_set = {1.4, 1.09, 1.34};
-    //vector<double> rcin_list = {0.98, 0.86, 0.90};
+
+    // If lambda_set is undefined, use prop_combined instead
+    if (lambda_set.empty()) {
+        lambda_set = prop_combined;
+        cout << "Setting lambda set to combined property set\n";
+    }
 
     // Create the dictionary (map) with std::pair<float, double> as the value type
     map<string, pair<float, double>> atom_map;
