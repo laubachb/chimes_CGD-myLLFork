@@ -20,6 +20,8 @@ assumes all atoms are the same type
 
 using namespace std;
 
+// Declare ALPHA as a global variable
+double ALPHA = 0.1;
 
 struct xyz
 {
@@ -148,20 +150,20 @@ bool get_next_line(istream& str, string & line)
 }
 
 
-double get_dist(xyz box, xyz a1, xyz a2, map<string, pair<float, double>> atom_map, float max_lambda)
+double get_dist(xyz box, xyz a1, xyz a2, map<string, pair<float, double>> atom_map, float max_prop)
 {
     // Obtain atom type identities
     string atom_type1 = a1.atom_type;
     string atom_type2 = a2.atom_type;
     string atom_pair = atom_type1 + atom_type2;
     
-    float lambda = 0.0f;
+    float prop = 0.0f;
     double rcin = 0.0;
     
     // Get the lambda and rcin values for the concatenated pair
     if (atom_map.find(atom_pair) != atom_map.end()) {
         // Access both lambda and rcin from the pair
-        lambda = atom_map[atom_pair].first;
+        prop = atom_map[atom_pair].first;
         rcin = atom_map[atom_pair].second;
 
     } else {
@@ -169,7 +171,7 @@ double get_dist(xyz box, xyz a1, xyz a2, map<string, pair<float, double>> atom_m
         return -1; // Return an error if the atom pair is not found
     }
     
-    float weight = lambda / max_lambda; // Calculate weight
+    float weight = prop / max_prop; // Calculate weight
     
     double dx = a1.x - a2.x; dx -= box.x*round(dx/box.x);
     double dy = a1.y - a2.y; dy -= box.y*round(dy/box.y);
@@ -314,6 +316,13 @@ int main(int argc, char* argv[]) {
     cout << "RCIN List: ";
     for (const auto& rcin : rcin_list) cout << rcin << " ";
     cout << endl;
+
+    // Read ALPHA if it exists in the config
+    if (config.find("ALPHA") != config.end()) {
+        ALPHA = stod(config["ALPHA"]);
+    } else {
+        cerr << "Warning: ALPHA not found in config file. Using default value: " << ALPHA << endl;
+    }
     
     /////////////////////////////////////////////
     // Hard-coded for now, for a single atom type: rcutin, rcut out, morse lambda
@@ -334,14 +343,13 @@ int main(int argc, char* argv[]) {
     // Get the maximum lambda value
     double min_rcin = *min_element(rcin_list.begin(), rcin_list.end());
     double max_lambda = *max_element(lambda_set.begin(), lambda_set.end());
-    cout << "Max lambda: " << max_lambda << std::endl;
+    cout << "Max value for weighting: " << max_lambda << std::endl;
 
     /////////////////////////////////////////////
     // Read file name
     /////////////////////////////////////////////
     
     string coord_file = "test.xyz";
-    
     
     /////////////////////////////////////////////
     // Open file to read in coordinates
