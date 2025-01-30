@@ -243,8 +243,12 @@ int main(int argc, char* argv[]) {
     vector<string> atom_types = parseStringList(config["ATOM_TYPES"]);
     // Generate atom pairs from atom types
     vector<string> atom_pairs = generateAtomPairs(atom_types);
-    vector<double> lambda_set = parseDoubleList(config["LAMBDA_SET"]);
+    vector<double> property_set = parseDoubleList(config["PROPERTY_SET"]);
     vector<double> rcin_list = parseDoubleList(config["RCIN_LIST"]);
+    vector<double> lambda_set;
+    if (config.find("LAMBDA_SET") != config.end()) {
+        lambda_set = parseDoubleList(config["LAMBDA_SET"]);
+    }
 
     // Output parsed values
     cout << "Using config file: " << configFile << endl;
