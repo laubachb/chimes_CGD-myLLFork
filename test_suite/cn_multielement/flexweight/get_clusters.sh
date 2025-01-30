@@ -19,8 +19,8 @@ if [ 1 -eq 2 ] ; then
 fi 
 
 if [ 1 -eq 1 ] ; then
-    time for i in `ls training_data_*xyzf`
-    #for i in `ls training_data_#019.xyzf`
+    #time for i in `ls training_data_*xyzf`
+    for i in `ls training_data_#019.xyzf`
     do
         tag=${i%*.xyzf}
         tag=${tag#*#}

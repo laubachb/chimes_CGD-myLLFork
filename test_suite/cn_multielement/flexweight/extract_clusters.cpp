@@ -170,47 +170,6 @@ void compute_weights(const map<string, pair<float, double>>& atom_map, float max
     }
 }
 
-double old_dist(xyz box, xyz a1, xyz a2, map<string, pair<float, double>> atom_map, float max_prop, float min_prop)
-{
-    // Obtain atom type identities
-    string atom_type1 = a1.atom_type;
-    string atom_type2 = a2.atom_type;
-    string atom_pair = atom_type1 + atom_type2;
-    
-    float prop = 0.0f;
-    double rcin = 0.0;
-    
-    // Get the lambda and rcin values for the concatenated pair
-    if (atom_map.find(atom_pair) != atom_map.end()) {
-        // Access both lambda and rcin from the pair
-        prop = atom_map[atom_pair].first;
-        rcin = atom_map[atom_pair].second;
-
-    } else {
-        std::cout << "Atom pair " << atom_pair << " not found in the map." << endl;
-        return -1; // Return an error if the atom pair is not found
-    }
-    
-    float weight = weights[atom_pair];
-
-    double dx = a1.x - a2.x; dx -= box.x*round(dx/box.x);
-    double dy = a1.y - a2.y; dy -= box.y*round(dy/box.y);
-    double dz = a1.z - a2.z; dz -= box.z*round(dz/box.z);
-    
-    double dist = sqrt(dx*dx + dy*dy + dz*dz);
-    
-    if (dist < rcin)
-    {
-        std::cout << "Something went wrong between atoms: " << endl;
-        std::cout << "A: " << a1.x << " " << a1.y << " " << a1.z << endl;
-        std::cout << "B: " << a2.x << " " << a2.y << " " << a2.z << endl;
-        std::cout << dx << " " << dy << " " << dz << endl;
-        dist = 100000000;
-    }
-    
-    return weight * dist;
-}
-
 double get_dist(xyz box, xyz a1, xyz a2, map<string, pair<float, double>> atom_map)
 {
     // Obtain atom type identities
@@ -387,6 +346,7 @@ int main(int argc, char* argv[]) {
         std::cout << endl;
     } else {
         std::cout << "Lambda set not provided\n";
+        std::cout << "!!!Exiting code!!!\n";
     }
 
     std::cout << "RCIN List: ";
@@ -554,6 +514,7 @@ for (int i = 0; i < natoms; i++)
                 dist_3b[1] = unweighted_dist_ik * weight_ik;
                 dist_3b[2] = unweighted_dist_jk * weight_jk;
                 
+                dist_3b_trans[0] = transform(coords[i], coords[j], atom_map, rcout_3b, dist_3b[0]);
                 dist_3b_trans[1] = transform(coords[i], coords[k], atom_map, rcout_3b, dist_3b[1]);
                 dist_3b_trans[2] = transform(coords[j], coords[k], atom_map, rcout_3b, dist_3b[2]);
                 
@@ -587,6 +548,9 @@ for (int i = 0; i < natoms; i++)
                     dist_4b[4] = unweighted_dist_jl * weight_jl;
                     dist_4b[5] = unweighted_dist_kl * weight_kl;
                     
+                    dist_4b_trans[0] = transform(coords[i], coords[j], atom_map, rcout_4b, dist_4b[0]);
+                    dist_4b_trans[1] = transform(coords[i], coords[k], atom_map, rcout_4b, dist_4b[1]);
+                    dist_4b_trans[2] = transform(coords[j], coords[k], atom_map, rcout_4b, dist_4b[2]);
                     dist_4b_trans[3] = transform(coords[i], coords[l], atom_map, rcout_4b, dist_4b[3]);
                     dist_4b_trans[4] = transform(coords[j], coords[l], atom_map, rcout_4b, dist_4b[4]);
                     dist_4b_trans[5] = transform(coords[k], coords[l], atom_map, rcout_4b, dist_4b[5]);
