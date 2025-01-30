@@ -1,6 +1,8 @@
 ################################
 ##### General options
+##### Currently, these top 3 options do nothing
 ################################
+
 EMAIL_ADD = "blaubach@umich.edu"
 
 CGD_DIR     = "/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/"
@@ -9,6 +11,7 @@ WORKING_DIR = "/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/"
 ################################
 ##### Parameters for get_clusters.cpp
 ################################
+
 RCOUT_2B = 5.0
 RCOUT_3B = 5.0
 RCOUT_4B = 4.5
@@ -17,6 +20,7 @@ RCOUT_4B = 4.5
 ##### System specific parameters for get_clusters.cpp
 ##### Property_set should be equal to the number of elements, ensure consistent indexing
 ################################
+
 ATOM_TYPES    = C,N
 PROPERTY_SET  = 1086.4, 1420.3
 RCIN_LIST     = 0.98,0.86,0.90
