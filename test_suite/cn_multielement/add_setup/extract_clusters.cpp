@@ -243,11 +243,53 @@ int main(int argc, char* argv[]) {
     vector<string> atom_types = parseStringList(config["ATOM_TYPES"]);
     // Generate atom pairs from atom types
     vector<string> atom_pairs = generateAtomPairs(atom_types);
-    vector<double> property_set = parseDoubleList(config["PROPERTY_SET"]);
     vector<double> rcin_list = parseDoubleList(config["RCIN_LIST"]);
     vector<double> lambda_set;
+    vector<double> property_set;
     if (config.find("LAMBDA_SET") != config.end()) {
         lambda_set = parseDoubleList(config["LAMBDA_SET"]);
+    }
+    if (config.find("PROPERTY_SET") != config.end()) {
+        property_set = parseDoubleList(config["PROPERTY_SET"]);
+    }
+
+    // Compute combined properties
+    // Ensure property_set is the same size as atom_types
+    if (property_set.size() != atom_types.size()) {
+        cerr << "Error: PROPERTY_SET size does not match ATOM_TYPES size.\n";
+        return 1;
+    }
+    // Map atom types to their corresponding property values
+    unordered_map<string, double> property_map;
+    for (size_t i = 0; i < atom_types.size(); ++i) {
+        property_map[atom_types[i]] = property_set[i];
+    }
+    // Compute prop_combined and x_combined
+    vector<double> prop_combined;
+    vector<double> x_combined;
+
+    for (const auto& pair : atom_pairs) {
+        // Ensure the pair has exactly two characters (assuming valid input like "CN")
+        if (pair.length() != 2) {
+            cerr << "Error: Invalid atom pair format: " << pair << endl;
+            return 1;
+        }
+        string atom1(1, pair[0]);  // First character
+        string atom2(1, pair[1]);  // Second character
+
+        // Get corresponding properties
+        if (property_map.find(atom1) == property_map.end() || property_map.find(atom2) == property_map.end()) {
+            cerr << "Error: Atom type not found in PROPERTY_SET: " << pair << endl;
+            return 1;
+        }
+
+        double prop1 = property_map[atom1];
+        double prop2 = property_map[atom2];
+
+        // Compute sqrt(prop1 * prop2) and store in prop_combined
+        double prop_value = sqrt(prop1 * prop2);
+        prop_combined.push_back(prop_value);
+        x_combined.push_back(prop_value);
     }
 
     // Output parsed values
@@ -260,9 +302,14 @@ int main(int argc, char* argv[]) {
     for (const auto& pair : atom_pairs) cout << pair << " ";
     cout << endl;
 
-    cout << "Lambda Set: ";
-    for (const auto& lambda : lambda_set) cout << lambda << " ";
-    cout << endl;
+    // Print lambda_set only if it has elements
+    if (!lambda_set.empty()) {
+        cout << "Lambda Set: ";
+        for (const auto& lambda : lambda_set) {
+            cout << lambda << " ";
+        }
+        cout << endl;
+    }
 
     cout << "RCIN List: ";
     for (const auto& rcin : rcin_list) cout << rcin << " ";
