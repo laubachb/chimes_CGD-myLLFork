@@ -73,7 +73,7 @@ do
         echo "                                                                   "  >> run-partition-${block}.cmd
         echo "#SBATCH -J block-${block}                                          "  >> run-partition-${block}.cmd
         echo "#SBATCH -N 1                                                       "  >> run-partition-${block}.cmd            
-        echo "#SBATCH -n 48                                                      "  >> run-partition-${block}.cmd            
+        echo "#SBATCH -n 12                                                      "  >> run-partition-${block}.cmd            
         echo "#SBATCH -t 1:00:00                                                 "  >> run-partition-${block}.cmd        
         echo "#SBATCH -V                                                         "  >> run-partition-${block}.cmd
         echo "#SBATCH -o stdoutmsg                                               "  >> run-partition-${block}.cmd 
@@ -88,7 +88,7 @@ do
             echo "#SBATCH -p skx                                                 "  >> run-partition-${block}.cmd
     
         elif [ "$system" = "LLNL-LC" ] ; then
-            echo "#SBATCH -p pbatch                                              "  >> run-partition-${block}.cmd        
+            echo "#SBATCH -p pdebug                                              "  >> run-partition-${block}.cmd        
             echo "#SBATCH -A iap                                             "  >> run-partition-${block}.cmd        
         fi
 

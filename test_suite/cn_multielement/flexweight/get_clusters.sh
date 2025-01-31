@@ -1,9 +1,17 @@
 #!/bin/bash
 
 # Total frames in INITIAL training set:
+rm -f *.txt *.hist run*
+#nf=20
+#traj="/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/test/data.xyzf"
 
-nf=20
-traj="/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/test/data.xyzf"
+# Read N_FRAMES and TRAJ_PATH from setup.in
+nf=$(grep -oP '^N_FRAMES\s*=\s*\K\d+' setup.in)
+traj=$(grep -oP '^TRAJ_PATH\s*=\s*\K.+' setup.in)
+
+# Total frames in INITIAL training set:
+echo "Using N_FRAMES: $nf"
+echo "Using TRAJ_PATH: $traj"
 
 g++ -O3 -o extract_clusters extract_clusters.cpp
 
@@ -41,10 +49,3 @@ fi
 # Run histogram script at the end
 echo "Running get_histograms.sh..."
 time ./get_histograms.sh
-
-# Wait for jobs to finish before running the next step
-echo "Waiting for submitted jobs to complete..."
-wait
-
-echo "Running plot_fingerprints.py..."
-time python3 plot_fingerprints.py

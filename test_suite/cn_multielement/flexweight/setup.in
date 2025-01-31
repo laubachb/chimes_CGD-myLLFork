@@ -5,6 +5,7 @@
 
 EMAIL_ADD    = blaubach@umich.edu
 HPC_NAME     = LLNL-LC
+TRAJ_PATH    = "/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/test/data.xyzf"
 
 ################################
 ##### Parameters for get_clusters.cpp
@@ -15,6 +16,7 @@ HPC_NAME     = LLNL-LC
 RCOUT_2B = 5.0
 RCOUT_3B = 5.0
 RCOUT_4B = 4.5
+N_FRAMES = 20
 
 ################################
 ##### System specific parameters for get_clusters.cpp
@@ -27,4 +29,4 @@ ATOM_TYPES    = C,N
 PROPERTY_SET  = 1086.4, 1420.3
 RCIN_LIST     = 0.98,0.86,0.90
 LAMBDA_SET    = 1.4,1.09,1.34
-ALPHA         = 0.1
+ALPHA         = 0.0001
