@@ -1,9 +1,12 @@
 #!/bin/bash
 
-
-system=$1
-
-
+#system=$1
+if [ -f setup.in ]; then
+    system=$(grep '^HPC_NAME' setup.in | awk -F '=' '{print $2}' | tr -d ' ')
+else
+    echo "ERROR: setup.in/HPC_NAME not found!"
+    exit 1
+fi
 
 tag_list=""
 

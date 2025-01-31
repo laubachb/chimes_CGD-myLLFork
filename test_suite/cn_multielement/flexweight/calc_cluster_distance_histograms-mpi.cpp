@@ -217,19 +217,19 @@ void gen_flat_hists(vector<double > & clu1, vector<double > & clu2, int n_cluste
             if (bin > nbin)
             {
                 
-                cout << "Rank: " << my_rank << " ERROR: computed bin larger than nbins:" << endl;
+                // cout << "Rank: " << my_rank << " ERROR: computed bin larger than nbins:" << endl;
 
-                cout << "Rank: " << my_rank << " nbin: " << nbin << endl;
-                cout << "Rank: " << my_rank << " bin:  " << bin << endl;
-                cout << "Rank: " << my_rank << " binw: " << binw << endl;
-                cout << "Rank: " << my_rank << " maxd: " << maxd << endl;
-                cout << "Rank: " << my_rank << " dist: " << dist << endl;
-                cout << "Rank: " << my_rank << " clus: " << endl;
+                // cout << "Rank: " << my_rank << " nbin: " << nbin << endl;
+                // cout << "Rank: " << my_rank << " bin:  " << bin << endl;
+                // cout << "Rank: " << my_rank << " binw: " << binw << endl;
+                // cout << "Rank: " << my_rank << " maxd: " << maxd << endl;
+                // cout << "Rank: " << my_rank << " dist: " << dist << endl;
+                // cout << "Rank: " << my_rank << " clus: " << endl;
                 
-                for (int m=0;m<n_cluster_pairs; m++)
-                    cout << "Rank: " << my_rank << clu1[i*n_cluster_pairs+m] << " <--> " << clu2[j*n_cluster_pairs +m] << endl;
-                cout << "Rank: " << my_rank << endl;
-                
+                // for (int m=0;m<n_cluster_pairs; m++)
+                //     cout << "Rank: " << my_rank << clu1[i*n_cluster_pairs+m] << " <--> " << clu2[j*n_cluster_pairs +m] << endl;
+                // cout << "Rank: " << my_rank << endl;
+                continue;
                 //exit(0);
             }
 
@@ -291,9 +291,9 @@ int main(int argc, char *argv[])
     double rcout_3b = 5.0;
     double rcout_4b = 4.5;
     
-    int nbin_2b = 100;
-    int nbin_3b = 100;
-    int nbin_4b = 100;
+    int nbin_2b = 50;
+    int nbin_3b = 50;
+    int nbin_4b = 50;
 
     /////////////////////////////////////////////
     // Read in 2B clusters -- IN TERMS OF rij **OR** sij - determined by user

@@ -364,27 +364,21 @@ int main(int argc, char* argv[]) {
     // Hard-coded for now, for a single atom type: rcutin, rcut out, morse lambda
     /////////////////////////////////////////////
 
-    // If lambda_set is undefined, use prop_combined instead
-    if (lambda_set.empty()) {
-        lambda_set = prop_combined;
-        std::cout << "Setting lambda set to combined property set\n";
-    }
-
     // Create the dictionary (map) with std::pair<float, double> as the value type
     map<string, pair<float, double>> atom_map;
     for (size_t i = 0; i < atom_pairs.size(); ++i) {
-        atom_map[atom_pairs[i]] = make_pair(lambda_set[i], rcin_list[i]);
+        atom_map[atom_pairs[i]] = make_pair(prop_combined[i], rcin_list[i]);
     }
 
     // Get the maximum lambda value
     double min_rcin = *min_element(rcin_list.begin(), rcin_list.end());
-    double min_lambda = *min_element(lambda_set.begin(), lambda_set.end());
-    double max_lambda = *max_element(lambda_set.begin(), lambda_set.end());
-    std::cout << "Min value for weighting: " << min_lambda << std::endl;
-    std::cout << "Max value for weighting: " << max_lambda << std::endl;
+    double min_weight_val = *min_element(prop_combined.begin(), prop_combined.end());
+    double max_weight_val = *max_element(prop_combined.begin(), prop_combined.end());
+    std::cout << "Min value for weighting: " << min_weight_val << std::endl;
+    std::cout << "Max value for weighting: " << max_weight_val << std::endl;
 
     // Compute the weight list
-    compute_weights(atom_map, max_lambda, min_lambda, alpha);
+    compute_weights(atom_map, max_weight_val, min_weight_val, alpha);
 
     /////////////////////////////////////////////
     // Read file name
