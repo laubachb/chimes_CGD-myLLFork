@@ -1,0 +1,4 @@
+run*       # Ignore files that start with 'run'
+*.txt      # Ignore files that end with '.txt'
+*.hist     # Ignore files that end with '.hist'
+
