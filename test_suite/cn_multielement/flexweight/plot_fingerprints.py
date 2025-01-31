@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Path to your directory containing the .hist files
-data_dir = "/p/lustre1/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/flex_weight/"  # Change this to your actual directory path
+data_dir = "/p/lustre1/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/flexweight/"  # Change this to your actual directory path
 
 # Function to read second column of a .hist file
 def read_second_column(file_path):
