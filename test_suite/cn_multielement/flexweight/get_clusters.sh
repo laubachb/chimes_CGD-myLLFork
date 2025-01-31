@@ -41,3 +41,10 @@ fi
 # Run histogram script at the end
 echo "Running get_histograms.sh..."
 time ./get_histograms.sh
+
+# Wait for jobs to finish before running the next step
+echo "Waiting for submitted jobs to complete..."
+wait
+
+echo "Running plot_fingerprints.py..."
+time python3 plot_fingerprints.py

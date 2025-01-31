@@ -3,12 +3,26 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Path to your directory containing the .hist files
-data_dir = "/p/lustre1/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/flexweight/"  # Change this to your actual directory path
+data_dir = os.getcwd()
+setup_file = os.path.join(data_dir, "setup.in")
+
+# Function to extract alpha value from setup.in
+def get_alpha(setup_path):
+    try:
+        with open(setup_path, 'r') as file:
+            for line in file:
+                if "alpha" in line.lower():
+                    return line.split('=')[-1].strip()
+    except FileNotFoundError:
+        print("setup.in not found, using default alpha value")
+    return "Unknown"
 
 # Function to read second column of a .hist file
 def read_second_column(file_path):
     data = np.loadtxt(file_path)
     return data[:, 1]  # Assuming second column is the one we need
+
+alpha_value = get_alpha(setup_file)
 
 # Dictionary to hold lists of second column values for each leading integer
 data_dict = {str(i).zfill(3): [] for i in range(1, 20)}  # e.g. '001', '002', ..., '019'
@@ -54,7 +68,7 @@ for idx, (prefix, fingerprint) in enumerate(prefixes):
 # Add labels and a legend
 plt.xlabel("Index")
 plt.ylabel("Value")
-plt.title("Comparison of .hist Files by Leading Integer")
+plt.title(f"Comparison of .hist Files (Alpha = {alpha_value})")
 plt.legend(title="Leading Integer")
 
 # Show the plot
