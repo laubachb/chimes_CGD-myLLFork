@@ -17,6 +17,8 @@ assumes all atoms are the same type
 #include <algorithm>
 #include <map>
 #include <unordered_map>
+#include <sys/time.h>
+#include <thread>
 
 using namespace std;
 
@@ -569,7 +571,7 @@ for (int i = 0; i < natoms; i++)
     	uint64_t end = tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
     	uint64_t elapsed = end - start;
 
-	std::cout << "@@@ Elapsed time (usec): %lld\n", elapsed;
+	std::cout << "@@@ Elapsed time (usec): " << elapsed << "\n";
 	std::cout << "Processing complete.  Preparing output.\n";
     std::cout << "   ...Calc done, printing results..." << endl;
     
