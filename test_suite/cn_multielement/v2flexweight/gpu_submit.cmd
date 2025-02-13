@@ -12,6 +12,6 @@
 
 module load cuda
 rm -rf *.txt
-nvcc -O3 -arch=sm_61 test_cuda.cu -o cude_extract_clusters
-srun -n 1 ./cude_extract_clusters setup.in
+nvcc -O3 -arch=sm_61 test_cuda.cu -o cuda_extract_clusters
+srun -n 1 ./cuda_extract_clusters setup.in
  

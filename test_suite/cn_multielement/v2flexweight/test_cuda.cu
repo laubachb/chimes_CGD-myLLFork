@@ -397,12 +397,12 @@ void write_results_to_file(const std::vector<double>& h_2b_direct,
                             const std::vector<double>& h_4b_direct, 
                             const std::vector<double>& h_4b_trans) {
     // Open output files for 2-body, 3-body, and 4-body results
-    std::ofstream out_2b_direct("2b_direct.txt");
-    std::ofstream out_2b_trans("2b_trans.txt");
-    std::ofstream out_3b_direct("3b_direct.txt");
-    std::ofstream out_3b_trans("3b_trans.txt");
-    std::ofstream out_4b_direct("4b_direct.txt");
-    std::ofstream out_4b_trans("4b_trans.txt");
+    std::ofstream out_2b_direct("000.2b_clu-r.txt");
+    std::ofstream out_2b_trans("000.2b_clu-s.txt");
+    std::ofstream out_3b_direct("000.3b_clu-r.txt");
+    std::ofstream out_3b_trans("000.3b_clu-s.txt");
+    std::ofstream out_4b_direct("000.4b_clu-r.txt");
+    std::ofstream out_4b_trans("000.4b_clu-s.txt");
 
     // Write the 2-body results
     for (size_t i = 0; i < h_2b_direct.size(); ++i) {
