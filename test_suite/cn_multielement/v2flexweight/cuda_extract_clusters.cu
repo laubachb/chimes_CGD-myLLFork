@@ -159,7 +159,8 @@ __global__ void kernel_2b(const xyz* d_coords, int natoms, xyz box, double rcout
     // get sorted indices
     int a = (type_i < type_j) ? type_i : type_j;
     int b = (type_i < type_j) ? type_j : type_i;
-    float weight = d_weight[a * ntypes + b];
+    // float weight = d_weight[a * ntypes + b];
+    float weight = 1.0;
     double rcin = d_rcin[a * ntypes + b];
     
     double dx = d_coords[i].x - d_coords[j].x;
@@ -232,7 +233,8 @@ __global__ void kernel_3b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (i,j)
     int a = (type_i < type_j) ? type_i : type_j;
     int b = (type_i < type_j) ? type_j : type_i;
-    float weight_ij = d_weight[a * ntypes + b];
+    // float weight_ij = d_weight[a * ntypes + b];
+    float weight_ij = 1.0;
     double rcin_ij = d_rcin[a * ntypes + b];
     double dx = d_coords[i].x - d_coords[j].x;
     double dy = d_coords[i].y - d_coords[j].y;
@@ -248,7 +250,8 @@ __global__ void kernel_3b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (i,k)
     a = (type_i < type_k) ? type_i : type_k;
     b = (type_i < type_k) ? type_k : type_i;
-    float weight_ik = d_weight[a * ntypes + b];
+    //float weight_ik = d_weight[a * ntypes + b];
+    float weight_ik = 1.0;
     double rcin_ik = d_rcin[a * ntypes + b];
     dx = d_coords[i].x - d_coords[k].x;
     dy = d_coords[i].y - d_coords[k].y;
@@ -264,7 +267,8 @@ __global__ void kernel_3b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (j,k)
     a = (type_j < type_k) ? type_j : type_k;
     b = (type_j < type_k) ? type_k : type_j;
-    float weight_jk = d_weight[a * ntypes + b];
+    // float weight_jk = d_weight[a * ntypes + b];
+    float weight_jk = 1.0;
     double rcin_jk = d_rcin[a * ntypes + b];
     dx = d_coords[j].x - d_coords[k].x;
     dy = d_coords[j].y - d_coords[k].y;
@@ -346,7 +350,8 @@ __global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (i,j)
     int a = (type_i < type_j) ? type_i : type_j;
     int b = (type_i < type_j) ? type_j : type_i;
-    float weight_ij = d_weight[a * ntypes + b];
+    // float weight_ij = d_weight[a * ntypes + b];
+    float weight_ij = 1.0;
     double rcin_ij = d_rcin[a * ntypes + b];
     double dx = d_coords[i].x - d_coords[j].x;
     double dy = d_coords[i].y - d_coords[j].y;
@@ -362,7 +367,8 @@ __global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (i,k)
     a = (type_i < type_k) ? type_i : type_k;
     b = (type_i < type_k) ? type_k : type_i;
-    float weight_ik = d_weight[a * ntypes + b];
+    // float weight_ik = d_weight[a * ntypes + b];
+    float weight_ik = 1.0;
     double rcin_ik = d_rcin[a * ntypes + b];
     dx = d_coords[i].x - d_coords[k].x;
     dy = d_coords[i].y - d_coords[k].y;
@@ -378,7 +384,8 @@ __global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (j,k)
     a = (type_j < type_k) ? type_j : type_k;
     b = (type_j < type_k) ? type_k : type_j;
-    float weight_jk = d_weight[a * ntypes + b];
+    // float weight_jk = d_weight[a * ntypes + b];
+    float weight_jk = 1.0;
     double rcin_jk = d_rcin[a * ntypes + b];
     dx = d_coords[j].x - d_coords[k].x;
     dy = d_coords[j].y - d_coords[k].y;
@@ -394,7 +401,8 @@ __global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (i,l)
     a = (type_i < type_l) ? type_i : type_l;
     b = (type_i < type_l) ? type_l : type_i;
-    float weight_il = d_weight[a * ntypes + b];
+    // float weight_il = d_weight[a * ntypes + b];
+    float weight_il = 1.0;
     double rcin_il = d_rcin[a * ntypes + b];
     dx = d_coords[i].x - d_coords[l].x;
     dy = d_coords[i].y - d_coords[l].y;
@@ -410,7 +418,8 @@ __global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (j,l)
     a = (type_j < type_l) ? type_j : type_l;
     b = (type_j < type_l) ? type_l : type_j;
-    float weight_jl = d_weight[a * ntypes + b];
+    // float weight_jl = d_weight[a * ntypes + b];
+    float weight_jl = 1.0;
     double rcin_jl = d_rcin[a * ntypes + b];
     dx = d_coords[j].x - d_coords[l].x;
     dy = d_coords[j].y - d_coords[l].y;
@@ -426,7 +435,8 @@ __global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout
     // (k,l)
     a = (type_k < type_l) ? type_k : type_l;
     b = (type_k < type_l) ? type_l : type_k;
-    float weight_kl = d_weight[a * ntypes + b];
+    // float weight_kl = d_weight[a * ntypes + b];
+    float weight_kl = 1.0;
     double rcin_kl = d_rcin[a * ntypes + b];
     dx = d_coords[k].x - d_coords[l].x;
     dy = d_coords[k].y - d_coords[l].y;
