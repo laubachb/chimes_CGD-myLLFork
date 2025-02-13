@@ -5,7 +5,7 @@
 
 EMAIL_ADD    = blaubach@umich.edu
 HPC_NAME     = GREATLAKES
-TRAJ_PATH    = "data.xyzf"
+TRAJ_PATH    = "test.xyz"
 
 ################################
 ##### Parameters for get_clusters.cpp
