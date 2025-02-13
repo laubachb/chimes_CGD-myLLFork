@@ -78,7 +78,6 @@ bool get_next_line(istream& str, string & line){
     return true;
 }
 
-
 //---------------------------------------------------------------------
 // Read the configuration file into an unordered_map<string,string>
 unordered_map<string, string> readConfig(const string &filename) {
@@ -146,6 +145,82 @@ __device__ inline double periodic_diff(double d, double box_length) {
 // For each unique pair (i,j) with i < j we compute the (unweighted) distance,
 // multiply by the appropriate weight, and if the unweighted distance is less than rcout_2b,
 // we store the weighted distance and its transformed value.
+struct PairData {
+    int i, j;          // Atom indices (i < j)
+    double dist;       // Distance after periodic boundary conditions
+    int type_a, type_b; // Sorted atom types
+    double rcin;       // Inner cutoff for this pair type
+    float lambda;      // Lambda parameter for transformation
+    float weight;      // Weight parameter (if used)
+};
+
+__device__ bool check_pair(const PairData& pair, double rcout) {
+    double dist = pair.dist;
+    if (dist < pair.rcin) dist = 1e8;
+    return (dist * pair.weight) >= rcout;
+}
+
+__device__ double compute_trans(const PairData& pair, double rcout) {
+    double x_min = exp(-pair.rcin / pair.lambda);
+    double x_max = exp(-rcout / pair.lambda);
+    double x_avg = 0.5 * (x_min + x_max);
+    double x_diff = -0.5 * (x_max - x_min);
+    return (exp(-(pair.dist * pair.weight) / pair.lambda) - x_avg) / x_diff;
+}
+
+__global__ void kernel_pairs(
+    const xyz* d_coords, int natoms, xyz box,
+    const double* d_rcin, const float* d_lambda, const float* d_weight,
+    PairData* d_pairs, int ntypes
+) {
+    long long totalPairs = ((long long)natoms * (natoms - 1)) / 2;
+    long long idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx >= totalPairs) return;
+
+    // Unrank idx into (i, j) where i < j
+    int i, j;
+    long long rem = idx;
+    for (i = 0; i < natoms - 1; i++) {
+        long long count_i = natoms - 1 - i;
+        if (rem < count_i) {
+            j = i + 1 + rem;
+            break;
+        }
+        rem -= count_i;
+    }
+
+    // Compute pair data
+    int type_i = d_coords[i].atom_type;
+    int type_j = d_coords[j].atom_type;
+    int a = min(type_i, type_j);
+    int b = max(type_i, type_j);
+
+    float weight = d_weight[a * ntypes + b];
+    double rcin = d_rcin[a * ntypes + b];
+    float lambda = d_lambda[a * ntypes + b];
+
+    double dx = d_coords[i].x - d_coords[j].x;
+    double dy = d_coords[i].y - d_coords[j].y;
+    double dz = d_coords[i].z - d_coords[j].z;
+    dx = periodic_diff(dx, box.x);
+    dy = periodic_diff(dy, box.y);
+    dz = periodic_diff(dz, box.z);
+    double dist = sqrt(dx*dx + dy*dy + dz*dz);
+
+    // Store pair data
+    d_pairs[idx] = {i, j, dist, a, b, rcin, lambda, weight};
+}
+
+__device__ long long get_pair_index(int i, int j, int natoms) {
+    // Manual swap implementation for device code
+    if (i > j) {
+        int temp = i;
+        i = j;
+        j = temp;
+    }
+    return ((long long)i * (2 * natoms - i - 1)) / 2 + (j - i - 1);
+}
+
 __global__ void kernel_2b(const xyz* d_coords, int natoms, xyz box, double rcout_2b, 
                             const double* d_rcin, const float* d_lambda, const float* d_weight,
                             double* d_2b_direct, double* d_2b_trans, int* d_count, int ntypes) {
@@ -202,13 +277,13 @@ __global__ void kernel_2b(const xyz* d_coords, int natoms, xyz box, double rcout
 // Kernel for 3-body clusters (triplets)
 // We flatten the triplet (i,j,k) with i < j < k into a single linear index.
 // The unranking routine converts a thread’s linear index to (i,j,k).
-__global__ void kernel_3b(const xyz* d_coords, int natoms, xyz box, double rcout_3b, 
-                           const double* d_rcin, const float* d_lambda, const float* d_weight,
-                           double* d_3b_direct, double* d_3b_trans, int* d_count, int ntypes) {
-    // total number of triplets = n*(n-1)*(n-2)/6
+__global__ void kernel_3b(
+    const PairData* d_pairs, int natoms, double rcout_3b,
+    double* d_3b_direct, double* d_3b_trans, int* d_count, int ntypes
+) {
     long long totalTriplets = ((long long)natoms*(natoms-1)*(natoms-2))/6;
     long long idx = blockIdx.x * blockDim.x + threadIdx.x;
-    if(idx >= totalTriplets) return;
+    if (idx >= totalTriplets) return;
     
     // Unrank idx into unique (i,j,k)
     int i, j, k;
@@ -225,90 +300,30 @@ __global__ void kernel_3b(const xyz* d_coords, int natoms, xyz box, double rcout
     }
     k = j + 1 + rem;
     
-    // For the triplet (i,j,k), first check the (i,j) pair
-    int type_i = d_coords[i].atom_type;
-    int type_j = d_coords[j].atom_type;
-    int type_k = d_coords[k].atom_type;
-    
-    // (i,j)
-    int a = (type_i < type_j) ? type_i : type_j;
-    int b = (type_i < type_j) ? type_j : type_i;
-    // float weight_ij = d_weight[a * ntypes + b];
-    float weight_ij = 1.0;
-    double rcin_ij = d_rcin[a * ntypes + b];
-    double dx = d_coords[i].x - d_coords[j].x;
-    double dy = d_coords[i].y - d_coords[j].y;
-    double dz = d_coords[i].z - d_coords[j].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_ij = sqrt(dx*dx + dy*dy + dz*dz);
-    printf("distance between atoms (rcin_ij = %f), 3B: %f, rcout_3b: %f\n", rcin_ij, dist_ij, rcout_3b);
-    if(dist_ij < rcin_ij) dist_ij = 1e8;
-    double weighted_ij = dist_ij * weight_ij;
-    if(dist_ij >= rcout_3b) return;  // skip if too long
+    // Get pair indices
+    long long idx_ij = get_pair_index(i, j, natoms);
+    long long idx_ik = get_pair_index(i, k, natoms);
+    long long idx_jk = get_pair_index(j, k, natoms);
 
-    // (i,k)
-    a = (type_i < type_k) ? type_i : type_k;
-    b = (type_i < type_k) ? type_k : type_i;
-    //float weight_ik = d_weight[a * ntypes + b];
-    float weight_ik = 1.0;
-    double rcin_ik = d_rcin[a * ntypes + b];
-    dx = d_coords[i].x - d_coords[k].x;
-    dy = d_coords[i].y - d_coords[k].y;
-    dz = d_coords[i].z - d_coords[k].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_ik = sqrt(dx*dx + dy*dy + dz*dz);
-    if(dist_ik < rcin_ik) dist_ik = 1e8;
-    double weighted_ik = dist_ik * weight_ik;
-    if(dist_ik >= rcout_3b) return;
-    
-    // (j,k)
-    a = (type_j < type_k) ? type_j : type_k;
-    b = (type_j < type_k) ? type_k : type_j;
-    // float weight_jk = d_weight[a * ntypes + b];
-    float weight_jk = 1.0;
-    double rcin_jk = d_rcin[a * ntypes + b];
-    dx = d_coords[j].x - d_coords[k].x;
-    dy = d_coords[j].y - d_coords[k].y;
-    dz = d_coords[j].z - d_coords[k].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_jk = sqrt(dx*dx + dy*dy + dz*dz);
-    if(dist_jk < rcin_jk) dist_jk = 1e8;
-    double weighted_jk = dist_jk * weight_jk;
-    if(dist_jk >= rcout_3b) return;
-    
-    // Compute transformed values for each pair:
-    double lambda_ij = d_lambda[((type_i < type_j) ? type_i : type_j)*ntypes + ((type_i < type_j) ? type_j : type_i)];
-    double x_min_val = exp(-rcin_ij / lambda_ij);
-    double x_max_val = exp(-rcout_3b / lambda_ij);
-    double x_avg = 0.5*(x_min_val + x_max_val);
-    double x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_ij = (exp(-weighted_ij / lambda_ij) - x_avg) / x_diff;
-    
-    double lambda_ik = d_lambda[((type_i < type_k) ? type_i : type_k)*ntypes + ((type_i < type_k) ? type_k : type_i)];
-    x_min_val = exp(-rcin_ik / lambda_ik);
-    x_max_val = exp(-rcout_3b / lambda_ik);
-    x_avg = 0.5*(x_min_val + x_max_val);
-    x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_ik = (exp(-weighted_ik / lambda_ik) - x_avg) / x_diff;
-    
-    double lambda_jk = d_lambda[((type_j < type_k) ? type_j : type_k)*ntypes + ((type_j < type_k) ? type_k : type_j)];
-    x_min_val = exp(-rcin_jk / lambda_jk);
-    x_max_val = exp(-rcout_3b / lambda_jk);
-    x_avg = 0.5*(x_min_val + x_max_val);
-    x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_jk = (exp(-weighted_jk / lambda_jk) - x_avg) / x_diff;
-    
-    // Store the triplet (each cluster has three distances and three transformed values)
+    PairData pair_ij = d_pairs[idx_ij];
+    PairData pair_ik = d_pairs[idx_ik];
+    PairData pair_jk = d_pairs[idx_jk];
+
+    // Check each pair against 3-body cutoff
+    if (check_pair(pair_ij, rcout_3b)) return;
+    if (check_pair(pair_ik, rcout_3b)) return;
+    if (check_pair(pair_jk, rcout_3b)) return;
+
+    // Compute transformed values
+    double trans_ij = compute_trans(pair_ij, rcout_3b);
+    double trans_ik = compute_trans(pair_ik, rcout_3b);
+    double trans_jk = compute_trans(pair_jk, rcout_3b);
+
+    // Store results
     int index = atomicAdd(d_count, 1);
-    d_3b_direct[index*3 + 0] = weighted_ij;
-    d_3b_direct[index*3 + 1] = weighted_ik;
-    d_3b_direct[index*3 + 2] = weighted_jk;
+    d_3b_direct[index*3 + 0] = pair_ij.dist * pair_ij.weight;
+    d_3b_direct[index*3 + 1] = pair_ik.dist * pair_ik.weight;
+    d_3b_direct[index*3 + 2] = pair_jk.dist * pair_jk.weight;
     d_3b_trans[index*3 + 0] = trans_ij;
     d_3b_trans[index*3 + 1] = trans_ik;
     d_3b_trans[index*3 + 2] = trans_jk;
@@ -317,12 +332,13 @@ __global__ void kernel_3b(const xyz* d_coords, int natoms, xyz box, double rcout
 // ---------------------------------------------------------------------
 // Kernel for 4-body clusters (quadruplets)
 // Here we “unrank” a linear index into a unique (i,j,k,l) combination (with i < j < k < l).
-__global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout_4b, 
-                           const double* d_rcin, const float* d_lambda, const float* d_weight,
-                           double* d_4b_direct, double* d_4b_trans, int* d_count, int ntypes) {
+__global__ void kernel_4b(
+    const PairData* d_pairs, int natoms, double rcout_4b,
+    double* d_4b_direct, double* d_4b_trans, int* d_count, int ntypes) {
     long long totalQuad = ((long long)natoms*(natoms-1)*(natoms-2)*(natoms-3))/24;
     long long idx = blockIdx.x * blockDim.x + threadIdx.x;
-    if(idx >= totalQuad) return;
+    if (idx >= totalQuad) return;
+
     int i, j, k, l;
     long long rem = idx;
     for(i = 0; i < natoms - 3; i++){
@@ -340,177 +356,38 @@ __global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout
         if(rem < count_k) break;
         rem -= count_k;
     }
+
     l = k + 1 + rem;
-    
-    int type_i = d_coords[i].atom_type;
-    int type_j = d_coords[j].atom_type;
-    int type_k = d_coords[k].atom_type;
-    int type_l = d_coords[l].atom_type;
-    
-    // Compute all six pair distances and check against rcout_4b.
-    // (i,j)
-    int a = (type_i < type_j) ? type_i : type_j;
-    int b = (type_i < type_j) ? type_j : type_i;
-    // float weight_ij = d_weight[a * ntypes + b];
-    float weight_ij = 1.0;
-    double rcin_ij = d_rcin[a * ntypes + b];
-    double dx = d_coords[i].x - d_coords[j].x;
-    double dy = d_coords[i].y - d_coords[j].y;
-    double dz = d_coords[i].z - d_coords[j].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_ij = sqrt(dx*dx + dy*dy + dz*dz);
-    printf("distance between atoms (rcin_ij = %f), 4B: %f, rcout_4b: %f\n", rcin_ij, dist_ij, rcout_4b);
-    if(dist_ij < rcin_ij) dist_ij = 1e8;
-    double weighted_ij = dist_ij * weight_ij;
-    if(dist_ij >= rcout_4b) return;
-    
-    // (i,k)
-    a = (type_i < type_k) ? type_i : type_k;
-    b = (type_i < type_k) ? type_k : type_i;
-    // float weight_ik = d_weight[a * ntypes + b];
-    float weight_ik = 1.0;
-    double rcin_ik = d_rcin[a * ntypes + b];
-    dx = d_coords[i].x - d_coords[k].x;
-    dy = d_coords[i].y - d_coords[k].y;
-    dz = d_coords[i].z - d_coords[k].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_ik = sqrt(dx*dx + dy*dy + dz*dz);
-    printf("distance between atoms (rcin_ij = %f), 4B: %f, rcout_4b: %f\n", rcin_ik, dist_ik, rcout_4b);
-    if(dist_ik < rcin_ik) dist_ik = 1e8;
-    double weighted_ik = dist_ik * weight_ik;
-    if(dist_ik >= rcout_4b) return;
-    
-    // (j,k)
-    a = (type_j < type_k) ? type_j : type_k;
-    b = (type_j < type_k) ? type_k : type_j;
-    // float weight_jk = d_weight[a * ntypes + b];
-    float weight_jk = 1.0;
-    double rcin_jk = d_rcin[a * ntypes + b];
-    dx = d_coords[j].x - d_coords[k].x;
-    dy = d_coords[j].y - d_coords[k].y;
-    dz = d_coords[j].z - d_coords[k].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_jk = sqrt(dx*dx + dy*dy + dz*dz);
-    if(dist_jk < rcin_jk) dist_jk = 1e8;
-    double weighted_jk = dist_jk * weight_jk;
-    if(dist_jk >= rcout_4b) return;
-    
-    // (i,l)
-    a = (type_i < type_l) ? type_i : type_l;
-    b = (type_i < type_l) ? type_l : type_i;
-    // float weight_il = d_weight[a * ntypes + b];
-    float weight_il = 1.0;
-    double rcin_il = d_rcin[a * ntypes + b];
-    dx = d_coords[i].x - d_coords[l].x;
-    dy = d_coords[i].y - d_coords[l].y;
-    dz = d_coords[i].z - d_coords[l].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_il = sqrt(dx*dx + dy*dy + dz*dz);
-    if(dist_il < rcin_il) dist_il = 1e8;
-    double weighted_il = dist_il * weight_il;
-    if(dist_il >= rcout_4b) return;
-    
-    // (j,l)
-    a = (type_j < type_l) ? type_j : type_l;
-    b = (type_j < type_l) ? type_l : type_j;
-    // float weight_jl = d_weight[a * ntypes + b];
-    float weight_jl = 1.0;
-    double rcin_jl = d_rcin[a * ntypes + b];
-    dx = d_coords[j].x - d_coords[l].x;
-    dy = d_coords[j].y - d_coords[l].y;
-    dz = d_coords[j].z - d_coords[l].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_jl = sqrt(dx*dx + dy*dy + dz*dz);
-    if(dist_jl < rcin_jl) dist_jl = 1e8;
-    double weighted_jl = dist_jl * weight_jl;
-    if(dist_jl >= rcout_4b) return;
-    
-    // (k,l)
-    a = (type_k < type_l) ? type_k : type_l;
-    b = (type_k < type_l) ? type_l : type_k;
-    // float weight_kl = d_weight[a * ntypes + b];
-    float weight_kl = 1.0;
-    double rcin_kl = d_rcin[a * ntypes + b];
-    dx = d_coords[k].x - d_coords[l].x;
-    dy = d_coords[k].y - d_coords[l].y;
-    dz = d_coords[k].z - d_coords[l].z;
-    dx = periodic_diff(dx, box.x);
-    dy = periodic_diff(dy, box.y);
-    dz = periodic_diff(dz, box.z);
-    double dist_kl = sqrt(dx*dx + dy*dy + dz*dz);
-    if(dist_kl < rcin_kl) dist_kl = 1e8;
-    double weighted_kl = dist_kl * weight_kl;
-    if(dist_kl >= rcout_4b) return;
-    
-    // If all conditions are met, store the six weighted distances and their transformed values.
+       // Get all six pair indices
+    long long idx_ij = get_pair_index(i, j, natoms);
+    long long idx_ik = get_pair_index(i, k, natoms);
+    long long idx_il = get_pair_index(i, l, natoms);
+    long long idx_jk = get_pair_index(j, k, natoms);
+    long long idx_jl = get_pair_index(j, l, natoms);
+    long long idx_kl = get_pair_index(k, l, natoms);
+
+    PairData pairs[6] = {
+        d_pairs[idx_ij], d_pairs[idx_ik], d_pairs[idx_il],
+        d_pairs[idx_jk], d_pairs[idx_jl], d_pairs[idx_kl]
+    };
+
+    // Check all pairs against 4-body cutoff
+    for (int p = 0; p < 6; p++) {
+        if (check_pair(pairs[p], rcout_4b)) return;
+    }
+
+    // Compute transformed values
+    double trans[6];
+    for (int p = 0; p < 6; p++) {
+        trans[p] = compute_trans(pairs[p], rcout_4b);
+    }
+
+    // Store results
     int index = atomicAdd(d_count, 1);
-    d_4b_direct[index*6 + 0] = weighted_ij;
-    d_4b_direct[index*6 + 1] = weighted_ik;
-    d_4b_direct[index*6 + 2] = weighted_jk;
-    d_4b_direct[index*6 + 3] = weighted_il;
-    d_4b_direct[index*6 + 4] = weighted_jl;
-    d_4b_direct[index*6 + 5] = weighted_kl;
-    
-    // For each pair compute the transformed value (similar to above)
-    double lambda_ij = d_lambda[((type_i < type_j) ? type_i : type_j)*ntypes + ((type_i < type_j) ? type_j : type_i)];
-    double x_min_val = exp(-rcin_ij / lambda_ij);
-    double x_max_val = exp(-rcout_4b / lambda_ij);
-    double x_avg = 0.5*(x_min_val + x_max_val);
-    double x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_ij = (exp(-weighted_ij / lambda_ij) - x_avg) / x_diff;
-    
-    double lambda_ik = d_lambda[((type_i < type_k) ? type_i : type_k)*ntypes + ((type_i < type_k) ? type_k : type_i)];
-    x_min_val = exp(-rcin_ik / lambda_ik);
-    x_max_val = exp(-rcout_4b / lambda_ik);
-    x_avg = 0.5*(x_min_val + x_max_val);
-    x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_ik = (exp(-weighted_ik / lambda_ik) - x_avg) / x_diff;
-    
-    double lambda_jk = d_lambda[((type_j < type_k) ? type_j : type_k)*ntypes + ((type_j < type_k) ? type_k : type_j)];
-    x_min_val = exp(-rcin_jk / lambda_jk);
-    x_max_val = exp(-rcout_4b / lambda_jk);
-    x_avg = 0.5*(x_min_val + x_max_val);
-    x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_jk = (exp(-weighted_jk / lambda_jk) - x_avg) / x_diff;
-    
-    double lambda_il = d_lambda[((type_i < type_l) ? type_i : type_l)*ntypes + ((type_i < type_l) ? type_l : type_i)];
-    x_min_val = exp(-rcin_il / lambda_il);
-    x_max_val = exp(-rcout_4b / lambda_il);
-    x_avg = 0.5*(x_min_val + x_max_val);
-    x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_il = (exp(-weighted_il / lambda_il) - x_avg) / x_diff;
-    
-    double lambda_jl = d_lambda[((type_j < type_l) ? type_j : type_l)*ntypes + ((type_j < type_l) ? type_l : type_j)];
-    x_min_val = exp(-rcin_jl / lambda_jl);
-    x_max_val = exp(-rcout_4b / lambda_jl);
-    x_avg = 0.5*(x_min_val + x_max_val);
-    x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_jl = (exp(-weighted_jl / lambda_jl) - x_avg) / x_diff;
-    
-    double lambda_kl = d_lambda[((type_k < type_l) ? type_k : type_l)*ntypes + ((type_k < type_l) ? type_l : type_k)];
-    x_min_val = exp(-rcin_kl / lambda_kl);
-    x_max_val = exp(-rcout_4b / lambda_kl);
-    x_avg = 0.5*(x_min_val + x_max_val);
-    x_diff = -0.5*(x_max_val - x_min_val);
-    double trans_kl = (exp(-weighted_kl / lambda_kl) - x_avg) / x_diff;
-    
-    int base = index * 6;
-    d_4b_trans[base + 0] = trans_ij;
-    d_4b_trans[base + 1] = trans_ik;
-    d_4b_trans[base + 2] = trans_jk;
-    d_4b_trans[base + 3] = trans_il;
-    d_4b_trans[base + 4] = trans_jl;
-    d_4b_trans[base + 5] = trans_kl;
+    for (int p = 0; p < 6; p++) {
+        d_4b_direct[index*6 + p] = pairs[p].dist * pairs[p].weight;
+        d_4b_trans[index*6 + p] = trans[p];
+    }
 }
 
 void write_results_to_file(const std::vector<double>& h_2b_direct, 
@@ -740,6 +617,9 @@ int main(int argc, char* argv[]) {
     int max_2b = (natoms*(natoms-1))/2;
     int max_3b = (natoms*(natoms-1)*(natoms-2))/6;
     int max_4b = (natoms*(natoms-1)*(natoms-2)*(natoms-3))/24;
+    // int max_2b = 10000;
+    // int max_3b = 10000;
+    // int max_4b = 10000;
     
     double* d_2b_direct; cudaMalloc((void**)&d_2b_direct, max_2b * sizeof(double));
     double* d_2b_trans;  cudaMalloc((void**)&d_2b_trans,  max_2b * sizeof(double));
@@ -759,41 +639,36 @@ int main(int argc, char* argv[]) {
     // === Launch the kernels ===
     // (Assuming your CUDA kernels kernel_2b, kernel_3b, and kernel_4b are defined elsewhere.)
     // For 2-body clusters, use a 2D grid:
+    // ==== AFTER COPYING DATA TO DEVICE ====
+
+    // --- Precompute pairs ---
+    long long totalPairs = ((long long)natoms * (natoms - 1)) / 2;
+    PairData* d_pairs;
+    cudaMalloc(&d_pairs, totalPairs * sizeof(PairData));
+
+    int threadsPairs = 256;
+    long long blocksPairs = (totalPairs + threadsPairs - 1) / threadsPairs;
+    kernel_pairs<<<blocksPairs, threadsPairs>>>(d_coords, natoms, h_box, d_rcin, d_lambda, d_weight, d_pairs, ntypes);
+
+    cudaDeviceSynchronize();
+
+    // --- Launch 2-body kernel (unchanged) ---
     dim3 block2(16, 16);
     dim3 grid2((natoms + block2.x - 1)/block2.x, (natoms + block2.y - 1)/block2.y);
     kernel_2b<<<grid2, block2>>>(d_coords, natoms, h_box, rcout_2b, d_rcin, d_lambda, d_weight,
                                  d_2b_direct, d_2b_trans, d_count_2b, ntypes);
-    cudaError_t error = cudaGetLastError();
-    if (error != cudaSuccess) {
-        cerr << "CUDA kernel launch failed for 2b: " << cudaGetErrorString(error) << endl;
-        return 1;
-    }
 
-    cudaDeviceSynchronize();
-    
-    // For 3-body clusters, launch a 1D grid:
+    // --- Launch 3-body kernel (MODIFIED) ---
     int threads3 = 256;
     int blocks3 = (max_3b + threads3 - 1) / threads3;
-    kernel_3b<<<blocks3, threads3>>>(d_coords, natoms, h_box, rcout_3b, d_rcin, d_lambda, d_weight,
-                                     d_3b_direct, d_3b_trans, d_count_3b, ntypes);
-    cudaError_t error2 = cudaGetLastError();
-    if (error != cudaSuccess) {
-        cerr << "CUDA kernel launch failed for 3b: " << cudaGetErrorString(error2) << endl;
-        return 1;
-    }
-    cudaDeviceSynchronize();
-    
-    // For 4-body clusters, launch a 1D grid:
+    kernel_3b<<<blocks3, threads3>>>(d_pairs, natoms, rcout_3b, d_3b_direct, d_3b_trans, d_count_3b, ntypes);
+
+    // --- Launch 4-body kernel (MODIFIED) ---
     int threads4 = 256;
     int blocks4 = (max_4b + threads4 - 1) / threads4;
-    kernel_4b<<<blocks4, threads4>>>(d_coords, natoms, h_box, rcout_4b, d_rcin, d_lambda, d_weight,
-                                     d_4b_direct, d_4b_trans, d_count_4b, ntypes);
-    cudaError_t error3 = cudaGetLastError();
-    if (error != cudaSuccess) {
-        cerr << "CUDA kernel launch failed for 4b: " << cudaGetErrorString(error3) << endl;
-        return 1;
-    }
-    cudaDeviceSynchronize();
+    kernel_4b<<<blocks4, threads4>>>(d_pairs, natoms, rcout_4b, d_4b_direct, d_4b_trans, d_count_4b, ntypes);
+
+    // ==== REST OF YOUR CODE (error checks, memory copies, cleanup) ====
     
     // === Copy results back to host ===
     int h_count_2b, h_count_3b, h_count_4b;
@@ -840,6 +715,9 @@ int main(int argc, char* argv[]) {
 
     
     // === Free device and host memory ===
+    cudaFree(d_pairs);  // Add this line
+    cudaFree(d_coords);
+    // ... rest of cleanup ...
     cudaFree(d_coords);
     cudaFree(d_rcin);
     cudaFree(d_lambda);
