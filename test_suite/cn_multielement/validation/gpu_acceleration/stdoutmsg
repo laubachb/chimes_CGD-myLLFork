@@ -1,0 +1,40 @@
+Code compiled in MPI mode. Will run on 8 processor(s).
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 1910 tasks across 8 processors
+000-000.2b_clu-s.hist Completion percent: 0 0 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 9 23 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 19 46 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 28 69 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 38 92 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 48 115 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 57 138 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 67 161 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 77 184 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 86 207 of 238 assigned
+000-000.2b_clu-s.hist Completion percent: 96 230 of 238 assigned
+Loop done, printing results: 
+Counted nsamples: 427810
+Printed.
+Dividing 41664 tasks across 8 processors
+000-000.3b_clu-s.hist Completion percent: 0 0 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 9 520 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 19 1040 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 29 1560 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 39 2080 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 49 2600 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 59 3120 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 69 3640 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 79 4160 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 89 4680 of 5207 assigned
+000-000.3b_clu-s.hist Completion percent: 99 5200 of 5207 assigned
+Loop done, printing results: 
+Counted nsamples: 203421876
+Printed.
+Dividing 635376 tasks across 8 processors
+000-000.4b_clu-s.hist Completion percent: 0 0 of 79421 assigned
+000-000.4b_clu-s.hist Completion percent: 9 7942 of 79421 assigned
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 21148827.0 ON gl3017 CANCELLED AT 2025-02-13T17:11:51 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 21148827 ON gl3017 CANCELLED AT 2025-02-13T17:11:51 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: forcing job termination
