@@ -4,8 +4,8 @@
 ################################
 
 EMAIL_ADD    = blaubach@umich.edu
-HPC_NAME     = LLNL-LC
-TRAJ_PATH    = "/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/test/data.xyzf"
+HPC_NAME     = GREATLAKES
+TRAJ_PATH    = "data.xyzf"
 
 ################################
 ##### Parameters for get_clusters.cpp
@@ -16,7 +16,7 @@ TRAJ_PATH    = "/g/g10/laubach2/chimes_CGD-myLLFork/test_suite/cn_multielement/t
 RCOUT_2B = 5.0
 RCOUT_3B = 5.0
 RCOUT_4B = 4.5
-N_FRAMES = 20
+N_FRAMES = 1
 
 ################################
 ##### System specific parameters for get_clusters.cpp
