@@ -125,9 +125,14 @@ __global__ void kernel_2b(const xyz* d_coords, int natoms, xyz box, double rcout
     dy = periodic_diff(dy, box.y);
     dz = periodic_diff(dz, box.z);
     double dist = sqrt(dx*dx + dy*dy + dz*dz);
+    printf("distance between atoms (rcin = %f): %f, rcout_2b: %f\n", rcin, dist, rcout_2b);
+    // if (dist < rcout_2b) {
+    //     printf("Cluster formed!\n");
+    // }
     if(dist < rcin) { 
         dist = 1e8;  // flag error condition 
     }
+
     double weighted_dist = dist * weight;
     
     // Compute the transformation using the Morse–style formula:
@@ -449,6 +454,69 @@ __global__ void kernel_4b(const xyz* d_coords, int natoms, xyz box, double rcout
     d_4b_trans[base + 5] = trans_kl;
 }
 
+void write_results_to_file(const std::vector<double>& h_2b_direct, 
+                            const std::vector<double>& h_2b_trans,
+                            const std::vector<double>& h_3b_direct, 
+                            const std::vector<double>& h_3b_trans,
+                            const std::vector<double>& h_4b_direct, 
+                            const std::vector<double>& h_4b_trans) {
+    // Open output files for 2-body, 3-body, and 4-body results
+    std::ofstream out_2b_direct("2b_direct.txt");
+    std::ofstream out_2b_trans("2b_trans.txt");
+    std::ofstream out_3b_direct("3b_direct.txt");
+    std::ofstream out_3b_trans("3b_trans.txt");
+    std::ofstream out_4b_direct("4b_direct.txt");
+    std::ofstream out_4b_trans("4b_trans.txt");
+
+    // Write the 2-body results
+    for (size_t i = 0; i < h_2b_direct.size(); ++i) {
+        out_2b_direct << h_2b_direct[i] << std::endl;
+    }
+    for (size_t i = 0; i < h_2b_trans.size(); ++i) {
+        out_2b_trans << h_2b_trans[i] << std::endl;
+    }
+
+    // Write the 3-body results
+    for (size_t i = 0; i < h_3b_direct.size(); i += 3) {
+        out_3b_direct << h_3b_direct[i] << " "
+                      << h_3b_direct[i+1] << " "
+                      << h_3b_direct[i+2] << std::endl;
+    }
+    for (size_t i = 0; i < h_3b_trans.size(); i += 3) {
+        out_3b_trans << h_3b_trans[i] << " "
+                     << h_3b_trans[i+1] << " "
+                     << h_3b_trans[i+2] << std::endl;
+    }
+
+    // Write the 4-body results
+    for (size_t i = 0; i < h_4b_direct.size(); i += 6) {
+        out_4b_direct << h_4b_direct[i]   << " "
+                      << h_4b_direct[i+1] << " "
+                      << h_4b_direct[i+2] << " "
+                      << h_4b_direct[i+3] << " "
+                      << h_4b_direct[i+4] << " "
+                      << h_4b_direct[i+5] << std::endl;
+    }
+    for (size_t i = 0; i < h_4b_trans.size(); i += 6) {
+        out_4b_trans << h_4b_trans[i]   << " "
+                     << h_4b_trans[i+1] << " "
+                     << h_4b_trans[i+2] << " "
+                     << h_4b_trans[i+3] << " "
+                     << h_4b_trans[i+4] << " "
+                     << h_4b_trans[i+5] << std::endl;
+    }
+
+    // Close the output files
+    out_2b_direct.close();
+    out_2b_trans.close();
+    out_3b_direct.close();
+    out_3b_trans.close();
+    out_4b_direct.close();
+    out_4b_trans.close();
+
+    std::cout << "Results written to files." << std::endl;
+}
+
 // ---------------------------------------------------------------------
 // Host Code: main()
 // (Here we assume that the configuration file reading and coordinate file reading
@@ -477,6 +545,8 @@ int main(int argc, char* argv[]) {
     double rcout_3b = stod(config["RCOUT_3B"]);
     double rcout_4b = stod(config["RCOUT_4B"]);
     int n_frames = stoi(config["N_FRAMES"]);
+    cout << "RCOUT_2B: " << rcout_2b << ", RCOUT_3B: " << rcout_3b
+     << ", RCOUT_4B: " << rcout_4b << endl;
     
     // Extract system-specific parameters
     vector<string> atom_types = parseStringList(config["ATOM_TYPES"]);
@@ -586,9 +656,12 @@ int main(int argc, char* argv[]) {
     cudaMemcpy(d_weight, h_weight.data(), pairCount * sizeof(float), cudaMemcpyHostToDevice);
     
     // Preallocate maximum output space for clusters.
-    int max_2b = (natoms*(natoms-1))/2;
-    int max_3b = (natoms*(natoms-1)*(natoms-2))/6;
-    int max_4b = (natoms*(natoms-1)*(natoms-2)*(natoms-3))/24;
+    // int max_2b = (natoms*(natoms-1))/2;
+    // int max_3b = (natoms*(natoms-1)*(natoms-2))/6;
+    // int max_4b = (natoms*(natoms-1)*(natoms-2)*(natoms-3))/24;
+    int max_2b = 10000;
+    int max_3b = 10000;
+    int max_4b = 10000;
     
     double* d_2b_direct; cudaMalloc((void**)&d_2b_direct, max_2b * sizeof(double));
     double* d_2b_trans;  cudaMalloc((void**)&d_2b_trans,  max_2b * sizeof(double));
@@ -612,6 +685,12 @@ int main(int argc, char* argv[]) {
     dim3 grid2((natoms + block2.x - 1)/block2.x, (natoms + block2.y - 1)/block2.y);
     kernel_2b<<<grid2, block2>>>(d_coords, natoms, h_box, rcout_2b, d_rcin, d_lambda, d_weight,
                                  d_2b_direct, d_2b_trans, d_count_2b, ntypes);
+    cudaError_t error = cudaGetLastError();
+    if (error != cudaSuccess) {
+        cerr << "CUDA kernel launch failed for 2b: " << cudaGetErrorString(error) << endl;
+        return 1;
+    }
+
     cudaDeviceSynchronize();
     
     // For 3-body clusters, launch a 1D grid:
@@ -619,6 +698,11 @@ int main(int argc, char* argv[]) {
     int blocks3 = (max_3b + threads3 - 1) / threads3;
     kernel_3b<<<blocks3, threads3>>>(d_coords, natoms, h_box, rcout_3b, d_rcin, d_lambda, d_weight,
                                      d_3b_direct, d_3b_trans, d_count_3b, ntypes);
+    cudaError_t error2 = cudaGetLastError();
+    if (error != cudaSuccess) {
+        cerr << "CUDA kernel launch failed for 3b: " << cudaGetErrorString(error2) << endl;
+        return 1;
+    }
     cudaDeviceSynchronize();
     
     // For 4-body clusters, launch a 1D grid:
@@ -626,6 +710,11 @@ int main(int argc, char* argv[]) {
     int blocks4 = (max_4b + threads4 - 1) / threads4;
     kernel_4b<<<blocks4, threads4>>>(d_coords, natoms, h_box, rcout_4b, d_rcin, d_lambda, d_weight,
                                      d_4b_direct, d_4b_trans, d_count_4b, ntypes);
+    cudaError_t error3 = cudaGetLastError();
+    if (error != cudaSuccess) {
+        cerr << "CUDA kernel launch failed for 4b: " << cudaGetErrorString(error3) << endl;
+        return 1;
+    }
     cudaDeviceSynchronize();
     
     // === Copy results back to host ===
@@ -648,8 +737,29 @@ int main(int argc, char* argv[]) {
     vector<double> h_4b_trans(h_count_4b * 6);
     cudaMemcpy(h_4b_direct.data(), d_4b_direct, h_count_4b * 6 * sizeof(double), cudaMemcpyDeviceToHost);
     cudaMemcpy(h_4b_trans.data(), d_4b_trans, h_count_4b * 6 * sizeof(double), cudaMemcpyDeviceToHost);
+
+    cudaError_t err;
+
+    err = cudaMemcpy(&h_count_2b, d_count_2b, sizeof(int), cudaMemcpyDeviceToHost);
+    if (err != cudaSuccess) {
+        cerr << "CUDA memcpy failed for 2b count: " << cudaGetErrorString(err) << endl;
+        return 1;
+    }
+
+    err = cudaMemcpy(h_2b_direct.data(), d_2b_direct, h_count_2b * sizeof(double), cudaMemcpyDeviceToHost);
+    if (err != cudaSuccess) {
+        cerr << "CUDA memcpy failed for 2b direct: " << cudaGetErrorString(err) << endl;
+        return 1;
+    }
+
     
+    cout << "h_count_2b: " << h_count_2b << endl;
+    cout << "h_count_3b: " << h_count_3b << endl;
+    cout << "h_count_4b: " << h_count_4b << endl;
+
     // (You would now write the output to disk as needed.)
+    write_results_to_file(h_2b_direct, h_2b_trans, h_3b_direct, h_3b_trans, h_4b_direct, h_4b_trans);
+
     
     // === Free device and host memory ===
     cudaFree(d_coords);

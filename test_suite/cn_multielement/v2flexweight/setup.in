@@ -13,9 +13,9 @@ TRAJ_PATH    = "test.xyz"
 ##### - RCOUT_2B, RCOUT_3B, RCOUT_4B
 ################################
 
-RCOUT_2B = 5.0
-RCOUT_3B = 5.0
-RCOUT_4B = 4.5
+RCOUT_2B = 3.0
+RCOUT_3B = 3.0
+RCOUT_4B = 2.5
 N_FRAMES = 1
 
 ################################
