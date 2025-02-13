@@ -35,6 +35,50 @@ struct xyz {
     int atom_type;
 };
 
+int split_line(string line, vector<string> & items){
+    // Break a line up into tokens based on space separators.
+    // Returns the number of tokens parsed.
+    
+    string       contents;
+    stringstream sstream;
+
+    // Strip comments beginining with ! or ## and terminal new line
+
+    int pos = line.find('!');
+      
+    if ( pos != string::npos ) 
+        line.erase(pos, line.length() - pos);
+
+    pos = line.find("##");
+    if ( pos != string::npos ) 
+        line.erase(pos, line.length()-pos);
+
+    pos = line.find('\n');
+    if ( pos != string::npos ) 
+        line.erase(pos, 1);
+
+    sstream.str(line);
+     
+    items.clear();
+
+    while ( sstream >> contents ) 
+        items.push_back(contents);
+
+    return items.size();
+}
+
+bool get_next_line(istream& str, string & line){
+    // Read a line and return it, with error checking.
+    
+        getline(str, line);
+
+        if(!str)
+            return false;
+    
+    return true;
+}
+
+
 //---------------------------------------------------------------------
 // Read the configuration file into an unordered_map<string,string>
 unordered_map<string, string> readConfig(const string &filename) {
@@ -121,9 +165,11 @@ __global__ void kernel_2b(const xyz* d_coords, int natoms, xyz box, double rcout
     double dx = d_coords[i].x - d_coords[j].x;
     double dy = d_coords[i].y - d_coords[j].y;
     double dz = d_coords[i].z - d_coords[j].z;
+    printf("Coords: %f, %f, %f\n", d_coords[i].x, d_coords[i].y, d_coords[i].z);
     dx = periodic_diff(dx, box.x);
     dy = periodic_diff(dy, box.y);
     dz = periodic_diff(dz, box.z);
+    printf("Distances: %f, %f, %f\n", dx, dy, dz);
     double dist = sqrt(dx*dx + dy*dy + dz*dz);
     printf("distance between atoms (rcin = %f): %f, rcout_2b: %f\n", rcin, dist, rcout_2b);
     // if (dist < rcout_2b) {
@@ -569,28 +615,50 @@ int main(int argc, char* argv[]) {
     cout << "\nLAMBDA_SET: ";
     for (double l : lambda_set) cout << l << " ";
     cout << "\nALPHA: " << alpha << endl;
+
+    // Read in data file
+    ifstream coordstream;
+    coordstream.open(traj_path);
+    if (!coordstream.good())
+    {
+        std::cout << "ERROR: Cannot open xyz file " << traj_path << endl;
+        exit(0);
+    }
     
     // === Set up the system ===
     // For demonstration, we assume a fixed number of atoms.
-    int natoms = 216;
+    string  line;
+    vector<string> line_contents;
+    int     ncontents;
+
+    get_next_line(coordstream, line);
+    ncontents = split_line(line, line_contents);
+
+    int natoms = stoi(line_contents[0]);
     
     // Set up box dimensions (example values)
-    xyz h_box;
-    h_box.x = 13.0619797427;
-    h_box.y = 13.0619797427;
-    h_box.z = 13.0619797427;
+    xyz     h_box;
+    
+    get_next_line(coordstream, line);
+    ncontents = split_line(line, line_contents);
+    
+    h_box.x = stod(line_contents[1]);
+    h_box.y = stod(line_contents[5]);
+    h_box.z = stod(line_contents[9]);
     
     // Allocate and (in a real code) fill the host coordinate array.
-    // Here we simply allocate and assign dummy positions.
+
     xyz* h_coords = new xyz[natoms];
     for (int i = 0; i < natoms; i++) {
-        h_coords[i].x = 0.0;  // Replace with real coordinate data
-        h_coords[i].y = 0.0;
-        h_coords[i].z = 0.0;
+        get_next_line(coordstream, line);
+        ncontents = split_line(line, line_contents);
+        h_coords[i].x = stod(line_contents[1]);  // Replace with real coordinate data
+        h_coords[i].y = stod(line_contents[2]);
+        h_coords[i].z = stod(line_contents[3]);
         // For example, assign atom types: first half type 0, second half type 1.
-        h_coords[i].atom_type = (i < natoms/2) ? 0 : 1;
+        h_coords[i].atom_type = 0;
     }
-    
+
     // === Build host arrays for the atom map parameters ===
     // We need arrays of size ntypes*ntypes. For two atom types (e.g. "C" and "N")
     // the unique pairs (with i<=j) are:
