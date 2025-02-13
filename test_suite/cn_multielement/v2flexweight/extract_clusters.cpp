@@ -470,6 +470,13 @@ int main(int argc, char* argv[]) {
     vector<double> dist_2b_trans(1);
     vector<double> dist_3b_trans(3);
     vector<double> dist_4b_trans(6);
+
+    std::cout << "Beginning computation\n";
+
+	/* get start timestamp */
+ 	struct timeval tv;
+    	gettimeofday(&tv,NULL);
+    	uint64_t start = tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
  
 for (int i = 0; i < natoms; i++)
 {
@@ -557,6 +564,13 @@ for (int i = 0; i < natoms; i++)
         }
     }
 }
+	/* get elapsed time */
+    	gettimeofday(&tv,NULL);
+    	uint64_t end = tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
+    	uint64_t elapsed = end - start;
+
+	std::cout << "@@@ Elapsed time (usec): %lld\n", elapsed;
+	std::cout << "Processing complete.  Preparing output.\n";
     std::cout << "   ...Calc done, printing results..." << endl;
     
     /////////////////////////////////////////////
