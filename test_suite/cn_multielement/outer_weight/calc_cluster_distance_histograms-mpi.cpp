@@ -159,7 +159,7 @@ double get_cluster_weight(const string &comp)
     double fracN = double(countN) / total;
     // Linear interpolation:
     // If fracN==1.0 -> weight = 2.0; if fracN==0.0 -> weight = 0.1.
-    double weight = 0.1 + fracN * (2.0 - 0.1);
+    double weight = 0.75 + fracN * (1.25 - 0.75);
     return weight;
 }
 
