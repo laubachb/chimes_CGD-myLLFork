@@ -28,7 +28,7 @@ fi
 
 if [ 1 -eq 1 ] ; then
     #time for i in `ls training_data_*xyzf`
-    for i in `ls training_data_#019.xyzf`
+    for i in `ls test.xyz`
     do
         tag=${i%*.xyzf}
         tag=${tag#*#}
@@ -37,7 +37,7 @@ if [ 1 -eq 1 ] ; then
     
         cp $i test.xyz
     
-        time ./extract_clusters setup.in
+        time ./extract_clusters
         
         for j in `ls 2b_clu-*.txt 3b_clu-*.txt 4b_clu-*.txt`
         do
