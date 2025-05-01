@@ -1,0 +1,2820 @@
+=== Starting execution at 2025-05-01 13:16:27 ===
+Current directory: /p/lustre2/laubach2/chimes_CGD-myLLFork/example
+User: laubach2
+Host: ruby961
+---------------------------------------
+Source directory: /p/lustre2/laubach2/chimes_CGD-myLLFork/src/
+Validating script: /p/lustre2/laubach2/chimes_CGD-myLLFork/src/get_clusters.sh
+Validating script: /p/lustre2/laubach2/chimes_CGD-myLLFork/src/get_histograms.sh
+---------------------------------------
+Starting get_clusters.sh with completion monitoring...
+Full command: sh "/p/lustre2/laubach2/chimes_CGD-myLLFork/src/get_clusters.sh"
+get_clusters.sh main PID: 1544490
+Tracking PIDs: 1544490 
+Breaking apart file:  training_data.xyzf
+WARNING: Converting forces from Hartree/bohr to simulation units (kca/mol/Ang)
+Working on tag: 000
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.030s
+user	0m0.003s
+sys	0m0.008s
+Working on tag: 001
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.029s
+user	0m0.005s
+sys	0m0.006s
+Working on tag: 002
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.030s
+user	0m0.002s
+sys	0m0.010s
+Working on tag: 003
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.028s
+user	0m0.004s
+sys	0m0.006s
+Working on tag: 004
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.027s
+user	0m0.004s
+sys	0m0.006s
+Working on tag: 005
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.027s
+user	0m0.002s
+sys	0m0.007s
+Working on tag: 006
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.031s
+user	0m0.006s
+sys	0m0.004s
+Working on tag: 007
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.030s
+user	0m0.004s
+sys	0m0.006s
+Working on tag: 008
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.027s
+user	0m0.004s
+sys	0m0.005s
+Working on tag: 009
+INNER_CUTOFF: 0
+MORSE_LAMBDA: 1
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Read boxdims: 13.6672 13.6672 13.6672
+   ...Calc done, printing results...
+
+real	0m0.027s
+user	0m0.004s
+sys	0m0.006s
+
+real	0m0.623s
+user	0m0.069s
+sys	0m0.147s
+---------------------------------------
+get_clusters.sh fully completed with exit code: 0
+Starting get_histograms.sh after confirmed completion of get_clusters.sh
+---------------------------------------
+Starting get_histograms.sh with completion monitoring...
+Full command: sh "/p/lustre2/laubach2/chimes_CGD-myLLFork/src/get_histograms.sh"
+get_histograms.sh main PID: 1544673
+Tracking PIDs: 1544673 
+Compiling the code...
+Building the submit script and submitting...
+  .... Finished writing the last block 0 cmd file ... submitting!
+  with contents:
+#!/bin/bash                                                        
+                                                                   
+#SBATCH -J block-0                                          
+#SBATCH --nodes 1                                       
+#SBATCH --ntasks-per-node 36                               
+#SBATCH -t 1:00:00                                          
+#SBATCH -V                                                         
+#SBATCH -o stdoutmsg                                               
+#SBATCH -p pdebug                            
+#SBATCH -A iap                              
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 000 000 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 001 001 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 002 002 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 003 003 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 004 004 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 005 005 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 006 006 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 007 007 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 008 008 s >> cgd_fingerprint.log
+time srun -n 36 ./calc_cluster_distance_histograms-mpi 009 009 s >> cgd_fingerprint.log
+Submitted batch job 4527532
+---------------------------------------
+get_histograms.sh fully completed with exit code: 0
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 387 tasks across 36 processors
+000-000.2b_clu-s.hist Completion percent: 0 0 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 10 1 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 20 2 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 30 3 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 40 4 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 50 5 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 60 6 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 70 7 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 80 8 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 90 9 of 10 assigned
+000-000.2b_clu-s.hist Completion percent: 100 10 of 10 assigned
+Loop done, printing results: 
+Counted nsamples: 4191
+Printed.
+Dividing 821 tasks across 36 processors
+000-000.3b_clu-s.hist Completion percent: 0 0 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 9 2 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 18 4 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 27 6 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 36 8 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 45 10 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 54 12 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 63 14 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 72 16 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 81 18 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 90 20 of 22 assigned
+000-000.3b_clu-s.hist Completion percent: 100 22 of 22 assigned
+Loop done, printing results: 
+Counted nsamples: 18607
+Printed.
+Dividing 324 tasks across 36 processors
+000-000.4b_clu-s.hist Completion percent: 0 0 of 8 assigned
+000-000.4b_clu-s.hist Completion percent: 12 1 of 8 assigned
+000-000.4b_clu-s.hist Completion percent: 25 2 of 8 assigned
+000-000.4b_clu-s.hist Completion percent: 37 3 of 8 assigned
+000-000.4b_clu-s.hist Completion percent: 50 4 of 8 assigned
+000-000.4b_clu-s.hist Completion percent: 62 5 of 8 assigned
+000-000.4b_clu-s.hist Completion percent: 75 6 of 8 assigned
+000-000.4b_clu-s.hist Completion percent: 87 7 of 8 assigned
+000-000.4b_clu-s.hist Completion percent: 100 8 of 8 assigned
+Loop done, printing results: 
+Counted nsamples: 2871
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 419 tasks across 36 processors
+001-001.2b_clu-s.hist Completion percent: 0 0 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 9 1 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 18 2 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 27 3 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 36 4 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 45 5 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 54 6 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 63 7 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 72 8 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 81 9 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 90 10 of 11 assigned
+001-001.2b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4950
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Printed.
+Dividing 972 tasks across 36 processors
+001-001.3b_clu-s.hist Completion percent: 0 0 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 7 2 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 15 4 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 23 6 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 30 8 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 38 10 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 46 12 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 53 14 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 61 16 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 69 18 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 76 20 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 84 22 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 92 24 of 26 assigned
+001-001.3b_clu-s.hist Completion percent: 100 26 of 26 assigned
+Loop done, printing results: 
+Counted nsamples: 25866
+Printed.
+Dividing 422 tasks across 36 processors
+001-001.4b_clu-s.hist Completion percent: 0 0 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 9 1 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 18 2 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 27 3 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 36 4 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 45 5 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 54 6 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 63 7 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 72 8 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 81 9 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 90 10 of 11 assigned
+001-001.4b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4986
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 399 tasks across 36 processors
+002-002.2b_clu-s.hist Completion percent: 0 0 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 9 1 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 18 2 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 27 3 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 36 4 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 45 5 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 54 6 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 63 7 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 72 8 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 81 9 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 90 10 of 11 assigned
+002-002.2b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4710
+Printed.
+Dividing 855 tasks across 36 processors
+002-002.3b_clu-s.hist Completion percent: 0 0 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 8 2 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 17 4 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 26 6 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 34 8 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 43 10 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 52 12 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 60 14 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 69 16 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 78 18 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 86 20 of 23 assigned
+002-002.3b_clu-s.hist Completion percent: 95 22 of 23 assigned
+Loop done, printing results: 
+Counted nsamples: 20220
+Printed.
+Dividing 345 tasks across 36 processors
+002-002.4b_clu-s.hist Completion percent: 0 0 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 11 1 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 22 2 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 33 3 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 44 4 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 55 5 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 66 6 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 77 7 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 88 8 of 9 assigned
+002-002.4b_clu-s.hist Completion percent: 100 9 of 9 assigned
+Loop done, printing results: 
+Counted nsamples: 3395
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 390 tasks across 36 processors
+003-003.2b_clu-s.hist Completion percent: 0 0 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 10 1 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 20 2 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 30 3 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 40 4 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 50 5 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 60 6 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 70 7 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 80 8 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 90 9 of 10 assigned
+003-003.2b_clu-s.hist Completion percent: 100 10 of 10 assigned
+Loop done, printing results: 
+Counted nsamples: 4224
+Printed.
+Dividing 820 tasks across 36 processors
+003-003.3b_clu-s.hist Completion percent: 0 0 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 9 2 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 18 4 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 27 6 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 36 8 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 45 10 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 54 12 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 63 14 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 72 16 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 81 18 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 90 20 of 22 assigned
+003-003.3b_clu-s.hist Completion percent: 100 22 of 22 assigned
+Loop done, printing results: 
+Counted nsamples: 18584
+Printed.
+Dividing 357 tasks across 36 processors
+003-003.4b_clu-s.hist Completion percent: 0 0 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 11 1 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 22 2 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 33 3 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 44 4 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 55 5 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 66 6 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 77 7 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 88 8 of 9 assigned
+003-003.4b_clu-s.hist Completion percent: 100 9 of 9 assigned
+Loop done, printing results: 
+Counted nsamples: 3515
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 403 tasks across 36 processors
+004-004.2b_clu-s.hist Completion percent: 0 0 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 9 1 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 18 2 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 27 3 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 36 4 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 45 5 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 54 6 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 63 7 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 72 8 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 81 9 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 90 10 of 11 assigned
+004-004.2b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4758
+Printed.
+Dividing 872 tasks across 36 processors
+004-004.3b_clu-s.hist Completion percent: 0 0 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 8 2 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 16 4 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 25 6 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 33 8 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 41 10 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 50 12 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 58 14 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 66 16 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 75 18 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 83 20 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 91 22 of 24 assigned
+004-004.3b_clu-s.hist Completion percent: 100 24 of 24 assigned
+Loop done, printing results: 
+Counted nsamples: 21475
+Printed.
+Dividing 354 tasks across 36 processors
+004-004.4b_clu-s.hist Completion percent: 0 0 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 11 1 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 22 2 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 33 3 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 44 4 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 55 5 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 66 6 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 77 7 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 88 8 of 9 assigned
+004-004.4b_clu-s.hist Completion percent: 100 9 of 9 assigned
+Loop done, printing results: 
+Counted nsamples: 3485
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 381 tasks across 36 processors
+005-005.2b_clu-s.hist Completion percent: 0 0 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 10 1 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 20 2 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 30 3 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 40 4 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 50 5 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 60 6 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 70 7 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 80 8 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 90 9 of 10 assigned
+005-005.2b_clu-s.hist Completion percent: 100 10 of 10 assigned
+Loop done, printing results: 
+Counted nsamples: 4125
+Printed.
+Dividing 782 tasks across 36 processors
+005-005.3b_clu-s.hist Completion percent: 0 0 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 9 2 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 19 4 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 28 6 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 38 8 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 47 10 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 57 12 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 66 14 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 76 16 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 85 18 of 21 assigned
+005-005.3b_clu-s.hist Completion percent: 95 20 of 21 assigned
+Loop done, printing results: 
+Counted nsamples: 16951
+Printed.
+Dividing 333 tasks across 36 processors
+005-005.4b_clu-s.hist Completion percent: 0 0 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 11 1 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 22 2 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 33 3 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 44 4 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 55 5 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 66 6 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 77 7 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 88 8 of 9 assigned
+005-005.4b_clu-s.hist Completion percent: 100 9 of 9 assigned
+Loop done, printing results: 
+Counted nsamples: 3275
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 399 tasks across 36 processors
+006-006.2b_clu-s.hist Completion percent: 0 0 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 9 1 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 18 2 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 27 3 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 36 4 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 45 5 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 54 6 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 63 7 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 72 8 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 81 9 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 90 10 of 11 assigned
+006-006.2b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4710
+Printed.
+Dividing 889 tasks across 36 processors
+006-006.3b_clu-s.hist Completion percent: 0 0 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 8 2 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 16 4 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 25 6 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 33 8 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 41 10 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 50 12 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 58 14 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 66 16 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 75 18 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 83 20 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 91 22 of 24 assigned
+006-006.3b_clu-s.hist Completion percent: 100 24 of 24 assigned
+Loop done, printing results: 
+Counted nsamples: 21900
+Printed.
+Dividing 422 tasks across 36 processors
+006-006.4b_clu-s.hist Completion percent: 0 0 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 9 1 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 18 2 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 27 3 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 36 4 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 45 5 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 54 6 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 63 7 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 72 8 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 81 9 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 90 10 of 11 assigned
+006-006.4b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4986
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 403 tasks across 36 processors
+007-007.2b_clu-s.hist Completion percent: 0 0 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 9 1 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 18 2 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 27 3 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 36 4 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 45 5 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 54 6 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 63 7 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 72 8 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 81 9 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 90 10 of 11 assigned
+007-007.2b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4758
+Printed.
+Dividing 922 tasks across 36 processors
+007-007.3b_clu-s.hist Completion percent: 0 0 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 8 2 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 16 4 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 24 6 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 32 8 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 40 10 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 48 12 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 56 14 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 64 16 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 72 18 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 80 20 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 88 22 of 25 assigned
+007-007.3b_clu-s.hist Completion percent: 96 24 of 25 assigned
+Loop done, printing results: 
+Counted nsamples: 23621
+Printed.
+Dividing 331 tasks across 36 processors
+007-007.4b_clu-s.hist Completion percent: 0 0 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 11 1 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 22 2 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 33 3 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 44 4 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 55 5 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 66 6 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 77 7 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 88 8 of 9 assigned
+007-007.4b_clu-s.hist Completion percent: 100 9 of 9 assigned
+Loop done, printing results: 
+Counted nsamples: 3255
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 422 tasks across 36 processors
+008-008.2b_clu-s.hist Completion percent: 0 0 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 9 1 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 18 2 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 27 3 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 36 4 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 45 5 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 54 6 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 63 7 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 72 8 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 81 9 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 90 10 of 11 assigned
+008-008.2b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4986
+Printed.
+Dividing 930 tasks across 36 processors
+008-008.3b_clu-s.hist Completion percent: 0 0 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 8 2 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 16 4 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 24 6 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 32 8 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 40 10 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 48 12 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 56 14 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 64 16 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 72 18 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 80 20 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 88 22 of 25 assigned
+008-008.3b_clu-s.hist Completion percent: 96 24 of 25 assigned
+Loop done, printing results: 
+Counted nsamples: 23829
+Printed.
+Dividing 293 tasks across 36 processors
+008-008.4b_clu-s.hist Completion percent: 0 0 of 8 assigned
+008-008.4b_clu-s.hist Completion percent: 12 1 of 8 assigned
+008-008.4b_clu-s.hist Completion percent: 25 2 of 8 assigned
+008-008.4b_clu-s.hist Completion percent: 37 3 of 8 assigned
+008-008.4b_clu-s.hist Completion percent: 50 4 of 8 assigned
+008-008.4b_clu-s.hist Completion percent: 62 5 of 8 assigned
+008-008.4b_clu-s.hist Completion percent: 75 6 of 8 assigned
+008-008.4b_clu-s.hist Completion percent: 87 7 of 8 assigned
+008-008.4b_clu-s.hist Completion percent: 100 8 of 8 assigned
+Loop done, printing results: 
+Counted nsamples: 2592
+Printed.
+Code compiled in MPI mode. Will run on 36 processor(s).
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+NBINS_2B: 100
+NBINS_3B: 100
+NBINS_4B: 100
+CUTOFF_2B: 5
+CUTOFF_3B: 5
+CUTOFF_4B: 4.5
+Setting maximum histogram values: 2 3.4641 4.89898
+Dividing 418 tasks across 36 processors
+009-009.2b_clu-s.hist Completion percent: 0 0 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 9 1 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 18 2 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 27 3 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 36 4 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 45 5 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 54 6 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 63 7 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 72 8 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 81 9 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 90 10 of 11 assigned
+009-009.2b_clu-s.hist Completion percent: 100 11 of 11 assigned
+Loop done, printing results: 
+Counted nsamples: 4938
+Printed.
+Dividing 920 tasks across 36 processors
+009-009.3b_clu-s.hist Completion percent: 0 0 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 8 2 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 16 4 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 24 6 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 32 8 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 40 10 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 48 12 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 56 14 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 64 16 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 72 18 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 80 20 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 88 22 of 25 assigned
+009-009.3b_clu-s.hist Completion percent: 96 24 of 25 assigned
+Loop done, printing results: 
+Counted nsamples: 23569
+Printed.
+Dividing 378 tasks across 36 processors
+009-009.4b_clu-s.hist Completion percent: 0 0 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 10 1 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 20 2 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 30 3 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 40 4 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 50 5 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 60 6 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 70 7 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 80 8 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 90 9 of 10 assigned
+009-009.4b_clu-s.hist Completion percent: 100 10 of 10 assigned
+Loop done, printing results: 
+Counted nsamples: 4092
+Printed.
