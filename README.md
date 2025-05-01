@@ -3,7 +3,7 @@
 </p>
 <hr>
 
-ChIMES Cluster-Graph Fingerprinting
+# ChIMES Cluster-Graph Fingerprinting
 ------------------------------------------------
 
 
@@ -18,10 +18,10 @@ The ChIMES Cluster-Graph Fingerprinting Software was developed at the University
 
 <hr>
 
-Documentation
+## Documentation
 ----------------
 
-Quick Start Guide
+### Quick Start Guide
 
 - Clone the Git Repository.
 - Create a new directory with the location of where you would like fingerprints to be generated.
@@ -30,7 +30,7 @@ Quick Start Guide
 - Fill in hyperparameters within the setup.in file. Please note that everything must be declared. A description of each variable found below.
 - Run the file run_cgd_fingerprint.cmd either with SBATCH or sh.
 
-Output Files
+### Output Files
 
 The software will generate four sets of files:
 - *#*.xyzf        =
@@ -38,7 +38,7 @@ The software will generate four sets of files:
 - *s.txt          =
 - *s.hist/*r.hist = 
 
-Trajectory File Compatability
+### Trajectory File Compatability
 
 Currently, the software only supports trajectory files with the following header setup:
 <Number of Atoms in Frame>
@@ -53,7 +53,7 @@ C 11.87156 13.16436 0.74303
 C 12.03303 7.07236 12.54911
 C 1.68816 12.41406 9.11085
 
-Hyperparameter Description
+### Hyperparameter Description
 
 - WORKING_DIR      = Filepath for working directory (i.e. location where fingerprints will be generated)
 - CGD_SRCDIR       = Source directory of fingerprinting files (/src/)
@@ -77,7 +77,7 @@ Hyperparameter Description
 
 <hr>
 
-Community
+## Community
 ------------------------
 
 Questions, discussion, and contributions (e.g. bug fixes, documentation, and extensions) are welcome. 
@@ -85,7 +85,7 @@ Questions, discussion, and contributions (e.g. bug fixes, documentation, and ext
 
 <hr>
 
-Contributing
+## Contributing
 ------------------------
 
 Contributions to the The ChIMES Cluster-Graph Fingerprinting Software should be made through a pull request, with ``develop`` as the destination branch. A test suite log file should be attached to the PR.  The `develop` branch has the latest contributions. Pull requests should target `develop`, and users who want the latest package versions, features, etc. can use `develop`.
@@ -93,7 +93,7 @@ Contributions to the The ChIMES Cluster-Graph Fingerprinting Software should be 
 <hr>
 
 
-Authors
+## Authors
 ----------------
 
 The The ChIMES Cluster-Graph Fingerprinting Software was developed by Benjamin R. Laubach and Rebecca K. Lindsey.
@@ -102,7 +102,7 @@ Contributors can be found [here](https://github.com/LindseyLab-umich/chimes_CGD/
 
 <hr>
 
-Citing
+## Citing
 ----------------
 
 Please cite [1] when referencing ChIMES Cluster-Graph Fingerprints in <> a publication.
