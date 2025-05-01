@@ -40,3 +40,6 @@ if [ 1 -eq 1 ] ; then
 
     done
 fi
+
+rm test.xyz extract_clusters helpers.py
+rm -rf __pycache__

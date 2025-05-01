@@ -9,6 +9,7 @@ email_add=$(grep -oP '^EMAIL_ADD\s*=\s*\K.+' setup.in)
 hpc_nodes=$(grep -oP '^HPC_NODES\s*=\s*\K.+' setup.in)
 hpc_ppn=$(grep -oP '^HPC_PPN\s*=\s*\K.+' setup.in)
 hpc_walltime=$(grep -oP '^HPC_WALLTIME\s*=\s*\K.+' setup.in)
+hpc_partition=$(grep -oP '^HPC_PARTITION\s*=\s*\K.+' setup.in)
 
 transformation=$(grep -oP '^TRANSFORMATION\s*=\s*\K.+' setup.in)
 jobs_per_block=$(grep -oP '^JOBS_PER_BLOCK\s*=\s*\K.+' setup.in)
@@ -78,17 +79,17 @@ do
         echo "#SBATCH -o stdoutmsg                                               "  >> run-partition-${block}.cmd 
 
         if [ "$system" = "UM-ARC" ] ; then
-            echo "#SBATCH -p standard                                            "  >> run-partition-${block}.cmd        
+            echo "#SBATCH -p ${hpc_partition}                                    "  >> run-partition-${block}.cmd        
             echo "#SBATCH -A ${hpc_account}                                      "  >> run-partition-${block}.cmd          
 
         elif [ "$system" = "LLNL-LC" ] ; then
-                    echo "#SBATCH -p pbatch                                      "  >> run-partition-${block}.cmd        
+                    echo "#SBATCH -p ${hpc_partition}                            "  >> run-partition-${block}.cmd        
                     echo "#SBATCH -A ${hpc_account}                              "  >> run-partition-${block}.cmd        
         fi
 
     fi
     
-    echo "time srun -n ${hpc_ppn} ./calc_cluster_distance_histograms-mpi $i $i $transformation >> run-${block}.log" >> run-partition-${block}.cmd  
+    echo "time srun -n ${hpc_ppn} ./calc_cluster_distance_histograms-mpi $i $i $transformation >> cgd_fingerprint.log" >> run-partition-${block}.cmd  
     
     let task=task+1
 
