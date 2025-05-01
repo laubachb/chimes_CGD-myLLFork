@@ -1,14 +1,13 @@
 #!/bin/bash
 
 # Script: run_get_clusters.sh
-# Version: 2.1
-# Purpose: Robust execution of get_clusters.sh with advanced debugging
+# Version: 2.3
+# Purpose: Execute get_clusters.sh to full completion before get_histograms.sh
 
 # ---------------------------
 # 1. Enhanced Configuration
 # ---------------------------
 LOG_FILE="cgd_fingerprint.log"
-ERROR_FILE="cgd_fingerprint.error"
 TIMESTAMP=$(date +"%Y-%m-%d %T")
 
 # Load modules
@@ -27,7 +26,6 @@ echo "---------------------------------------"
 # 2. Source Directory Validation
 # ---------------------------
 validate_src_directory() {
-    # Extract src_directory from setup.in
     if [ ! -f "setup.in" ]; then
         echo "ERROR: setup.in not found in $(pwd)" | tee -a "$LOG_FILE"
         return 1
@@ -39,14 +37,11 @@ validate_src_directory() {
         return 1
     fi
 
-    # Normalize path (remove trailing slash then add one)
     src_directory="${src_directory%/}/"
     echo "Source directory: $src_directory" | tee -a "$LOG_FILE"
 
-    # Verify directory exists
     if [ ! -d "$src_directory" ]; then
         echo "ERROR: Source directory does not exist: $src_directory" | tee -a "$LOG_FILE"
-        echo "DEBUG: Directory contents at $(dirname "$src_directory"):" | tee -a "$LOG_FILE"
         ls -la "$(dirname "$src_directory")" | tee -a "$LOG_FILE"
         return 1
     fi
@@ -59,63 +54,85 @@ if ! validate_src_directory; then
 fi
 
 # ---------------------------
-# 3. Script Location Debugging
+# 3. Script Validation
 # ---------------------------
-locate_script() {
-    script_path="${src_directory}get_clusters.sh"
-    echo "Looking for script at: $script_path" | tee -a "$LOG_FILE"
+validate_script() {
+    local script_path="${src_directory}$1"
+    echo "Validating script: $script_path" | tee -a "$LOG_FILE"
 
     if [ ! -f "$script_path" ]; then
-        echo "ERROR: get_clusters.sh not found at expected location" | tee -a "$LOG_FILE"
-        echo "DEBUG: Contents of source directory:" | tee -a "$LOG_FILE"
+        echo "ERROR: $1 not found" | tee -a "$LOG_FILE"
         ls -la "$src_directory" | tee -a "$LOG_FILE"
-        
-        # Alternative search in common locations
-        echo "DEBUG: Searching for get_clusters.sh in common locations..." | tee -a "$LOG_FILE"
-        find "$src_directory" -name "get_clusters.sh" -print | tee -a "$LOG_FILE"
-        
         return 1
     fi
 
-    echo "Found script at: $script_path" | tee -a "$LOG_FILE"
     return 0
 }
 
-if ! locate_script; then
+# Validate both scripts exist before proceeding
+if ! validate_script "get_clusters.sh"; then
+    exit 1
+fi
+
+if ! validate_script "get_histograms.sh"; then
     exit 1
 fi
 
 # ---------------------------
-# 4. Execution with Debugging
+# 4. Execution with Completion Waiting
 # ---------------------------
-echo "---------------------------------------" | tee -a "$LOG_FILE"
-echo "Starting get_clusters.sh execution..." | tee -a "$LOG_FILE"
-full_cmd="sh \"${src_directory}get_clusters.sh\""
-echo "Full command: $full_cmd" | tee -a "$LOG_FILE"
+execute_with_completion() {
+    local script_name=$1
+    local script_path="${src_directory}${script_name}"
+    local pid_file="/tmp/${script_name}.pid"
 
-start_time=$(date +%s)
-set -x  # Enable command tracing
-eval "$full_cmd" >> "$LOG_FILE" 2>> "$ERROR_FILE"
-exit_code=$?
-set +x  # Disable command tracing
-end_time=$(date +%s)
-duration=$((end_time - start_time))
+    echo "---------------------------------------" | tee -a "$LOG_FILE"
+    echo "Starting ${script_name} with completion monitoring..." | tee -a "$LOG_FILE"
+    echo "Full command: sh \"$script_path\"" | tee -a "$LOG_FILE"
+
+    # Start the script and track its process tree
+    sh "$script_path" >> "$LOG_FILE" 2>&1 &
+    local main_pid=$!
+    echo "${script_name} main PID: $main_pid" | tee -a "$LOG_FILE"
+
+    # Get all child PIDs
+    pstree -p $main_pid | grep -oP '\(\K\d+' > "$pid_file"
+    echo "Tracking PIDs: $(tr '\n' ' ' < "$pid_file")" | tee -a "$LOG_FILE"
+
+    # Wait for main process and all children
+    while kill -0 $main_pid 2>/dev/null || [ -s "$pid_file" ]; do
+        # Check if any child processes are still running
+        local children_running=0
+        while read pid; do
+            if kill -0 $pid 2>/dev/null; then
+                children_running=1
+                break
+            fi
+        done < "$pid_file"
+
+        [ $children_running -eq 0 ] && break
+        sleep 1
+    done
+
+    # Clean up
+    rm -f "$pid_file"
+    wait $main_pid
+    local exit_code=$?
+
+    echo "---------------------------------------" | tee -a "$LOG_FILE"
+    echo "${script_name} fully completed with exit code: $exit_code" | tee -a "$LOG_FILE"
+    return $exit_code
+}
 
 # ---------------------------
-# 5. Enhanced Post-Execution
+# 5. Main Execution Flow
 # ---------------------------
-{
-echo "---------------------------------------"
-echo "=== Execution Completed ==="
-echo "Exit code: $exit_code"
-[ $exit_code -eq 0 ] && status="SUCCESS" || status="FAILED"
-echo "Status: $status"
-echo "Duration: $duration seconds"
-echo "End time: $(date +"%Y-%m-%d %T")"
-echo "Log file: $LOG_FILE"
-echo "Error file: $ERROR_FILE"
-echo "---------------------------------------"
-} | tee -a "$LOG_FILE"
-
-# Exit with proper code
-exit $exit_code
+if execute_with_completion "get_clusters.sh"; then
+    echo "Starting get_histograms.sh after confirmed completion of get_clusters.sh" | tee -a "$LOG_FILE"
+    execute_with_completion "get_histograms.sh"
+    echo "Submitted job to HPC!"
+    exit $?
+else
+    echo "Skipping get_histograms.sh due to get_clusters.sh failure" | tee -a "$LOG_FILE"
+    exit 1
+fi

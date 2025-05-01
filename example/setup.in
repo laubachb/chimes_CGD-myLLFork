@@ -3,18 +3,19 @@
 ##### General options
 ################################
 
-WORKING_DIR    = /p/lustre2/laubach2/chimes_CGD/example
-CGD_SRCDIR     = /p/lustre2/laubach2/chimes_CGD/src
+WORKING_DIR    = /p/lustre2/laubach2/chimes_CGD-myLLFork/example
+CGD_SRCDIR     = /p/lustre2/laubach2/chimes_CGD-myLLFork/src
 
 ################################
 #### HPC Settings
 ################################
 
-HPC_ACCOUNT  = iap
-HPC_SYSTEM   = LLNL-LC
-HPC_NODES    = 1
-HPC_PPN      = 36
-HPC_WALLTIME = 1:00:00 
+HPC_ACCOUNT   = iap
+HPC_SYSTEM    = LLNL-LC
+HPC_NODES     = 1
+HPC_PPN       = 36
+HPC_WALLTIME  = 1:00:00 
+HPC_PARTITION = pdebug
 
 ################################
 ##### Cluster extraction parameters
