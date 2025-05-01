@@ -1,8 +1,6 @@
 
 	#include <mpi.h>
 
-
-
 #include<iostream>
 #include<fstream>
 #include<sstream>
@@ -10,12 +8,41 @@
 #include<vector>
 #include<cmath>
 #include<algorithm> // For sort
+#include <stdexcept>
+#include<map>
 
 using namespace std;
 
 
 int nprocs;
 int my_rank;
+
+map<string, string> parse_setup(const string& filename) {
+    map<string, string> config;
+    ifstream file(filename);
+    
+    if (!file.is_open()) {
+        throw runtime_error("Error: Could not open setup.in");
+    }
+
+    string line;
+    while (getline(file, line)) {
+        // Skip empty lines and comments
+        if (line.empty() || line[0] == '#') continue;
+
+        istringstream iss(line);
+        string key, equals, value;
+
+        // Extract key, '=', and value
+        if (iss >> key >> equals >> value) {
+            if (equals == "=") {
+                config[key] = value;
+            }
+        }
+    }
+
+    return config;
+}
 
 int split_line(string line, vector<string> & items)
 {
@@ -298,14 +325,25 @@ int main(int argc, char *argv[])
     string f2_idx = argv[2]; //"0075"; // Frame 6 of liquid carbon at 1000 K & 0.5 gcc // .2b_clu-r.txt;
     
     string style = argv[3]; // "s"; // Calc distances based on rij, not transformed sij
-         
-    double rcout_2b = 5.0;
-    double rcout_3b = 5.0;
-    double rcout_4b = 4.5;
     
-    int nbin_2b = 100;
-    int nbin_3b = 100;
-    int nbin_4b = 100;
+    try {
+    auto config = parse_setup("setup.in");
+
+    // Extract variables (with default values if not found)
+    int nbin_2b = config.count("NBINS_2B") ? stoi(config["NBINS_2B"]) : 0;
+    int nbin_3b = config.count("NBINS_2B") ? stoi(config["NBINS_2B"]) : 0;
+    int nbin_4b = config.count("NBINS_2B") ? stoi(config["NBINS_2B"]) : 0;
+    double rcout_2b = config.count("CUTOFF_2B") ? stod(config["CUTOFF_2B"]) : 0.0;
+    double rcout_3b = config.count("CUTOFF_3B") ? stod(config["CUTOFF_3B"]) : 0.0;
+    double rcout_4b = config.count("CUTOFF_4B") ? stod(config["CUTOFF_4B"]) : 0.0;
+
+    // Print extracted values
+    cout << "NBINS_2B: " << nbin_2b << endl;
+    cout << "NBINS_3B: " << nbin_3b << endl;
+    cout << "NBINS_4B: " << nbin_4b << endl;
+    cout << "CUTOFF_2B: " << rcout_2b << endl;
+    cout << "CUTOFF_3B: " << rcout_3b << endl;
+    cout << "CUTOFF_4B: " << rcout_4b << endl;
 
     /////////////////////////////////////////////
     // Read in 2B clusters -- IN TERMS OF rij **OR** sij - determined by user
@@ -385,7 +423,11 @@ int main(int argc, char *argv[])
 
 
     MPI_Finalize();
-     
+    } catch (const exception& e) {
+        cerr << e.what() << endl;
+        return 1;
+    }
+
 }
 
 

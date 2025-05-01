@@ -1,9 +1,21 @@
 #!/bin/bash
 
+# Setup file parameters
 
-system=$1
+hpc_account=$(grep -oP '^HPC_ACCOUNT\s*=\s*\K.+' setup.in)
+system=$(grep -oP '^HPC_SYSTEM\s*=\s*\K.+' setup.in)
+hpc_email=$(grep -oP '^HPC_EMAIL\s*=\s*\K.+' setup.in)
+email_add=$(grep -oP '^EMAIL_ADD\s*=\s*\K.+' setup.in)
+hpc_nodes=$(grep -oP '^HPC_NODES\s*=\s*\K.+' setup.in)
+hpc_ppn=$(grep -oP '^HPC_PPN\s*=\s*\K.+' setup.in)
+hpc_walltime=$(grep -oP '^HPC_WALLTIME\s*=\s*\K.+' setup.in)
 
+transformation=$(grep -oP '^TRANSFORMATION\s*=\s*\K.+' setup.in)
+jobs_per_block=$(grep -oP '^JOBS_PER_BLOCK\s*=\s*\K.+' setup.in)
+src_directory=$(grep -oP '^CGD_SRCDIR\s*=\s*\K.+' setup.in)
+cpp_file=${src_directory}/calc_cluster_distance_histograms-mpi.cpp
 
+# Running histogram calculations
 
 tag_list=""
 
@@ -13,9 +25,7 @@ for i in `ls training_data_*xyzf`
 do
     tag=${i%*.xyzf}
     tag=${tag#*#}
-
     taglist="${taglist} $tag"
-    
 done
 
 echo "Compiling the code..."
@@ -26,18 +36,16 @@ elif [ "$system" != "LLNL-LC" ] ; then
     echo "ERROR: System not recognized. Choices are \"UM-ARC\" or \"LLNL-LC"
 fi
     
-mpiicc -O3 -o calc_cluster_distance_histograms-mpi calc_cluster_distance_histograms-mpi.cpp
+mpiicc -O3 -o calc_cluster_distance_histograms-mpi "$cpp_file"
 
 # Generate histograms for all the frames
 # Going to break the task into 12 blocks, to get everything done in ~1 hr
 
 echo "Building the submit script and submitting..."
 
-jobs_per_block=26 # How many jobs per block
 task=0              # Current job
 block=-1            # Current block
 prev_block=-2       # Previous block
-
 
 for i in $taglist
 do
@@ -63,25 +71,24 @@ do
         echo "#!/bin/bash                                                        "  >> run-partition-${block}.cmd
         echo "                                                                   "  >> run-partition-${block}.cmd
         echo "#SBATCH -J block-${block}                                          "  >> run-partition-${block}.cmd
-        echo "#SBATCH --nodes 1                                                  "  >> run-partition-${block}.cmd            
-        echo "#SBATCH --ntasks-per-node 36                                       "  >> run-partition-${block}.cmd            
-        echo "#SBATCH -t 1:00:00                                                 "  >> run-partition-${block}.cmd        
+        echo "#SBATCH --nodes ${hpc_nodes}                                       "  >> run-partition-${block}.cmd            
+        echo "#SBATCH --ntasks-per-node ${hpc_ppn}                               "  >> run-partition-${block}.cmd            
+        echo "#SBATCH -t ${hpc_walltime}                                         "  >> run-partition-${block}.cmd        
         echo "#SBATCH -V                                                         "  >> run-partition-${block}.cmd
         echo "#SBATCH -o stdoutmsg                                               "  >> run-partition-${block}.cmd 
 
         if [ "$system" = "UM-ARC" ] ; then
             echo "#SBATCH -p standard                                            "  >> run-partition-${block}.cmd        
-            echo "#SBATCH -A rklinds1                                            "  >> run-partition-${block}.cmd  
-            echo "source /home/rklinds/codes/chimes_lsq-myLLfork/modfiles/UM-ARC.mod "  >> run-partition-${block}.cmd          
+            echo "#SBATCH -A ${hpc_account}                                      "  >> run-partition-${block}.cmd          
 
         elif [ "$system" = "LLNL-LC" ] ; then
                     echo "#SBATCH -p pbatch                                      "  >> run-partition-${block}.cmd        
-                    echo "#SBATCH -A pbronze                                     "  >> run-partition-${block}.cmd        
+                    echo "#SBATCH -A ${hpc_account}                              "  >> run-partition-${block}.cmd        
         fi
 
     fi
     
-    echo "time srun -n 36 ./calc_cluster_distance_histograms-mpi $i $i s >> run-${block}.log" >> run-partition-${block}.cmd  
+    echo "time srun -n ${hpc_ppn} ./calc_cluster_distance_histograms-mpi $i $i $transformation >> run-${block}.log" >> run-partition-${block}.cmd  
     
     let task=task+1
 
@@ -90,6 +97,6 @@ done
 echo "  .... Finished writing the last block ${block} cmd file ... submitting!"
 echo "  with contents:"
 cat run-partition-${block}.cmd
-sbatch run-partition-${block}.cmd; fi
+sbatch run-partition-${block}.cmd
 
     

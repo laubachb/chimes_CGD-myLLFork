@@ -1,0 +1,42 @@
+
+################################
+##### General options
+################################
+
+WORKING_DIR    = /p/lustre2/laubach2/chimes_CGD/example
+CGD_SRCDIR     = /p/lustre2/laubach2/chimes_CGD/src
+
+################################
+#### HPC Settings
+################################
+
+HPC_ACCOUNT  = iap
+HPC_SYSTEM   = LLNL-LC
+HPC_NODES    = 1
+HPC_PPN      = 36
+HPC_WALLTIME = 1:00:00 
+
+################################
+##### Cluster extraction parameters
+################################
+
+TRAJPATH       = 0.5gcc_1000k_liquid_carbon.xyzf
+NFRAMES        = 10
+CUTOFF_2B      = 5.0
+CUTOFF_3B      = 5.0
+CUTOFF_4B      = 4.5
+MORSE_LAMBDA   = 1.40
+INNER_CUTOFF   = 0.98
+
+################################
+#### Histogram generation parameters
+################################
+
+NBINS_2B         = 100
+NBINS_3B         = 100
+NBINS_4B         = 100
+TRANSFORMATION   = s
+JOBS_PER_BLOCK   = 100
+
+
+

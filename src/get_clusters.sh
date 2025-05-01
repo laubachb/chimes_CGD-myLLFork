@@ -2,18 +2,20 @@
 
 # Total frames in INITIAL training set:
 
-nf=310
-traj="/Users/becky/Desktop/ChIMES-C-unpublished/training_data.xyzf"
+nf=$(grep -oP '^NFRAMES\s*=\s*\K\d+' setup.in)
+traj=$(grep -oP '^TRAJPATH\s*=\s*\K.+' setup.in)
+src_directory=$(grep -oP '^CGD_SRCDIR\s*=\s*\K.+' setup.in)
+work_directory=$(grep -oP '^WORKING_DIR\s*=\s*\K.+' setup.in)
+cpp_file=${src_directory}/extract_clusters.cpp
 
-g++ -O3 -o extract_clusters extract_clusters.cpp
-
+g++ -O3 -o extract_clusters "$cpp_file"
 
 # This took ~30 min to run
 
-if [ 1 -eq 2 ] ; then
+if [ 1 -eq 1 ] ; then
 
-    cp $traj training_data.xyzf
-    cp ~/Codes/al_driver-myLLfork/src/helpers.py .
+    cp $traj ${work_directory}/training_data.xyzf
+    cp "${src_directory}/helpers.py" .
     python -c "import helpers; helpers.break_apart_xyz($nf,\"training_data.xyzf\")"
     rm -f *FORCES*
 fi 

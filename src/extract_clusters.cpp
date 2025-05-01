@@ -14,9 +14,11 @@ assumes all atoms are the same type
 #include<string>
 #include<vector>
 #include<cmath>
+#include<map>
 
 using namespace std;
 
+double rcin;
 
 struct xyz
 {
@@ -25,6 +27,32 @@ struct xyz
     double z;
 };
 
+map<string, string> parse_setup(const string& filename) {
+    map<string, string> config;
+    ifstream file(filename);
+    
+    if (!file.is_open()) {
+        throw runtime_error("Error: Could not open setup.in");
+    }
+
+    string line;
+    while (getline(file, line)) {
+        // Skip empty lines and comments
+        if (line.empty() || line[0] == '#') continue;
+
+        istringstream iss(line);
+        string key, equals, value;
+
+        // Extract key, '=', and value
+        if (iss >> key >> equals >> value) {
+            if (equals == "=") {
+                config[key] = value;
+            }
+        }
+    }
+
+    return config;
+}
 
 int split_line(string line, vector<string> & items)
 {
@@ -81,7 +109,7 @@ double get_dist(xyz box, xyz a1, xyz a2)
     
     double dist = sqrt(dx*dx + dy*dy + dz*dz);
     
-    if (dist < 0.98)
+    if (dist < rcin)
     {
         cout << "Something went wrong between atoms: " << endl;
         cout << "A: " << a1.x << " " << a1.y << " " << a1.z << endl;
@@ -112,14 +140,25 @@ int main()
 {
     
     /////////////////////////////////////////////
-    // Hard-coded for now, for a single atom type: rcutin, rcut out, morse lambda
+    // For a single atom type: rcut in, rcut out, morse lambda
     /////////////////////////////////////////////
-    
-    double rcin     = 0.98;
-    double rcout_2b = 5.0;
-    double rcout_3b = 5.0;
-    double rcout_4b = 4.5;
-    double lambda   = 1.40;
+
+    try {
+        auto config = parse_setup("setup.in");
+
+        // Extract variables (with default values if not found)
+        rcin = config.count("INNER_CUTOFF") ? stoi(config["INNER_CUTOFF"]) : 0;
+        int lambda = config.count("MORSE_LAMBDA") ? stoi(config["MORSE_LAMBDA"]) : 0;
+        double rcout_2b = config.count("CUTOFF_2B") ? stod(config["CUTOFF_2B"]) : 0.0;
+        double rcout_3b = config.count("CUTOFF_3B") ? stod(config["CUTOFF_3B"]) : 0.0;
+        double rcout_4b = config.count("CUTOFF_4B") ? stod(config["CUTOFF_4B"]) : 0.0;
+
+        // Print extracted values
+        cout << "INNER_CUTOFF: " << rcin << endl;
+        cout << "MORSE_LAMBDA: " << lambda << endl;
+        cout << "CUTOFF_2B: " << rcout_2b << endl;
+        cout << "CUTOFF_3B: " << rcout_3b << endl;
+        cout << "CUTOFF_4B: " << rcout_4b << endl;
 
     /////////////////////////////////////////////
     // Read file name
@@ -348,6 +387,9 @@ int main()
     ofstream_3b_s.close();
     ofstream_4b_s.close();
      
-    
+    } catch (const std::exception& e) {
+        cerr << e.what() << endl;
+        return 1;
+    }
     
 }
