@@ -52,7 +52,7 @@ NON_ORTHO <Box Dimension X> 0.0 0.0 0.0 <Box Dimension Y> 0.0 0.0 0.0 <Box Dimen
 <Atom Type> <x Position> <y Position> <z Position>
 <Atom Type> <x Position> <y Position> <z Position>
 ...
-'''   
+'''plaintext
 
 An example trajectory file can be found in the /example/ folder. The software currently only supports orthogonal boxes (despite the NON_ORTHO tag).
 
