@@ -54,7 +54,7 @@ NON_ORTHO <Box Dimension X> 0.0 0.0 0.0 <Box Dimension Y> 0.0 0.0 0.0 <Box Dimen
 ...
 ```
 
-An example trajectory file can be found in the /example/ folder. The software currently only supports orthogonal boxes (despite the NON_ORTHO tag). Forces can be included in each postion line, but are not required or needed. Distances and cutoffs are in angstroms for example fingerprint, but the method is scale agnostic.
+An example trajectory file can be found in the /example/ folder. Forces can be included in each postion line, but are not required or needed. Distances and cutoffs are in angstroms for example fingerprint, but the method is scale agnostic.
 
 ### Hyperparameter Descriptions
 
