@@ -54,7 +54,7 @@ NON_ORTHO <Box Dimension X> 0.0 0.0 0.0 <Box Dimension Y> 0.0 0.0 0.0 <Box Dimen
 ...
 ```
 
-An example trajectory file can be found in the /example/ folder. The software currently only supports orthogonal boxes (despite the NON_ORTHO tag).
+An example trajectory file can be found in the /example/ folder. The software currently only supports orthogonal boxes (despite the NON_ORTHO tag). Forces can be included in each postion line, but are not required or needed. Distances and cutoffs are in angstroms for example fingerprint, but the method is scale agnostic.
 
 ### Hyperparameter Descriptions
 
@@ -67,16 +67,16 @@ An example trajectory file can be found in the /example/ folder. The software cu
 - HPC_WALLTIME     = Max walltime requested on HPC account
 - TRAJPATH         = Filepath of trajectory file
 - NFRAMES          = Number of frames to be fingerprinted in the trajectory file
-- CUTOFF_2B        = 2-body cutoff (Angstroms)
-- CUTOFF_3B        = 3-body cutoff (Angstroms)
-- CUTOFF_4B        = 4-body cutoff (Angstroms)
-- MORSE_LAMBDA     = 
-- INNER_CUTOFF     = 
-- NBINS_2B         = 
-- NBINS_3B         = 
-- NBINS_4B         = 
-- JOBS_PER_BLOCK   = 
-- TRANSFORMATION   = Choice of Morse or Direct transformation - dictates *.hist output.
+- CUTOFF_2B        = 2-body cutoff
+- CUTOFF_3B        = 3-body cutoff
+- CUTOFF_4B        = 4-body cutoff
+- MORSE_LAMBDA     = Characteristic bonding distance. Typically set as distance corresponding to first peak in radial distribution function
+- INNER_CUTOFF     = Distance at which a pair of atoms is considered too close and will not be included in a cluster-graph
+- NBINS_2B         = Number of bins that the maximum dissimilarity is distributed over for 2-body calculations
+- NBINS_3B         = Number of bins that the maximum dissimilarity is distributed over for 3-body calculations
+- NBINS_4B         = Number of bins that the maximum dissimilarity is distributed over for 4-body calculations
+- JOBS_PER_BLOCK   = Number of frames for which a histogram will be generated in a single HPC job submission
+- TRANSFORMATION   = Choice of Morse or Direct transformation - dictates *.hist output
 
 <hr>
 
